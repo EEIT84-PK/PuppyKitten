@@ -11,8 +11,7 @@ public class MapBean {
 	private String MAP_BODY;
 	@Override
 	public String toString() {
-		return "MapBean [MAP_ID=" + MAP_ID +", MAP_NAME=" + MAP_NAME +", MAP_ADD=" + MAP_ADD
-				+"]";
+		return MAP_ID+","+MAP_NAME;
 	}
 	public Integer getMAP_ID() {
 		return MAP_ID;

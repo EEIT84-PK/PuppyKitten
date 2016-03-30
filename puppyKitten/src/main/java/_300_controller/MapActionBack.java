@@ -1,10 +1,14 @@
 package _300_controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,6 +21,7 @@ public class MapActionBack extends ActionSupport implements ServletRequestAware{
 		private String choose;
 		private MapBean mapBean;
 		private HttpServletRequest req;
+
 		
 		public MapBean getMapBean() {
 			return mapBean;
@@ -41,18 +46,15 @@ public class MapActionBack extends ActionSupport implements ServletRequestAware{
 			this.req=req;
 			
 		}
-		
+	
 		public String execute(){
 			MapService service = new MapService();
-			if("查詢".equals(choose)) {
-				List<MapBean> list = service.select(mapBean);
-				req.setAttribute("select", list);
-				System.out.println("execute查詢");
-			} else if("修改".equals(choose)){
-				System.out.println("修改");
-			}
-			
+			System.out.println("Im Action");
+			List<MapBean> list = service.select(mapBean);
+			req.setAttribute("select", list);
+
 			return "success";
 		}
+
 		
 }

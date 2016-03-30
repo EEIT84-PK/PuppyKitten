@@ -10,32 +10,34 @@
 <title>後台系統 - Google Map</title>
 
 <style>
+
+
 	#mapform input[type="button"]{
 		
 	}
 </style>
 <script>
+
 $(document).ready(function(){
 	var $update =$('#mapform input[class="update"]');
 	var path = "${pageContext.request.contextPath}";
- 	var url = path+"/map/mapActionBack.action";
+ 	var url = path+"/map/mapActionBack.controller";
  	
 	$update.click(function(){
 		var $text =$(this).parent().siblings().eq(0).text();
 		$('#updateid').val($text);
 	 	var queryString = "&mapBean.MAP_ID="+$text+"&dummy="+new Date().getTime();
-	 	alert(queryString);
 		request = new XMLHttpRequest();
 		request.onreadystatechange = doReadyStateChange;
 		request.open("GET", url+"?"+queryString, true);
-		request.send(null);
+		request.send();
 	});
 	
 	function doReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
-				console.log("SUCCESS!");
 				
+				$('#updateid').val(request.responseText);
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);
 			}
@@ -49,7 +51,7 @@ $(document).ready(function(){
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/map/mapActionBack.action" method="get">
-地圖編號<input type="text" name="mapBean.MAP_ID" value="${mapBean.MAP_ID}" pattern=""/>
+地圖編號<input type="text" name="mapBean.MAP_ID" value="${mapBean.MAP_ID}" />
 <input type="submit" value="查詢" name="choose">
 </form>
 <c:choose>
@@ -74,7 +76,7 @@ $(document).ready(function(){
 		<td><input type="text" value="${map.MAP_NAME}" style="border-style: none;width:180px;"></td>
 		<td><input type="text" value="${map.MAP_ADD}" style="border-style: none;width:250px;"></td>
 		<td><input type="text" value="${map.MAP_PHONE}" style="border-style: none;width:100px;"></td>
-		<td><input type="button" class="update" name="choose" value="查詢"/><input type="button" value="刪除" /></td>		
+		<td><input type="submit" class="update" name="choose" value="查詢"/><input type="button" value="刪除" /></td>		
 	</tr>
 	</c:forEach>
 	</tbody>
@@ -85,7 +87,7 @@ $(document).ready(function(){
 </c:otherwise>
 </c:choose>
 <form action="<%=request.getContextPath()%>/map/mapActionBack" method="get" id="updateform">
-	<input id="updateid" type="text" name="mapBean.MAP_ID" value="${mapBean.MAP_ID}">
+	<input id="updateid" type="text" name="mapBean.MAP_ID" value="${mapBean.MAP_NAME}">
 	<input type="submit" value="修改" name="choose">
 </form>	
 </body>
