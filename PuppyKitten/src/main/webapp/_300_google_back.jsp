@@ -9,24 +9,33 @@
 <script src="<%=request.getContextPath()%>/jquery/jquery-ui.min.js"></script>
 <title>後台系統 - Google Map</title>
 
-<style>
-
-
-	#mapform input[type="button"]{
-		
-	}
-</style>
 <script>
 
 $(document).ready(function(){
-	var $update =$('#mapform input[class="update"]');
+	var $update =$('input[class="update"]');
+	var $delete =$('input[class="delete"]');
+	var $useUpdate = $update.attr('name');
+	var $useDelete = $delete.attr('name');
 	var path = "${pageContext.request.contextPath}";
  	var url = path+"/map/mapActionBack.controller";
  	
 	$update.click(function(){
 		var $text =$(this).parent().siblings().eq(0).text();
-		$('#updateid').val($text);
-	 	var queryString = "&mapBean.MAP_ID="+$text+"&dummy="+new Date().getTime();
+		var $kind =$(this).parent().siblings().children().eq(0).val();
+		var $name =$(this).parent().siblings().children().eq(1).val();
+		var $address = $(this).parent().siblings().children().eq(2).val();
+		var $phone = $(this).parent().siblings().children().eq(3).val();
+	 	var queryString = "&mapBean.MAP_ID="+$text+"&mapBean.MAP_KIND="+$kind+"&mapBean.MAP_NAME="+$name
+	 	+"&mapBean.MAP_ADD="+$address+"&mapBean.MAP_PHONE="+$phone+"&mapBean.use"+$useUpdate+"&dummy="+new Date().getTime();
+		request = new XMLHttpRequest();
+		request.onreadystatechange = doReadyStateChange;
+		request.open("GET", url+"?"+queryString, true);
+		request.send();
+	});
+	$delete.click(function(){
+		var $text =$(this).parent().siblings().eq(0).text();
+	 	var queryString = "&mapBean.MAP_ID="+$text+"&mapBean.use"+$useDelete+"&dummy="+new Date().getTime();
+	 	alert($useDelete);
 		request = new XMLHttpRequest();
 		request.onreadystatechange = doReadyStateChange;
 		request.open("GET", url+"?"+queryString, true);
@@ -36,8 +45,7 @@ $(document).ready(function(){
 	function doReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
-				
-				$('#updateid').val(request.responseText);
+				$('#success').html(request.responseText);
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);
 			}
@@ -70,14 +78,16 @@ $(document).ready(function(){
 	</thead>
 	<tbody>	
 	<c:forEach var="map" items="${select}">
-	<tr id="mapform">		
+	<tr>		
 		<td>${map.MAP_ID}</td>
 		<td><input type="text" value="${map.MAP_KIND}" style="border-style: none;width:70px;"></td>
 		<td><input type="text" value="${map.MAP_NAME}" style="border-style: none;width:180px;"></td>
 		<td><input type="text" value="${map.MAP_ADD}" style="border-style: none;width:250px;"></td>
 		<td><input type="text" value="${map.MAP_PHONE}" style="border-style: none;width:100px;"></td>
-		<td><input type="submit" class="update" name="choose" value="查詢"/><input type="button" value="刪除" /></td>		
+		<td><input type="submit" class="update" name="update" value="修改"/>
+		<input type="button" class="delete" name="delete" value="移除" /></td>		
 	</tr>
+	<h4 id="success" style="color:red"></h4>
 	</c:forEach>
 	</tbody>
 </table>
@@ -86,9 +96,5 @@ $(document).ready(function(){
 <h3>未搜尋到任何店家</h3>
 </c:otherwise>
 </c:choose>
-<form action="<%=request.getContextPath()%>/map/mapActionBack" method="get" id="updateform">
-	<input id="updateid" type="text" name="mapBean.MAP_ID" value="${mapBean.MAP_NAME}">
-	<input type="submit" value="修改" name="choose">
-</form>	
 </body>
 </html>

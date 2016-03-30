@@ -9,9 +9,17 @@ public class MapBean {
 	private String MAP_AREA;
 	private String MAP_ADD;
 	private String MAP_BODY;
+	private String use;
+	
 	@Override
 	public String toString() {
 		return MAP_ID+","+MAP_NAME;
+	}	
+	public String getUse() {
+		return use;
+	}
+	public void setUse(String use) {
+		this.use = use;
 	}
 	public Integer getMAP_ID() {
 		return MAP_ID;

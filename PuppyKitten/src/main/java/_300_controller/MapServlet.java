@@ -17,28 +17,45 @@ import _300_model.MapService;
 @WebServlet("/map/mapActionBack.controller")
 public class MapServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String useWhich; 
+
+	public void setUseWhich(String useWhich) {
+		this.useWhich = useWhich;
+	}
+
+	public String getUseWhich() {
+		return useWhich;
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	
 		response.setContentType("text/plain; charset=UTF-8");
 		PrintWriter out;
+		MapBean bean = new MapBean();
+		MapService service = new MapService();
+		StringBuilder output = new StringBuilder();
+		String use=request.getParameter("");
 		try {
-			MapBean bean = new MapBean();
-			MapDAO dao = new MapDAO();
-			System.out.println("Im Servlet");
-			System.out.println("mapBean.MAP_ID:"+request.getParameter("mapBean.MAP_ID"));
-			int id=Integer.parseInt(request.getParameter("mapBean.MAP_ID"));
-			bean = dao.selectId(id);
-			request.setAttribute("select", bean);
+				System.out.println(use);
+				if("update".equals(useWhich)){
+					bean.setMAP_ID(Integer.parseInt(request.getParameter("mapBean.MAP_ID")));
+					bean.setMAP_KIND(request.getParameter("mapBean.MAP_KIND"));
+					bean.setMAP_NAME(request.getParameter("mapBean.MAP_NAME"));
+					bean.setMAP_ADD(request.getParameter("mapBean.MAP_ADD"));
+					bean.setMAP_PHONE(request.getParameter("mapBean.MAP_PHONE"));
+					service.update(bean);
+					out = response.getWriter();
+					output.append("修改成功!");
+					out.print(output);
+				     out.close();
+				     return;
+				}else if("delete".equals(useWhich)){
+					System.out.println("DELETE!!!!!!!!!!!!!!!");
+				}
 			
-			System.out.println(bean);
-			out = response.getWriter();
-			StringBuilder output = new StringBuilder();
-			
-			output.append(bean.getMAP_NAME());
 		
-		     out.print(output);
-		     out.close();
-		     return;
+		     
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
