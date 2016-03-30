@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import _300_model.MapBean;
 import _300_model.MapService;
 
+@SuppressWarnings("serial")
 public class MapActionBack extends ActionSupport implements ServletRequestAware{
 	//宣告區
 		private MapBean mapBean;
