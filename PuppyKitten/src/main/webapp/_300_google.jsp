@@ -8,8 +8,10 @@
     <title>米沃貓窩 - Google Map</title>
 <script src="<%=request.getContextPath()%>/javascript/googlemap.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=&signed_in=true&callback=initMap" async defer></script>
+<script src="<%=request.getContextPath()%>/jquery/jquery.dataTables.min.js"></script>
 
     <style>
+
       #map {
         height:40%;
         width:40%
@@ -18,7 +20,6 @@
 		background:white;
 	}
     </style>
-	<script></script>
   </head>
   <body>
   <c:import url="/import/header.jsp"></c:import>
@@ -53,7 +54,7 @@
 <c:choose>
 <c:when test="${not empty select}">
 <h3>搜尋到的店家:</h3>
-<table border="1" style="border-collapse: collapse;">
+<table id="datatable" border="1" style="border-collapse: collapse;">
 	<thead>
 	<tr style="background:#DDDDDD">
 		<th>編號</th>
@@ -66,8 +67,8 @@
 	<c:forEach var="map" items="${select}">
 	<tr class="trcolor">
 		<td>${map.MAP_ID}</td>
-		<td>${map.MAP_KIND}</td>
-		<td>${map.MAP_NAME}</td>
+		<td style="width:80px;">${map.MAP_KIND}</td>
+		<td style="width:200px;">${map.MAP_NAME}</td>
 		<td>${map.MAP_ADD}</td>
 	</tr>
 	</c:forEach>
