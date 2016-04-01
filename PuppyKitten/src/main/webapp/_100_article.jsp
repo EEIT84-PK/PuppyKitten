@@ -29,48 +29,57 @@
 	padding: 20px;
 	overflow: 
 }
-#use{
-	background:rgba(250, 235, 215, 0.8);
-}
+
 </style>
 <script type="text/javascript">
-$(function(){
-	$('#thead a').click(function(){
- 		$('#thead div').siblings().css("background","red");
-// 		$('#thead div').css("background","rgba(250, 235, 215, 0.8)");
-		
-		$(this).parent().addClass('use');
-
-		
-	});
-	$('#post').click(function(){
-		var queryString ="&use=公告&dummy="+new Date().getTime();
+$(function(){	
+	var $path = "/PuppyKitten";
+ 	var $url = $path+"/article/articleAction.controller";
+ 	$('#all').click(function(){
+		$(this).css("background","rgba(250, 235, 215, 0.8)");
+		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
+		var $queryString ="&dummy="+new Date().getTime();
 		request = new XMLHttpRequest();
 		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", url+"?"+queryString, true);
+		request.open("GET", $url+"?"+$queryString, true);
+		request.send();
+    });
+	$('#post').click(function(){
+		$(this).css("background","rgba(250, 235, 215, 0.8)");
+		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
+		var $queryString ="&use=公告&dummy="+new Date().getTime();
+		request = new XMLHttpRequest();
+		request.onreadystatechange = doReadyStateChange;
+		request.open("GET", $url+"?"+$queryString, true);
 		request.send();
     });
 	$('#activity').click(function() {
-		var queryString ="&use=活動&dummy="+new Date().getTime();
+		$(this).css("background","rgba(250, 235, 215, 0.8)");
+		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
+		var $queryString ="&use=活動&dummy="+new Date().getTime();
 		request = new XMLHttpRequest();
+		console.log($url+"?"+$queryString);
 		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", url+"?"+queryString, true);
+		request.open("GET", $url+"?"+$queryString, true);
 		request.send();
     });
 	
 	$('#reviews').click(function() {
-		var queryString ="&use=心得&dummy="+new Date().getTime();
+		$(this).css("background","rgba(250, 235, 215, 0.8)");
+		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
+		var $queryString ="&use=心得&dummy="+new Date().getTime();
 		request = new XMLHttpRequest();
 		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", url+"?"+queryString, true);
+		request.open("GET", $url+"?"+$queryString, true);
 		request.send();
     });
 	$('#question').click(function() {
-		alert("失敗的點");
-		var queryString = "&use=問題&dummy="+new Date().getTime();
+		$(this).css("background","rgba(250, 235, 215, 0.8)");
+		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
+		var $queryString = "&use=問題&dummy="+new Date().getTime();
 		request = new XMLHttpRequest();
 		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", url+"?"+queryString, true);
+		request.open("GET", $url+"?"+$queryString, true);
 		request.send();
     });
  
@@ -78,7 +87,7 @@ $(function(){
 	function doReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
-				
+				$('#success').html(request.responseText);
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);
 			}
@@ -93,8 +102,7 @@ $(function(){
 <section>
 <article>
 <div id="thead">
-<div id="use">
-<a href='<c:url value="/article/articleAction.action" ></c:url>'>所有</a></div>
+<div id="all" style="background:rgba(250, 235, 215, 0.8);">所有</div>
 <div id="post">公告</div>
 <div id="activity">活動</div>
 <div id="reviews">心得</div>
@@ -112,16 +120,16 @@ $(function(){
 								<th>次數</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:forEach var="article" items="${select}">
-								<tr class="trcolor">
+						<tbody id="success">
+								
+						
+							<c:forEach var="article" items="${select}"><tr class="trcolor">
 									<td style="width: 50px;text-align: center;">${article.ART_KIND}</td>
 									<td style="width: 300px;text-align: center;">${article.ART_TITLE}</td>
 									<td style="width: 100px;text-align: center;">${article.ART_MEM_ID}</td>
 									<td style="width: 200px;text-align: center;">${article.ART_TIME}</td>
 									<td style="width: 50px;text-align: center;">${article.ART_HOT}</td>
-								</tr>
-							</c:forEach>
+								</tr></c:forEach>
 						</tbody>
 					</table>
 	

@@ -1,6 +1,7 @@
 package _100_controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,26 +19,80 @@ public class ArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/plain; charset=UTF-8");
-		ArticleBean bean = new ArticleBean();
+		PrintWriter out;
+		StringBuilder output = new StringBuilder();
 		ArticleService service = new ArticleService();
 		List<ArticleBean> list=null;
 		String use=request.getParameter("use");
 				if("公告".equals(use)){
-					
 					list=service.selectPost();
-					request.setAttribute("select",list);
+					for(int i=0;i<list.size();i++){
+						ArticleBean data = list.get(i);
+						output.append("<tr><td style='width: 50px;text-align: center;'>"+data.getART_KIND()+"</td>");
+						output.append("<td style='width: 300px;text-align: center;'>"+data.getART_TITLE()+"</td>");
+						output.append("<td style='width: 100px;text-align: center;'>"+data.getART_MEM_ID()+"</td>");
+						output.append("<td style='width: 200px;text-align: center;'>"+data.getART_TIME()+"</td>");
+						output.append("<td style='width: 50px;text-align: center;'>"+data.getART_HOT()+"</td></tr>");
+					}
+					out = response.getWriter();
+					out.print(output);
+				    out.close();
 				    return;
 				}else if("活動".equals(use)){
 					list=service.selectActivity();
-					request.setAttribute("select",list);
+					for(int i=0;i<list.size();i++){
+						ArticleBean data = list.get(i);
+						output.append("<tr><td style='width: 50px;text-align: center;'>"+data.getART_KIND()+"</td>");
+						output.append("<td style='width: 300px;text-align: center;'>"+data.getART_TITLE()+"</td>");
+						output.append("<td style='width: 100px;text-align: center;'>"+data.getART_MEM_ID()+"</td>");
+						output.append("<td style='width: 200px;text-align: center;'>"+data.getART_TIME()+"</td>");
+						output.append("<td style='width: 50px;text-align: center;'>"+data.getART_HOT()+"</td></tr>");
+					}
+					out = response.getWriter();
+					out.print(output);
+				    out.close();
 				    return;
 				}else if("心得".equals(use)){
 					list=service.selectReviews();
-					request.setAttribute("select",list);
+					for(int i=0;i<list.size();i++){
+						ArticleBean data = list.get(i);
+						output.append("<tr><td style='width: 50px;text-align: center;'>"+data.getART_KIND()+"</td>");
+						output.append("<td style='width: 300px;text-align: center;'>"+data.getART_TITLE()+"</td>");
+						output.append("<td style='width: 100px;text-align: center;'>"+data.getART_MEM_ID()+"</td>");
+						output.append("<td style='width: 200px;text-align: center;'>"+data.getART_TIME()+"</td>");
+						output.append("<td style='width: 50px;text-align: center;'>"+data.getART_HOT()+"</td></tr>");
+					}
+					out = response.getWriter();
+					out.print(output);
+				    out.close();
 				    return;
 				}else if("問題".equals(use)){
 					list=service.selectQuestion();
-					request.setAttribute("select",list);
+					for(int i=0;i<list.size();i++){
+						ArticleBean data = list.get(i);
+						output.append("<tr><td style='width: 50px;text-align: center;'>"+data.getART_KIND()+"</td>");
+						output.append("<td style='width: 300px;text-align: center;'>"+data.getART_TITLE()+"</td>");
+						output.append("<td style='width: 100px;text-align: center;'>"+data.getART_MEM_ID()+"</td>");
+						output.append("<td style='width: 200px;text-align: center;'>"+data.getART_TIME()+"</td>");
+						output.append("<td style='width: 50px;text-align: center;'>"+data.getART_HOT()+"</td></tr>");
+					}
+					out = response.getWriter();
+					out.print(output);
+				    out.close();
+				    return;
+				}else{
+					list=service.selectAll();
+					for(int i=0;i<list.size();i++){
+						ArticleBean data = list.get(i);
+						output.append("<tr><td style='width: 50px;text-align: center;'>"+data.getART_KIND()+"</td>");
+						output.append("<td style='width: 300px;text-align: center;'>"+data.getART_TITLE()+"</td>");
+						output.append("<td style='width: 100px;text-align: center;'>"+data.getART_MEM_ID()+"</td>");
+						output.append("<td style='width: 200px;text-align: center;'>"+data.getART_TIME()+"</td>");
+						output.append("<td style='width: 50px;text-align: center;'>"+data.getART_HOT()+"</td></tr>");
+					}
+					out = response.getWriter();
+					out.print(output);
+				    out.close();
 				    return;
 				}
 
