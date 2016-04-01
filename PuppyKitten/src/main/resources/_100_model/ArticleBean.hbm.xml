@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+		<class name="_100_model.ArticleBean" table="Article">
+		
+			<id name="ART_ID" column="ART_ID">
+				<generator class="identity"></generator>
+			</id>
+			<property name="ART_MEM_ID" column="ART_MEM_ID" />
+			<property name="ART_KIND" column="ART_KIND" />
+			<property name="ART_TITLE" column="ART_TITLE" />
+			<property name="ART_BODY" column="ART_BODY" />
+			<property name="ART_TIME" column="ART_TIME" />
+			<property name="ART_HOT" column="ART_HOT" />
+
+		</class>
+</hibernate-mapping>
