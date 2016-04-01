@@ -1,24 +1,15 @@
 package _300_controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
-
 import com.opensymphony.xwork2.ActionSupport;
-
 import _300_model.MapBean;
 import _300_model.MapService;
 
-@SuppressWarnings("serial")
+
 public class MapActionBack extends ActionSupport implements ServletRequestAware{
 	//宣告區
-		private String choose;
 		private MapBean mapBean;
 		private HttpServletRequest req;
 
@@ -35,12 +26,6 @@ public class MapActionBack extends ActionSupport implements ServletRequestAware{
 		public void setReq(HttpServletRequest req) {
 			this.req = req;
 		}
-		public String getChoose() {
-			return choose;
-		}
-		public void setChoose(String choose) {
-			this.choose = choose;
-		}
 		@Override
 		public void setServletRequest(HttpServletRequest req) {
 			this.req=req;
@@ -48,6 +33,7 @@ public class MapActionBack extends ActionSupport implements ServletRequestAware{
 		}
 	
 		public String execute(){
+			System.out.println(mapBean.getClass());
 			MapService service = new MapService();
 			List<MapBean> list = service.select(mapBean);
 			req.setAttribute("select", list);

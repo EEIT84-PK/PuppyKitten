@@ -6,6 +6,11 @@
 	<struts>
 		<constant name="struts.devMode" value="true"></constant> <!-- 開發模式的設定 預設為false 更改為true -->
 		
+		<package name="articlePackage" namespace="/article" extends="struts-default">
+			<action name="articleAction" class="_100_controller.ArticleAction">
+				<result name="success">/_100_article.jsp</result>
+			</action>
+		</package>
 		<package name="mapPackage" namespace="/map" extends="struts-default">
 			<action name="mapAction" class="_300_controller.MapAction">
 				<result name="success">/_300_google.jsp</result>
@@ -14,4 +19,5 @@
 				<result name="success">/_300_google_back.jsp</result>
 			</action>
 		</package>
+		
 	</struts>
