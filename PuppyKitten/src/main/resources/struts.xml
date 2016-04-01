@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+	<struts>
+		<constant name="struts.devMode" value="true"></constant> <!-- 開發模式的設定 預設為false 更改為true -->
+		
+		<package name="articlePackage" namespace="/article" extends="struts-default">
+			<action name="articleAction" class="_100_controller.ArticleAction">
+				<result name="success">/_100_article.jsp</result>
+			</action>
+		</package>
+		<package name="mapPackage" namespace="/map" extends="struts-default">
+			<action name="mapAction" class="_300_controller.MapAction">
+				<result name="success">/_300_google.jsp</result>
+			</action>
+			<action name="mapActionBack" class="_300_controller.MapActionBack">
+				<result name="success">/_300_google_back.jsp</result>
+			</action>
+		</package>
+		
+	</struts>
