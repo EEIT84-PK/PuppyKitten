@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import hibernate.util.HibernateUtil;
 
 public class ArticleDAO implements ArticleDAO_interface {	
-	
+	private static final String GET_BY_TITLE = "from ArticleBean where ART_TITLE=?";
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ArticleBean> selectAll() {
@@ -84,6 +84,24 @@ public class ArticleDAO implements ArticleDAO_interface {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("from ArticleBean Where ART_KIND='問題'");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ArticleBean> selectByTitle(String title) {
+		List<ArticleBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query =  session.createQuery(GET_BY_TITLE);
+			query.setParameter(0, title);
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {

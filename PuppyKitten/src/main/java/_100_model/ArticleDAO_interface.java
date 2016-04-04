@@ -9,5 +9,6 @@ public interface ArticleDAO_interface {
 	List<ArticleBean> selectActivity();
 	List<ArticleBean> selectReviews();
 	List<ArticleBean> selectQuestion();
+	List<ArticleBean> selectByTitle(String title);
 
 }

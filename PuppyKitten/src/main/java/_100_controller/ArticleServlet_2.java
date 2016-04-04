@@ -13,31 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 import _100_model.ArticleBean;
 import _100_model.ArticleService;
 
-@WebServlet("/article/articleAction.controller")
-public class ArticleServlet extends HttpServlet {
+@WebServlet("/article/articleAction_2.controller")
+public class ArticleServlet_2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/plain; charset=UTF-8");
 		PrintWriter out;
+		ArticleBean bean = new ArticleBean();
 		StringBuilder output = new StringBuilder();
 		ArticleService service = new ArticleService();
-		List<ArticleBean> list=null;
-		String use=request.getParameter("use");
-				if("公告".equals(use)){list=service.selectPost();}
-				else if("活動".equals(use)){list=service.selectActivity();}
-				else if("心得".equals(use)){list=service.selectReviews();}
-				else if("問題".equals(use)){list=service.selectQuestion();}
-				else{list=service.selectAll();}
-				for(int i=0;i<list.size();i++){
-					ArticleBean data = list.get(i);
+		bean.setART_TITLE(request.getParameter("title"));
+		 List<ArticleBean> list =service.selectByTitle(bean.getART_TITLE());
 
-					output.append("<tr><td style='width: 50px;'>"+data.getART_KIND()+"</td>");
-					output.append("<td style='width: 300px;'>"+data.getART_TITLE()+"</td>");
-					output.append("<td style='width: 100px;'>"+data.getART_MEM_ID()+"</td>");
-					output.append("<td style='width: 200px;'>"+data.getART_TIME()+"</td>");
-					output.append("<td style='width: 50px;'>"+data.getART_HOT()+"</td></tr>");
-				}
+					output.append("<h1>"+list.get(0).getART_TITLE()+"</h1>");
+					output.append("<h5>"+list.get(0).getART_BODY()+"</h5>");
+					output.append("");
+
+				
 				out = response.getWriter();
 				out.print(output);
 			    out.close();

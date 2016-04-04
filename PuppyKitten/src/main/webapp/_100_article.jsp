@@ -10,7 +10,7 @@
 <style>
 
 #thead div{
-	width:200px;
+	width:100px;
 	cursor: pointer;
 	height:30px;	
 	background:rgba(250, 235, 215, 0.4);
@@ -27,15 +27,20 @@
 	width:1016px;
 	overflow:auto;
 	padding: 20px;
-	overflow: 
 }
-
+#success td{
+	text-align: center;
+	cursor: pointer;
+}
 </style>
 <script type="text/javascript">
 $(function(){	
+	
 	var $path = "/PuppyKitten";
  	var $url = $path+"/article/articleAction.controller";
+ 	var $url_2 = $path+"/article/articleAction_2.controller";
  	$('#all').click(function(){
+ 		$('#shide').show();
 		$(this).css("background","rgba(250, 235, 215, 0.8)");
 		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
 		var $queryString ="&dummy="+new Date().getTime();
@@ -45,6 +50,7 @@ $(function(){
 		request.send();
     });
 	$('#post').click(function(){
+		$('#shide').show();
 		$(this).css("background","rgba(250, 235, 215, 0.8)");
 		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
 		var $queryString ="&use=公告&dummy="+new Date().getTime();
@@ -54,6 +60,7 @@ $(function(){
 		request.send();
     });
 	$('#activity').click(function() {
+		$('#shide').show();
 		$(this).css("background","rgba(250, 235, 215, 0.8)");
 		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
 		var $queryString ="&use=活動&dummy="+new Date().getTime();
@@ -65,6 +72,7 @@ $(function(){
     });
 	
 	$('#reviews').click(function() {
+		$('#shide').show();
 		$(this).css("background","rgba(250, 235, 215, 0.8)");
 		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
 		var $queryString ="&use=心得&dummy="+new Date().getTime();
@@ -74,6 +82,7 @@ $(function(){
 		request.send();
     });
 	$('#question').click(function() {
+		$('#shide').show();
 		$(this).css("background","rgba(250, 235, 215, 0.8)");
 		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
 		var $queryString = "&use=問題&dummy="+new Date().getTime();
@@ -82,19 +91,42 @@ $(function(){
 		request.open("GET", $url+"?"+$queryString, true);
 		request.send();
     });
- 
-	
+
 	function doReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
 				$('#success').html(request.responseText);
+				$('#success tr').click(function(){
+					$('#shide').hide();
+						var $title=$(this).children().eq(1).text();
+						var $queryString = "&title="+$title+"&dummy="+new Date().getTime();
+						request = new XMLHttpRequest();
+						request.onreadystatechange = doReadyStateChange_2;
+						request.open("GET", $url_2+"?"+$queryString, true);
+						request.send();
+					
+				});
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);
 			}
 		}
 	}
 	
+	function doReadyStateChange_2() {
+		if(request.readyState==4) {
+			if(request.status==200) {
+				$('#success').html(request.responseText);
+				
+			} else {
+				console.log("錯誤代碼:"+request.status+", "+request.statusText);
+			}
+		}
+	}
+	
+	
+	
 });
+
 </script>
 </head>
 <body>
@@ -108,10 +140,13 @@ $(function(){
 <div id="reviews">心得</div>
 <div id="question">問題</div>
 </div>
+
 <div id="tbody">
 <br><br>
+
 <table>
-						<thead style="background: #DDDDDD;">
+<c:choose><c:when test="${not empty select}">
+						<thead style="background: #DDDDDD;" id="shide">
 							<tr>
 								<th>類型</th>
 								<th>主題</th>
@@ -120,9 +155,9 @@ $(function(){
 								<th>次數</th>
 							</tr>
 						</thead>
+						</c:when></c:choose>
 						<tbody id="success">
-								
-						
+
 							<c:forEach var="article" items="${select}"><tr class="trcolor">
 									<td style="width: 50px;text-align: center;">${article.ART_KIND}</td>
 									<td style="width: 300px;text-align: center;">${article.ART_TITLE}</td>
@@ -132,7 +167,7 @@ $(function(){
 								</tr></c:forEach>
 						</tbody>
 					</table>
-	
+
 </div>
 
 </article>

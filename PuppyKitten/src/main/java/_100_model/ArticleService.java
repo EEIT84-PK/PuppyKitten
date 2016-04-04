@@ -29,4 +29,8 @@ public class ArticleService {
 		List<ArticleBean> list = dao.selectQuestion();
 		return list;
 	}
+	public List<ArticleBean> selectByTitle(String title){
+		List<ArticleBean> list = dao.selectByTitle(title);
+		return list;
+	}
 }
