@@ -96,9 +96,7 @@
 			<input type="submit" value="查詢">
 			</form>
 			
-
 		</article>
-
 
 	</section>
 	<c:import url="/import/footer.jsp"></c:import>
