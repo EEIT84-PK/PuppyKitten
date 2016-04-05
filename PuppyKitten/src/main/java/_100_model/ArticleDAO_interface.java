@@ -4,11 +4,12 @@ import java.util.List;
 
 public interface ArticleDAO_interface {
 
-	List<ArticleBean> selectAll();
-	List<ArticleBean> selectPost();
-	List<ArticleBean> selectActivity();
-	List<ArticleBean> selectReviews();
-	List<ArticleBean> selectQuestion();
-	List<ArticleBean> selectByTitle(String title);
+	public List<ArticleBean> selectAll();
+	public List<ArticleBean> selectPost();
+	public List<ArticleBean> selectActivity();
+	public List<ArticleBean> selectReviews();
+	public List<ArticleBean> selectQuestion();
+	public List<ArticleBean> selectByTitle(String title);
+	public void insert(ArticleBean bean);
 
 }

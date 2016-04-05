@@ -8,6 +8,8 @@ public class ArticleBean {
 	private String ART_BODY;
 	private java.util.Date ART_TIME;
 	private Integer ART_HOT;
+	private String ART_IMG;
+	
 	public Integer getART_ID() {
 		return ART_ID;
 	}
@@ -49,6 +51,12 @@ public class ArticleBean {
 	}
 	public void setART_HOT(Integer aRT_HOT) {
 		ART_HOT = aRT_HOT;
+	}
+	public String getART_IMG() {
+		return ART_IMG;
+	}
+	public void setART_IMG(String aRT_IMG) {
+		ART_IMG = aRT_IMG;
 	}
 	
 	

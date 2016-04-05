@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import _100_model.ArticleBean;
 import _100_model.ArticleService;
 
-@WebServlet("/article/articleAction_2.controller")
-public class ArticleServlet_2 extends HttpServlet {
+@WebServlet("/article/articleBodyAction.controller")
+public class ArticleBodyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,11 +25,11 @@ public class ArticleServlet_2 extends HttpServlet {
 		ArticleService service = new ArticleService();
 		bean.setART_TITLE(request.getParameter("title"));
 		 List<ArticleBean> list =service.selectByTitle(bean.getART_TITLE());
-
-					output.append("<h1>"+list.get(0).getART_TITLE()+"</h1>");
-					output.append("<h5>"+list.get(0).getART_BODY()+"</h5>");
-					output.append("");
-
+				output.append("<h1 style='font-size:40px'>"+list.get(0).getART_TITLE()+"</h1>");
+				if(list.get(0).getART_IMG()!=null){
+					output.append("<img src='"+list.get(0).getART_IMG()+"' width='300px;'>");
+				}
+				output.append("<h1>"+list.get(0).getART_BODY()+"</h1>");
 				
 				out = response.getWriter();
 				out.print(output);

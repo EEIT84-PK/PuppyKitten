@@ -33,4 +33,8 @@ public class ArticleService {
 		List<ArticleBean> list = dao.selectByTitle(title);
 		return list;
 	}
+	public ArticleBean insert(ArticleBean bean){
+			dao.insert(bean);
+		return bean;
+	} 
 }

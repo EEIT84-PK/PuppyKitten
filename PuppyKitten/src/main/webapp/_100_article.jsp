@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 
 #tbody{
 	background:rgba(250, 235, 215, 0.8);
-	height: 400px;
+	height: 490px;
 	width:1016px;
 	overflow:auto;
 	padding: 20px;
@@ -32,13 +33,17 @@
 	text-align: center;
 	cursor: pointer;
 }
+#error{
+color:red;
+list-style: none;
+}
 </style>
 <script type="text/javascript">
 $(function(){	
 	
 	var $path = "/PuppyKitten";
  	var $url = $path+"/article/articleAction.controller";
- 	var $url_2 = $path+"/article/articleAction_2.controller";
+ 	var $bodyurl = $path+"/article/articleBodyAction.controller";
  	$('#all').click(function(){
  		$('#shide').show();
 		$(this).css("background","rgba(250, 235, 215, 0.8)");
@@ -98,11 +103,12 @@ $(function(){
 				$('#success').html(request.responseText);
 				$('#success tr').click(function(){
 					$('#shide').hide();
+					$('#success').hide();
 						var $title=$(this).children().eq(1).text();
 						var $queryString = "&title="+$title+"&dummy="+new Date().getTime();
 						request = new XMLHttpRequest();
-						request.onreadystatechange = doReadyStateChange_2;
-						request.open("GET", $url_2+"?"+$queryString, true);
+						request.onreadystatechange = doBodyReadyStateChange;
+						request.open("GET", $bodyurl+"?"+$queryString, true);
 						request.send();
 					
 				});
@@ -112,18 +118,27 @@ $(function(){
 		}
 	}
 	
-	function doReadyStateChange_2() {
+	function doBodyReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
-				$('#success').html(request.responseText);
-				
+					$('#success').hide().fadeIn(1000).html(request.responseText);
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);
 			}
 		}
 	}
 	
-	
+	$('#success tr').click(function(){
+		$('#shide').hide();
+		$('#success').hide();
+			var $title=$(this).children().eq(1).text();
+			var $queryString = "&title="+$title+"&dummy="+new Date().getTime();
+			request = new XMLHttpRequest();
+			request.onreadystatechange = doBodyReadyStateChange;
+			request.open("GET", $bodyurl+"?"+$queryString, true);
+			request.send();
+		
+	});
 	
 });
 
@@ -142,9 +157,10 @@ $(function(){
 </div>
 
 <div id="tbody">
-<br><br>
 
 <table>
+
+
 <c:choose><c:when test="${not empty select}">
 						<thead style="background: #DDDDDD;" id="shide">
 							<tr>
@@ -157,7 +173,7 @@ $(function(){
 						</thead>
 						</c:when></c:choose>
 						<tbody id="success">
-
+							
 							<c:forEach var="article" items="${select}"><tr class="trcolor">
 									<td style="width: 50px;text-align: center;">${article.ART_KIND}</td>
 									<td style="width: 300px;text-align: center;">${article.ART_TITLE}</td>
@@ -167,6 +183,7 @@ $(function(){
 								</tr></c:forEach>
 						</tbody>
 					</table>
+					
 
 </div>
 

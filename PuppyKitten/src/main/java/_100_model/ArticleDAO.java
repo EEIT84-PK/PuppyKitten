@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import hibernate.util.HibernateUtil;
 
 public class ArticleDAO implements ArticleDAO_interface {	
@@ -109,5 +110,17 @@ public class ArticleDAO implements ArticleDAO_interface {
 			throw ex;
 		}
 		return list;
+	}
+	@Override
+	public void insert(ArticleBean bean) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.save(bean);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
 	}
 }
