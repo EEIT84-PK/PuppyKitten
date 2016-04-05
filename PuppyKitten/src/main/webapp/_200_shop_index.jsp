@@ -38,64 +38,70 @@
 	<section>
 
 		<article style="width: 1500px; background-color: white;">
-			<input class="btn_1" type="button" name="dog" value="汪星人"> <input
-				class="btn_1" type="button" name="cat" value="喵星人"> <select
-				class="btn_1">
-				<option>主食乾糧</option>
-				<option>外出專用</option>
-				<option>精選罐頭</option>
-				<option>嚴選零嘴</option>
-				<option>休閒玩具</option>
-				<option>生活用品</option>
-				<option>衣著打扮</option>
-			</select> <input class="btn_1" type="text" name="search_something"> <input
-				class="btn_1" type="button" value="Search"><br>
+			<form action="/shop/shopAction" method="get" id="shop_form">
+				<input class="btn_1" type="submit" name="dog" value="汪星人"> 
+				<input class="btn_1" type="submit" name="cat" value="喵星人"> 
+				
+				<select
+					class="btn_1">
+					<option>主食乾糧</option>
+					<option>外出專用</option>
+					<option>精選罐頭</option>
+					<option>嚴選零嘴</option>
+					<option>休閒玩具</option>
+					<option>生活用品</option>
+					<option>衣著打扮</option>
+				</select> 
+				<input class="btn_1" type="text" name="search_something"> 
+				<input class="btn_1" type="button" value="Search"><br>
 
-<!-- 			<div class="pro_1"> -->
-<!-- 				123<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 				<br> -->
-<!-- 			</div> -->
+				<!-- 			<div class="pro_1"> -->
+				<!-- 				123<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 				<br> -->
+				<!-- 			</div> -->
 
-			<table border="1" style="border-collapse: collapse;">
-				<thead style="background-color: #E8CCFF">
-					<tr>
-						<th>種類</th>
-						<th>產品名稱</th>
-						<th>價格</th>
-						<th>庫存</th>
+				<table border="1" style="border-collapse: collapse;">
+					<thead style="background-color: #E8CCFF">
+						<tr>
+							<th>種類</th>
+							<th>產品名稱</th>
+							<th>價格</th>
+							<th>庫存</th>
+							<th>照片</th>
 
-					</tr>
-				</thead>
-				<tbody>
+						</tr>
+					</thead>
+					<tbody>
 
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						
-					</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+
+						</tr>
 					</tbody>
-			</table>
-			<form action="">
-			<input type="submit" value="查詢">
+				</table>
+
+				<input type="submit" value="查詢">
 			</form>
-			
+
 		</article>
 
 	</section>

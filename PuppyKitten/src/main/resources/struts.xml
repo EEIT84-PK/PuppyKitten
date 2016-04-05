@@ -20,10 +20,10 @@
 		</action>
 	</package>
 
-<!-- 	<package name="shopPackage" namespace="/shop" extends="struts-default"> -->
-<!-- 		<action name="shopAction" class="_200_shop_index.jsp"> -->
-<!-- 			<result name="success">/_200_shop_buy.jsp</result> -->
-<!-- 		</action> -->
-<!-- 	</package> -->
+	<package name="shopPackage" namespace="/shop" extends="struts-default">
+		<action name="shopAction" class="_200_controller.ShopAction">
+			<result name="success">/_200_shop_buy.jsp</result>
+		</action>
+	</package>
 
 </struts>
