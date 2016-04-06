@@ -14,7 +14,7 @@
 <section>
 <article>
 <h1 style="font-size:50px;">登入會員</h1>
-<form action="login/loginAction.action">
+<form action="login/loginAction.action" method="post">
 帳號:<input type="text" name="account" value=""><span style="color:red">${errors.account[0]}</span><br>
 密碼:<input type="password" name="password" value=""><span style="color:red">${errors.password[0]}</span><br><br>
 <input type="submit" value="登入"><span style="color:red">${errors.loginerror[0]}</span>

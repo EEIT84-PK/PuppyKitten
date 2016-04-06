@@ -57,7 +57,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			return INPUT;
 		} else {
              session.put("loginOK", bean.getMEM_NAME());
-             
+             session.put("memberID", bean.getMEM_ID());
 			return SUCCESS;
 		}
 

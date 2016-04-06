@@ -83,7 +83,7 @@ function clearForm() {
 <article>
 <h1>寵物聯誼(新增寵物資訊)</h1>
 	<form action="<%=request.getContextPath()%>/pet/petAction.action" method="post" enctype="multipart/form-data">
-		會員編號：<input type="text" name="petBean.PET_OWN_ID" size="20" value="${petBean.PET_OWN_ID}">
+		會員編號：<input type="text" name="petBean.PET_OWN_ID" size="20" value="${session.memberID}">
 		<span class="error">${request.PET_OWN_ID}</span><BR>
 		寵物名字： <input type="text" name="petBean.PET_NAME" size="10" value="${petBean.PET_NAME}"> 
 		<span class="error">${request.PET_NAME}</span><BR>

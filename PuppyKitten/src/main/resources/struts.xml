@@ -63,6 +63,7 @@
 			</action>
 			<action name="insertAction" class="_500_controller.InsertAction">
 				<result name="success">/index.jsp</result>
+				<result name="input">/_500_insert.jsp</result>
 			</action>
 			
 		</package>
