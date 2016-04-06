@@ -37,72 +37,50 @@
 	<c:import url="/import/header.jsp"></c:import>
 	<section>
 
-		<article style="width: 1500px; background-color: white;">
-			<form action="/shop/shopAction" method="get" id="shop_form">
-				<input class="btn_1" type="submit" name="dog" value="汪星人"> 
-				<input class="btn_1" type="submit" name="cat" value="喵星人"> 
-				
-				<select
-					class="btn_1">
-					<option>主食乾糧</option>
-					<option>外出專用</option>
-					<option>精選罐頭</option>
-					<option>嚴選零嘴</option>
-					<option>休閒玩具</option>
-					<option>生活用品</option>
-					<option>衣著打扮</option>
-				</select> 
-				<input class="btn_1" type="text" name="search_something"> 
-				<input class="btn_1" type="button" value="Search"><br>
+		<!-- 		<table border="1" style="border-collapse: collapse;"> -->
+		<table border="1">
+			<thead>
+				<tr>
+					<th>商品編號</th>
+					<th>商品名稱</th>
+					<th>購買數量</th>
+					<th>原價</th>
+					<th>售價</th>
+					<th>小計</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<th><input type="submit" value="刪除" style="cursor: pointer;"></th>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+					<td>2</td>
+					<th><input type="submit" value="刪除" style="cursor:pointer;"></th>
+				</tr>
+			</tbody>
+			<tfoot>
+			<tr>
+					<th>總計：</th>
 
-				<!-- 			<div class="pro_1"> -->
-				<!-- 				123<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 				<br> -->
-				<!-- 			</div> -->
+				</tr>
+			</tfoot>
+		</table>
 
-				<table border="1" style="border-collapse: collapse;">
-					<thead style="background-color: #E8CCFF">
-						<tr>
-							<th>種類</th>
-							<th>產品名稱</th>
-							<th>價格</th>
-							<th>庫存</th>
-							<th>照片</th>
-
-						</tr>
-					</thead>
-					<tbody>
-
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-
-						</tr>
-					</tbody>
-				</table>
-
-				<input type="submit" value="查詢">
-			</form>
-
-		</article>
+		<input type="submit" value="返回購物" style="cursor: pointer;"> <input type="submit"
+			value="下一步" style="cursor: pointer;">
 
 	</section>
 	<c:import url="/import/footer.jsp"></c:import>

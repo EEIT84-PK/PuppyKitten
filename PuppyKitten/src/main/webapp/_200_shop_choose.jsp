@@ -27,6 +27,7 @@
 	border: 1px solid red;
 	margin: 20px;
 	height: 310px;
+	
 }
 
 .choose_1 {
@@ -72,7 +73,7 @@
 
 					<aside class="choose_pro3">
 						<span>建議售價：999元</span><br> <br> <input type="button"
-							value="加入購物車">
+							value="加入購物車" style="cursor: pointer;">
 					</aside>
 
 					<aside class="choose_pro3">

@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
+<script src="ckeditor/ckeditor.js"></script>
 <c:import url="/import/head.jsp"></c:import>
 <style type="text/css">
 .pro_1 {
@@ -36,14 +37,13 @@
 <body>
 	<c:import url="/import/header.jsp"></c:import>
 	<section>
-
 		<article style="width: 1500px; background-color: white;">
+			<h2>新品上市</h2>
 			<form action="/shop/shopbackAction" method="get" id="shop_form">
-				商品類型：<select name="pro_animal">
+				商品類型：<select name="shopbean.PRO_ANIMAL">
 					<option>汪星人</option>
 					<option>喵星人</option>
-				</select><br>
-				<br> 商品種類：<select name="pro_kind">
+				</select><br> <br> 商品種類：<select name="shopbean.PRO_KIND">
 					<option>主食乾糧</option>
 					<option>外出專用</option>
 					<option>精選罐頭</option>
@@ -51,18 +51,22 @@
 					<option>休閒玩具</option>
 					<option>生活用品</option>
 					<option>衣著打扮</option>
-				</select><br>
-				<br> 商品名稱：<input type="text" name="pro_name"><br>
-				<br> 優惠方案：<select name="pro_project">
+				</select><br> <br> 商品名稱：<input type="text" name="shopbean.PRO_NAME"><br>
+				<br> 優惠方案：<select name="shopbean.PRO_PROJCET">
 					<option>指定價格</option>
 					<option>買X送X</option>
 					<option>指定折扣</option>
-				</select><br>
-				<br> 商品重量：<input type="text" name="pro_weight"><br>
-				<br> 販售價格：<input type="text" name="pro_price"><br>
-				<br> 庫存數量：<input type="text" name="pro_stock"><br>
-				<br> 商品介紹：<input type="text" name="pro_body"><br>
-				<br> 商品照片：<input type="file" name="pro_image"><br>
+				</select><br> <br> 商品重量：<input type="text"
+					name="shopbean.PRO_WEIGHT"><br> <br> 販售價格：<input
+					type="text" name="shopbean.PRO_PRICE"><br> <br>
+				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><br>
+				<br> 商品照片：<input type="file" name="shopbean.PRO_IMAGE"><br>
+				<br> 商品介紹：<br>
+				<textarea id="content" rows="10" cols="80" name="shopbean.PRO_BODY"></textarea>
+				<input type='button' value='送出' onclick='processData()'>
+				<script>
+					CKEDITOR.replace('shopbean.PRO_BODY', {});
+				</script>
 				<br> <input type="submit" value="新增上架">
 			</form>
 

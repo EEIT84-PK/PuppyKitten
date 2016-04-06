@@ -6,8 +6,6 @@
 <head>
 <c:import url="/import/head.jsp"></c:import>
 <style type="text/css">
-
-
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -27,6 +25,7 @@
     background-color: white; 
     color: black; 
     border: 2px solid #4CAF50;
+    cursor: pointer;
 }
 
 .button1:hover {
@@ -71,7 +70,8 @@
 .btn_1 {
 	width: 90px;
 	height: 30px;
-	font-size: 15px
+	font-size: 15px;
+	cursor: pointer;
 }
 </style>
 <script type="text/javascript">
@@ -95,8 +95,8 @@
 		<article style="width: 1500px; background-color: white;">
 			<form action="/shop/shopAction" method="get" id="shop_form">
 				<input class="btn_1" type="submit" name="dog" value="汪星人"> <input
-					class="btn_1" type="submit" name="cat" value="喵星人"> <select
-					class="btn_1">
+					class="btn_1" type="submit" name="cat" value="喵星人"> 
+					<select class="btn_1">
 					<option>主食乾糧</option>
 					<option>外出專用</option>
 					<option>精選罐頭</option>
@@ -105,7 +105,7 @@
 					<option>生活用品</option>
 					<option>衣著打扮</option>
 				</select> <input class="btn_1" type="text" name="search_something" placeholder="Search.."> <input
-					class="btn_1" type="button" value="Search"><br>
+					class="btn_1" type="submit" value="Search"><br>
 
 				<div class="pro_1">
 				
@@ -199,31 +199,7 @@
 					</aside>
 				</div>
 
-				<!-- 				<table border="1" style="border-collapse: collapse;"> -->
-				<!-- 					<thead style="background-color: #E8CCFF"> -->
-				<!-- 						<tr> -->
-				<!-- 							<th>種類</th> -->
-				<!-- 							<th>產品名稱</th> -->
-				<!-- 							<th>價格</th> -->
-				<!-- 							<th>庫存</th> -->
-				<!-- 							<th>照片</th> -->
 
-				<!-- 						</tr> -->
-				<!-- 					</thead> -->
-				<!-- 					<tbody> -->
-
-				<!-- 						<tr> -->
-				<!-- 							<td></td> -->
-				<!-- 							<td></td> -->
-				<!-- 							<td></td> -->
-				<!-- 							<td></td> -->
-				<!-- 							<td></td> -->
-
-				<!-- 						</tr> -->
-				<!-- 					</tbody> -->
-				<!-- 				</table> -->
-
-				<!-- 				<input type="submit" value="查詢"> -->
 			</form>
 
 		</article>
