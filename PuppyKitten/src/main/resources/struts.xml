@@ -37,8 +37,8 @@
 		</action>
 	</package>
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
-		<action name="shopAction" class="_200_controller.ShopAction">
-			<result name="success">/_200_shop_buy.jsp</result>
+		<action name="shopBackAction" class="_200_controller.ShopBackAction">
+			<result name="success">/index.jsp</result>
 		</action>
 	</package>
 </struts>

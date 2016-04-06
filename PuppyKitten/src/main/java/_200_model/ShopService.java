@@ -28,9 +28,10 @@ public class ShopService {
 		List<ShopBean> result = null;
 		String animal = bean.getPRO_ANIMAL();
 		String kind = bean.getPRO_KIND();
-
-		if (animal.trim().length() == 0) {
+//		System.out.println("animal="+kind);
+		if (animal==null||animal.trim().length() == 0) {
 			result = dao.select_Product(kind);
+			
 		} else {
 			result = dao.select_Product(animal, kind);
 		}

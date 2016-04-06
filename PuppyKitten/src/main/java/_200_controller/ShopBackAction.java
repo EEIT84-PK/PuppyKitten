@@ -12,14 +12,11 @@ import _200_model.ShopBean;
 import _200_model.ShopService;
 
 @SuppressWarnings("serial")
-public class ShopAction extends ActionSupport implements ServletRequestAware {
+public class ShopBackAction extends ActionSupport implements ServletRequestAware {
 
 	private HttpServletRequest request;
 	private ShopBean shopbean;
 
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
 
 	public void setShopbean(ShopBean shopbean) {
 		this.shopbean = shopbean;
@@ -33,6 +30,9 @@ public class ShopAction extends ActionSupport implements ServletRequestAware {
 	public String execute() {
 		ShopService service = new ShopService();
 		List<ShopBean> list = service.selectShop(shopbean);
+//		for(ShopBean bean :list){
+//			System.out.println(bean+",");
+//		}
 		request.setAttribute("select", list);
 		return "success";
 	}
