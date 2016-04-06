@@ -53,6 +53,18 @@
 			<result name="success">/_400_select.jsp</result>			
 		</action>
 	</package>	
-		
+		<package name="loginPackage" namespace="/login" extends="struts-default">
+			<action name="loginAction" class="_500_controller.LoginAction">
+				<result name="success">/index.jsp</result>
+				<result name="input">/_500_login.jsp</result>
+			</action>
+			<action name="logoutAction" class="_500_controller.LogoutAction">
+				<result name="success">/index.jsp</result>
+			</action>
+			<action name="insertAction" class="_500_controller.InsertAction">
+				<result name="success">/index.jsp</result>
+			</action>
+			
+		</package>
 	</struts>
 
