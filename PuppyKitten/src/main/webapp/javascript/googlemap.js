@@ -3,11 +3,7 @@
 		var area;
 		var kind;
 		var select;
-<<<<<<< HEAD
-		
-=======
-		$('#datatable').DataTable();
->>>>>>> branch 'master' of https://github.com/EEIT84-PK/PuppyKitten.git
+$('#datatable').DataTable();
 		$('.text').hide().val('');
 		
 		$('.click').click(function(){
