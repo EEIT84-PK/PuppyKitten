@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	$('#inputforhide').hide();
-	$('#datatable').DataTable();
+
 	var $update =$('input[class=update]');
 	var $delete =$('input[class=delete]');
 	var path = "/PuppyKitten";

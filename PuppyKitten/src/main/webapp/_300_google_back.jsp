@@ -63,7 +63,7 @@
   <form>
     <fieldset>
       <label for="kind">店家種類</label>
-      <input type="text" name="kind" id="kind" value="動物醫院" class="text ui-widget-content ui-corner-all">
+      <input type="text" name="kind" id="kind" value="寵物醫院" class="text ui-widget-content ui-corner-all">
       <label for="name">店家名稱</label>
       <input type="text" name="name" id="name" value="陳柏安的寵物店" class="text ui-widget-content ui-corner-all">
       <label for="phone">店家電話</label>

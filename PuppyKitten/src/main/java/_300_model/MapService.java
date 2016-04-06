@@ -14,7 +14,6 @@ public class MapService {
 	public List<MapBean> select(MapBean bean){
 		
 		List<MapBean> result = null;
-//		System.out.println(bean);
 		if(bean.getMAP_ID()==null) {
 			result = dao.selectAll(); 
 			

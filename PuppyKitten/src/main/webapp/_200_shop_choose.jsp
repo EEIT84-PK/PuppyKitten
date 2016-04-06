@@ -19,7 +19,7 @@
 	margin: 20px;
 	height: 380px;
 	border-radius: 4px;
-    padding: 5px;
+	padding: 5px;
 }
 
 .choose_pro3 {
@@ -69,18 +69,16 @@
 					<article class="choose_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
 					</article>
-					
+
 					<aside class="choose_pro3">
-						<span>建議售價：999元</span><br>
-						<br> <input type="button" value="加入購物車">
-					</aside>
-										
-					<aside class="choose_pro3">
-						<span>商品介紹</span><br><br> 
-						<input type="button" value="加入購物車">
+						<span>建議售價：999元</span><br> <br> <input type="button"
+							value="加入購物車">
 					</aside>
 
-					
+					<aside class="choose_pro3">
+						<span>商品介紹</span><br> <br>
+
+					</aside>
 
 				</div>
 			</form>

@@ -54,7 +54,7 @@
 				<div class="main">討論區</div>
 				<div class="sub">
 					<ul>
-						<li><a href="">討論大廳</a></li>
+						<li><a href='<c:url value="/article/articleAction.action" ></c:url>'>討論大廳</a></li>
 						<li><a href="">留言板</a></li>
 					</ul>
 				</div>

@@ -3,12 +3,29 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
+
 <struts>
+	<constant name="struts.custom.i18n.resources" value="i18n"></constant>
 	<constant name="struts.devMode" value="true"></constant> <!-- 開發模式的設定 預設為false 更改為true -->
 
 	<package name="articlePackage" namespace="/article" extends="struts-default">
+
+		<interceptors>
+			<interceptor-stack name="atguigustack">
+				<interceptor-ref name="defaultStack">
+					<param name="fileUpload.allowedTypes">image/jpeg,image/jpg,image/png</param>
+					<param name="fileUpload.allowedExtensions">jpeg,jpg,png</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="atguigustack"></default-interceptor-ref>
+
 		<action name="articleAction" class="_100_controller.ArticleAction">
 			<result name="success">/_100_article.jsp</result>
+		</action>
+		<action name="uploadAction" class="_100_controller.UploadAction">
+			<result name="success">/_100_insert.jsp</result>
+			<result name="input">/_100_insert.jsp</result>
 		</action>
 	</package>
 	<package name="mapPackage" namespace="/map" extends="struts-default">
@@ -19,11 +36,9 @@
 			<result name="success">/_300_google_back.jsp</result>
 		</action>
 	</package>
-
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
 		<action name="shopAction" class="_200_controller.ShopAction">
 			<result name="success">/_200_shop_buy.jsp</result>
 		</action>
 	</package>
-
 </struts>
