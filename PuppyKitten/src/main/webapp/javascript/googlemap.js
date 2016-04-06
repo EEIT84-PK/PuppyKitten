@@ -4,6 +4,7 @@
 		var kind;
 		var select;
 		$('#datatable').DataTable();
+
 		$('.text').hide().val('');
 		
 		$('.click').click(function(){
