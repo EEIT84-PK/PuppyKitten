@@ -13,6 +13,15 @@ public class PetService {
 	public PetImgBean selectId2(Integer PET_ID) {		
 		return petDAO.selectId2(PET_ID);
 	}
+	
+	public PetSortCatBean selectSortCat(String PET_SORT_ID){
+		return petDAO.selectSortCat(PET_SORT_ID);
+	}
+	
+	public PetSortDogBean selectSortDog(String PET_SORT_ID){
+		return petDAO.selectSortDog(PET_SORT_ID);
+	}
+	
 	public PetBean insert(PetBean bean) {
 		petDAO.insert(bean);
 		return bean;

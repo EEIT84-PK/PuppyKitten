@@ -33,6 +33,34 @@ public class PetDAO implements PetDAO_interface{
 		}
 		return bean;		
 	}
+	public PetSortCatBean selectSortCat(String PET_SORT_ID){
+		PetSortCatBean bean = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			bean = (PetSortCatBean) session.get(PetSortCatBean.class, PET_SORT_ID);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return bean;		
+		
+	}
+	
+	public PetSortDogBean selectSortDog(String PET_SORT_ID){
+		PetSortDogBean bean = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			bean = (PetSortDogBean) session.get(PetSortDogBean.class, PET_SORT_ID);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return bean;			
+	}
 	
 	@Override
 	public void insert(PetBean bean) {
