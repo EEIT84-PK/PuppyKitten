@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -73,8 +75,7 @@ public class PetAction extends ActionSupport {
 		this.request = request;
 	}
 
-	public void validate() {
-		System.out.println("PET_IMAGE" + PET_IMAGE);
+	public void validate() {		
 		if (petBean.getPET_OWN_ID() == null) {
 			request.put("PET_OWN_ID", "請輸入會員編號");
 		}
@@ -103,22 +104,25 @@ public class PetAction extends ActionSupport {
 
 	public String execute() {
 		if (request.isEmpty()) {
+			ServletContext context = ServletActionContext.getServletContext();
 			PetService petService = new PetService();
 			PetBean bean = petService.insert(petBean);// 將寵物資訊新增到pet_friendship
-														// Table
-			File saved = new File("C:\\Java\\workspacePK\\PuppyKitten\\src\\main\\webapp\\_400_images",
-					PET_IMAGEFileName);// 將檔案儲存到/pet_images下			
+							// Table
+			File saved = new File(context.getRealPath("/_400_images/"+PET_IMAGEFileName));// 將檔案儲存到/_400_images下			
 			InputStream is = null;
 			OutputStream os = null;
 			try {
 				saved.getParentFile().mkdirs();// 確保資料夾/pet_images存在
 				is = new FileInputStream(PET_IMAGE); // 讀入暫存檔案
-				os = new FileOutputStream(saved); // 寫入到/pet_images下
+				os = new FileOutputStream(saved); // 寫入到/_400_images下
 
 				byte[] Img = new byte[(int) PET_IMAGE.length()];// 位元組快取記憶體
-				is.read(Img);
+				int len=0;
+				while((len=is.read(Img))!=-1){
+					os.write(Img);
+				}
 				petImgBean.setPET_ID(bean.getPET_ID());				
-				petImgBean.setPET_IMAGE(saved+"\\"+PET_IMAGEFileName);				
+				petImgBean.setPET_IMAGE(context.getContextPath()+"/_400_images/"+PET_IMAGEFileName);				
 				PetImgBean Imgbean = petService.insert(petImgBean);
 			} catch (Exception e) {
 				e.printStackTrace();

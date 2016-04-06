@@ -39,13 +39,13 @@ $(function() {
   		$("input[name='petBean.PET_KING']").val("貓");
   		$("input[name='petBean.PET_SORT_ID']").val("");
   		$("#sort").append($("<option></option>").attr("value", "").text("請選擇品種"));
-  		$("#sort").append($("<option></option>").attr("value", "410001").text("暹邏貓"));
-  		$("#sort").append($("<option></option>").attr("value", "410002").text("波斯貓"));
-  		$("#sort").append($("<option></option>").attr("value", "410003").text("布偶貓"));
-  		$("#sort").append($("<option></option>").attr("value", "410004").text("美國短毛貓"));
-  		$("#sort").append($("<option></option>").attr("value", "410005").text("俄羅斯藍貓"));
-  		$("#sort").append($("<option></option>").attr("value", "410006").text("美國捲耳貓"));
-  		$("#sort").append($("<option></option>").attr("value", "410007").text("土耳其安哥拉貓"));
+  		$("#sort").append($("<option></option>").attr("value", "4101").text("暹邏貓"));
+  		$("#sort").append($("<option></option>").attr("value", "4102").text("波斯貓"));
+  		$("#sort").append($("<option></option>").attr("value", "4103").text("布偶貓"));
+  		$("#sort").append($("<option></option>").attr("value", "4104").text("美國短毛貓"));
+  		$("#sort").append($("<option></option>").attr("value", "4105").text("俄羅斯藍貓"));
+  		$("#sort").append($("<option></option>").attr("value", "4106").text("美國捲耳貓"));
+  		$("#sort").append($("<option></option>").attr("value", "4107").text("土耳其安哥拉貓"));
   	  }
   	  if($("#king" ).val()=="dog"){
   		$("#sort option").remove();
@@ -53,13 +53,13 @@ $(function() {
   		$("input[name='petBean.PET_KING']").val("狗");
   		$("input[name='petBean.PET_SORT_ID']").val("");
   		$("#sort").append($("<option></option>").attr("value", "").text("請選擇品種"));
-  		$("#sort").append($("<option></option>").attr("value", "420001").text("柴犬"));
-  		$("#sort").append($("<option></option>").attr("value", "420002").text("巴哥"));
-  		$("#sort").append($("<option></option>").attr("value", "420003").text("貴賓犬"));
-  		$("#sort").append($("<option></option>").attr("value", "420004").text("吉娃娃"));
-  		$("#sort").append($("<option></option>").attr("value", "420005").text("哈士奇"));
-  		$("#sort").append($("<option></option>").attr("value", "420006").text("拉布拉多"));
-  		$("#sort").append($("<option></option>").attr("value", "420007").text("黃金獵犬"));
+  		$("#sort").append($("<option></option>").attr("value", "4201").text("柴犬"));
+  		$("#sort").append($("<option></option>").attr("value", "4202").text("巴哥"));
+  		$("#sort").append($("<option></option>").attr("value", "4203").text("貴賓犬"));
+  		$("#sort").append($("<option></option>").attr("value", "4204").text("吉娃娃"));
+  		$("#sort").append($("<option></option>").attr("value", "4205").text("哈士奇"));
+  		$("#sort").append($("<option></option>").attr("value", "4206").text("拉布拉多"));
+  		$("#sort").append($("<option></option>").attr("value", "4207").text("黃金獵犬"));
   	  }
   	});  
     
