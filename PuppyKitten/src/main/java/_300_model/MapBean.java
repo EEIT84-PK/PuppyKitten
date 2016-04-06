@@ -8,13 +8,12 @@ public class MapBean {
 	private String MAP_CITY;
 	private String MAP_AREA;
 	private String MAP_ADD;
-	private String MAP_BODY;
-
-	
+	private String MAP_BODY;	
 	@Override
 	public String toString() {
 		return MAP_ID+","+MAP_NAME;
 	}	
+
 	public Integer getMAP_ID() {
 		return MAP_ID;
 	}

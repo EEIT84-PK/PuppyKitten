@@ -6,7 +6,6 @@
 		
 		<!-- JDBC連線池的設定 -->
 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-<!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=PK</property> -->
 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=PuppyKitten</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">sa123456</property>  
@@ -29,8 +28,13 @@
 		<mapping resource="_100_model/ArticleBean.hbm.xml" />
 		<mapping resource="_200_model/ShopBean.hbm.xml" />
 		<mapping resource="_300_model/MapBean.hbm.xml" />
+		<mapping resource="_400_model/PetBean.hbm.xml" />
+		<mapping resource="_400_model/PetImgBean.hbm.xml" />
+		<mapping resource="_400_model/PetSortCatBean.hbm.xml" />
+		<mapping resource="_400_model/PetSortDogBean.hbm.xml" />
+		<mapping resource="_500_model/MemberBean.hbm.xml" />
 
-		
 		
 		</session-factory>
 		</hibernate-configuration>
+

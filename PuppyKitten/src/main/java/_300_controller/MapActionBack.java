@@ -1,5 +1,4 @@
 package _300_controller;
-
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;

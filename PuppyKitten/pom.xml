@@ -56,8 +56,6 @@
 			<version>5.1.0.Final</version>
 		</dependency>
 	</dependencies>
-	
-	
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<plugins>

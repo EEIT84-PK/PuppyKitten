@@ -2,8 +2,6 @@
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
-
-
 <struts>
 	<constant name="struts.custom.i18n.resources" value="i18n"></constant>
 	<constant name="struts.devMode" value="true"></constant> <!-- 開發模式的設定 預設為false 更改為true -->
@@ -28,6 +26,13 @@
 			<result name="input">/_100_insert.jsp</result>
 		</action>
 	</package>
+
+	<package name="shopPackage" namespace="/shop" extends="struts-default">
+		<action name="shopBackAction" class="_200_controller.ShopBackAction">
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+
 	<package name="mapPackage" namespace="/map" extends="struts-default">
 		<action name="mapAction" class="_300_controller.MapAction">
 			<result name="success">/_300_google.jsp</result>
@@ -36,9 +41,37 @@
 			<result name="success">/_300_google_back.jsp</result>
 		</action>
 	</package>
-	<package name="shopPackage" namespace="/shop" extends="struts-default">
-		<action name="shopBackAction" class="_200_controller.ShopBackAction">
+	<package name="petPackage" namespace="/pet" extends="struts-default">
+		<action name="petAction" class="_400_controller.PetAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">1048576</param>
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/pjpeg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/index.jsp</result>
+			<result name="pet_insert">/_400_insert.jsp</result>
+		</action>
+	</package>
+	<package name="petSelectPackage" namespace="/petSelect"
+		extends="struts-default">
+		<action name="PetSelectAction" class="_400_controller.PetSelectAction">
+			<result name="success">/_400_select.jsp</result>
+		</action>
+	</package>
+	<package name="loginPackage" namespace="/login" extends="struts-default">
+		<action name="loginAction" class="_500_controller.LoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/_500_login.jsp</result>
+		</action>
+		<action name="logoutAction" class="_500_controller.LogoutAction">
 			<result name="success">/index.jsp</result>
 		</action>
+		<action name="insertAction" class="_500_controller.InsertAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/_500_insert.jsp</result>
+		</action>
+
 	</package>
 </struts>

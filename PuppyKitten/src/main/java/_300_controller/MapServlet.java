@@ -2,7 +2,6 @@ package _300_controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,9 +55,8 @@ public class MapServlet extends HttpServlet {
 					out.print(output);
 				    out.close();
 				    return;
-				}
-			
-		
+
+				}	
 		     
 		} catch (IOException e) {
 			e.printStackTrace();
