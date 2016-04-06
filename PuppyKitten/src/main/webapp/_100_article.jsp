@@ -189,6 +189,7 @@ $(function(){
 
 </article>
 <aside>
+<div><a href="<%=request.getContextPath()%>/_100_insert.jsp">新增文章</a></div>
 </aside>
 </section>
 <c:import url="/import/footer.jsp"></c:import>

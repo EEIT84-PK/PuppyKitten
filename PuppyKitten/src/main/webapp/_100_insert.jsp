@@ -13,9 +13,19 @@
 <c:import url="/import/header.jsp"></c:import>
 <section>
 <article>
+<h1 style="font-size:40px;">新增文章</h1>
 <s:form action="/article/uploadAction" method="Post" enctype="multipart/form-data" theme="simple">
 類型:<s:select name="bean.ART_KIND" list="{'公告','活動','心得','問題'}"></s:select><br>
-姓名:<s:textfield name="bean.ART_MEM_ID" value=""></s:textfield><br>
+<c:choose>
+<c:when test="${session.loginOK!=null}">
+姓名:<s:textfield name="bean.ART_MEM_ID" value="" readonly="true"></s:textfield><br>
+${session.loginOK}
+</c:when>
+<c:otherwise>
+姓名:<s:textfield name="bean.ART_MEM_ID" value="匿名"></s:textfield><br>
+</c:otherwise>
+</c:choose>
+
 標題:<s:textfield name="bean.ART_TITLE" value=""></s:textfield><br>
 內容:<br><s:textarea name="bean.ART_BODY" cols="50" rows="5" value=""></s:textarea><br>
 請選擇圖片:<br>
