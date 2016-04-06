@@ -18,8 +18,6 @@
 類型:<s:select name="bean.ART_KIND" list="{'公告','活動','心得','問題'}"></s:select><br>
 <c:choose>
 <c:when test="${session.loginOK!=null}">
-姓名:<s:textfield name="bean.ART_MEM_ID" value="" readonly="true"></s:textfield><br>
-${session.loginOK}
 </c:when>
 <c:otherwise>
 姓名:<s:textfield name="bean.ART_MEM_ID" value="匿名"></s:textfield><br>

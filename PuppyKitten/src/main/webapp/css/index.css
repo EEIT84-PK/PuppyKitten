@@ -116,6 +116,7 @@ article {
 	position:relative;
 	max-height: 565px;
 	overflow: auto;
+	
 }
 
 aside {	
@@ -123,8 +124,11 @@ aside {
 	width:300px;
 	float:right;
 	position: relative;
+	min-height:550px;
 	max-height: 565px;
 	overflow: auto;
+	background:rgba(250, 235, 215, 0.8);
+	border-radius:15px ;
 }
 /* footer */
 footer {

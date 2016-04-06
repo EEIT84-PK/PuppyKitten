@@ -37,6 +37,13 @@
 color:red;
 list-style: none;
 }
+
+#insert{
+	float:right;
+	font-size:20px;
+	width:150px;
+	text-align: center;
+}
 </style>
 <script type="text/javascript">
 $(function(){	
@@ -105,7 +112,8 @@ $(function(){
 					$('#shide').hide();
 					$('#success').hide();
 						var $title=$(this).children().eq(1).text();
-						var $queryString = "&title="+$title+"&dummy="+new Date().getTime();
+						var $hot = $(this).children().eq(4).text();
+						var $queryString = "&title="+$title+"&hot="+$hot+"&dummy="+new Date().getTime();
 						request = new XMLHttpRequest();
 						request.onreadystatechange = doBodyReadyStateChange;
 						request.open("GET", $bodyurl+"?"+$queryString, true);
@@ -132,12 +140,18 @@ $(function(){
 		$('#shide').hide();
 		$('#success').hide();
 			var $title=$(this).children().eq(1).text();
-			var $queryString = "&title="+$title+"&dummy="+new Date().getTime();
+			var $hot = $(this).children().eq(4).text();
+			var $queryString = "&title="+$title+"&hot="+$hot+"&dummy="+new Date().getTime();
 			request = new XMLHttpRequest();
 			request.onreadystatechange = doBodyReadyStateChange;
 			request.open("GET", $bodyurl+"?"+$queryString, true);
 			request.send();
 		
+	});
+	$('#insert').mouseover(function(){
+		$(this).css("background","rgba(255, 255, 215, 0.8)").mouseout(function(){
+			$(this).css("background","rgba(255, 255, 215, 0.4)");
+		});
 	});
 	
 });
@@ -148,6 +162,7 @@ $(function(){
 <c:import url="/import/header.jsp"></c:import>
 <section>
 <article>
+
 <div id="thead">
 <div id="all" style="background:rgba(250, 235, 215, 0.8);">所有</div>
 <div id="post">公告</div>
@@ -157,18 +172,18 @@ $(function(){
 </div>
 
 <div id="tbody">
-
+<div style="float:left">
 <table>
 
 
 <c:choose><c:when test="${not empty select}">
-						<thead style="background: #DDDDDD;" id="shide">
+						<thead style="background:rgba(255, 255, 215, 0.4);" id="shide">
 							<tr>
 								<th>類型</th>
 								<th>主題</th>
 								<th>發言人</th>
 								<th>時間</th>
-								<th>次數</th>
+								<th>點擊率</th>
 							</tr>
 						</thead>
 						</c:when></c:choose>
@@ -179,17 +194,24 @@ $(function(){
 									<td style="width: 300px;text-align: center;">${article.ART_TITLE}</td>
 									<td style="width: 100px;text-align: center;">${article.ART_MEM_ID}</td>
 									<td style="width: 200px;text-align: center;">${article.ART_TIME}</td>
-									<td style="width: 50px;text-align: center;">${article.ART_HOT}</td>
+									<td style="width: 70px;text-align: center;">${article.ART_HOT}</td>
 								</tr></c:forEach>
 						</tbody>
 					</table>
 					
-
+					
+</div>
+<div id="insert"><a href="<%=request.getContextPath()%>/_100_insert.jsp">新增文章</a></div>
 </div>
 
 </article>
 <aside>
-<div><a href="<%=request.getContextPath()%>/_100_insert.jsp">新增文章</a></div>
+<h1>熱門文章(失敗)</h1>
+<table><c:forEach var="sort" items="${sort}"><tr class="trcolor">
+									<td style="width: 50px;text-align: center;">${sort.ART_KIND}</td>
+									<td style="width: 300px;text-align: center;">${sort.ART_TITLE}</td>
+									<td style="width: 70px;text-align: center;">${sort.ART_HOT}</td>
+								</tr></c:forEach></table>
 </aside>
 </section>
 <c:import url="/import/footer.jsp"></c:import>

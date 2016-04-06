@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
 import hibernate.util.HibernateUtil;
 
 public class ArticleDAO implements ArticleDAO_interface {	
 	private static final String GET_BY_TITLE = "from ArticleBean where ART_TITLE=?";
+	private static final String GET_SORT = "from ArticleBean order by ART_HOT asc";
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ArticleBean> selectAll() {
@@ -17,6 +17,23 @@ public class ArticleDAO implements ArticleDAO_interface {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("from ArticleBean");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ArticleBean> selectSort() {
+		List<ArticleBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_SORT);
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -122,5 +139,35 @@ public class ArticleDAO implements ArticleDAO_interface {
 			session.getTransaction().rollback();
 			throw ex;
 		}
+	}
+	@Override
+	public void delete(int ART_ID) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			ArticleBean bean = null;
+			bean=(ArticleBean) session.get(ArticleBean.class, ART_ID);
+			if(bean!=null){
+			session.delete(bean);
+			}
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
+	@Override
+	public void update(ArticleBean bean) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.update(bean);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
 	}
 }

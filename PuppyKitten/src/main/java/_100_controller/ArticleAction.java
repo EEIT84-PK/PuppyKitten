@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import _100_model.ArticleBean;
 import _100_model.ArticleService;
 
+@SuppressWarnings("serial")
 public class ArticleAction  extends ActionSupport implements ServletRequestAware{
 	
 	private ArticleBean bean;
@@ -33,11 +34,15 @@ public class ArticleAction  extends ActionSupport implements ServletRequestAware
 	public void setServletRequest(HttpServletRequest req) {
 		this.req=req;
 	}
+	@SuppressWarnings("unused")
 	public String execute(){
 		ArticleService service= new ArticleService();
 		List<ArticleBean> list=null;
 			list = service.selectAll();
+		List<ArticleBean> sort=null;
+			sort = service.selectSort();
 		req.setAttribute("select",list);
+		req.setAttribute("sort",list);
 		return SUCCESS;
 	}
 }

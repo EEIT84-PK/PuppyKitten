@@ -31,7 +31,7 @@
 </div>
 <table id="datatable" border="1" style="border-collapse: collapse;width:850px;">
 	<thead>
-	<tr style="background:#DDDDDD;">
+	<tr style="background:rgba(255, 255, 215, 0.4);">
 		<th>編號</th>
 		<th>類別</th>
 		<th>店名</th>
