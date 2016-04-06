@@ -33,7 +33,7 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 
 	public String execute() {
 		PetService petService = new PetService();
-		PetBean bean = petService.selectId(4000001);
+		PetBean bean = petService.selectId(4001);
 
 		if (bean.getPET_SORT_ID().startsWith("41")) {
 			PetSortCatBean Catbean = petService.selectSortCat(bean.getPET_SORT_ID());
@@ -50,7 +50,7 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 		
 		System.out.println("bean.getPET_AGE().getTime()="+bean.getPET_AGE().getTime());
 		
-		PetImgBean Imgbean = petService.selectId2(4000001);
+		PetImgBean Imgbean = petService.selectId2(4001);
 		req.setAttribute("bean", bean);
 		System.out.println("Imgbean.getPET_IMAGE()="+Imgbean.getPET_IMAGE());
 		
