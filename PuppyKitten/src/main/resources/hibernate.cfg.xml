@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+		
+		<hibernate-configuration>
+		<session-factory>
+		
+		<!-- JDBC連線池的設定 -->
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=PuppyKitten</property>
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.connection.password">sa123456</property>  
+		<!-- 增強為C3P0連線池的設定 -->
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.timeout">1800</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<!-- 二級快取 -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property> 
+		<!-- 交易管理類型(or JTA) -->
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> 
+		<!-- 執行緒類型(or jta) -->
+		<property name="hibernate.current_session_context_class">thread</property> 
+		
+		<!-- 實體映射檔的描述 -->
+		<mapping resource="_100_model/ArticleBean.hbm.xml" />
+		<mapping resource="_200_model/ShopBean.hbm.xml" />
+		<mapping resource="_300_model/MapBean.hbm.xml" />
+		<mapping resource="_400_model/PetBean.hbm.xml" />
+		<mapping resource="_400_model/PetImgBean.hbm.xml" />
+		<mapping resource="_400_model/PetSortCatBean.hbm.xml" />
+		<mapping resource="_400_model/PetSortDogBean.hbm.xml" />
+		<mapping resource="_500_model/MemberBean.hbm.xml" />
+
+		
+		</session-factory>
+		</hibernate-configuration>
+

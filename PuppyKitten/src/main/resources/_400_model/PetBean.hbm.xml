@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="_400_model.PetBean" table="pet_Friendship">
+
+		<id name="PET_ID" column="PET_ID">
+			<generator class="identity"></generator>
+		</id>
+		<property name="PET_OWN_ID" column="PET_OWN_ID" />
+		<property name="PET_NAME" column="PET_NAME" />
+		<property name="PET_AGE" column="PET_AGE" />
+		<property name="PET_WEIGHT" column="PET_WEIGHT" />
+		<property name="PET_KING" column="PET_KING" />
+		<property name="PET_SORT_ID" column="PET_SORT_ID" />
+		<property name="PET_SEX" column="PET_SEX" />
+		<property name="PET_BODY" column="PET_BODY" />
+	</class>
+</hibernate-mapping>
