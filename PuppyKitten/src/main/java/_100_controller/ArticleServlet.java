@@ -31,12 +31,13 @@ public class ArticleServlet extends HttpServlet {
 				else{list=service.selectAll();}
 				for(int i=0;i<list.size();i++){
 					ArticleBean data = list.get(i);
+					String date =data.getART_TIME().toString().substring(0, 16);
 
-					output.append("<tr><td style='width: 50px;'>"+data.getART_KIND()+"</td>");
-					output.append("<td style='width: 300px;'>"+data.getART_TITLE()+"</td>");
-					output.append("<td style='width: 100px;'>"+data.getART_MEM_ID()+"</td>");
-					output.append("<td style='width: 200px;'>"+data.getART_TIME()+"</td>");
-					output.append("<td style='width: 50px;'>"+data.getART_HOT()+"</td></tr>");
+					output.append("<tr><td style='width: 100px;'>"+data.getART_KIND()+"</td>");
+					output.append("<td style='width: 350px;'>"+data.getART_TITLE()+"</td>");
+					output.append("<td style='width: 150px;'>"+data.getART_MEM_ID()+"</td>");
+					output.append("<td style='width: 250px;'>"+date+"</td>");
+					output.append("<td style='width: 120px;'>"+data.getART_HOT()+"</td></tr>");
 				}
 				out = response.getWriter();
 				out.print(output);

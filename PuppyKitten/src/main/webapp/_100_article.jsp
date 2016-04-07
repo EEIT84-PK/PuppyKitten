@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>米沃貓窩 - 討論區</title>
 <style>
-
+#thead{
+width:1056px;
+}
 #thead div{
-	width:100px;
+	width:150px;
 	cursor: pointer;
 	height:30px;	
 	background:rgba(250, 235, 215, 0.4);
@@ -20,6 +23,7 @@
 	font-size: 20px;
 	border-top-right-radius:15px ;
 	border-top-left-radius:15px ;
+	
 }
 
 #tbody{
@@ -28,6 +32,7 @@
 	width:1016px;
 	overflow:auto;
 	padding: 20px;
+	font-size: 20px;
 }
 #success td{
 	text-align: center;
@@ -169,12 +174,12 @@ $(function(){
 <div id="activity">活動</div>
 <div id="reviews">心得</div>
 <div id="question">問題</div>
+
+<div id="insert" style="width:120px;"><a href="<%=request.getContextPath()%>/_100_insert.jsp">新增文章</a></div>
 </div>
 
 <div id="tbody">
-<div style="float:left">
 <table>
-
 
 <c:choose><c:when test="${not empty select}">
 						<thead style="background:rgba(255, 255, 215, 0.4);" id="shide">
@@ -190,23 +195,19 @@ $(function(){
 						<tbody id="success">
 							
 							<c:forEach var="article" items="${select}"><tr class="trcolor">
-									<td style="width: 50px;text-align: center;">${article.ART_KIND}</td>
-									<td style="width: 300px;text-align: center;">${article.ART_TITLE}</td>
-									<td style="width: 100px;text-align: center;">${article.ART_MEM_ID}</td>
-									<td style="width: 200px;text-align: center;">${article.ART_TIME}</td>
-									<td style="width: 70px;text-align: center;">${article.ART_HOT}</td>
+									<td style="width: 100px;text-align: center;">${article.ART_KIND}</td>
+									<td style="width: 350px;text-align: center;">${article.ART_TITLE}</td>
+									<td style="width: 150px;text-align: center;">${article.ART_MEM_ID}</td>
+									<td style="width: 250px;text-align: center;"><fmt:formatDate value="${article.ART_TIME}" pattern="yyyy-MM-dd HH:mm"/></td>
+									<td style="width: 120px;text-align: center;">${article.ART_HOT}</td>
 								</tr></c:forEach>
 						</tbody>
 					</table>
-					
-					
-</div>
-<div id="insert"><a href="<%=request.getContextPath()%>/_100_insert.jsp">新增文章</a></div>
 </div>
 
 </article>
-<aside>
-<h1>熱門文章(失敗)</h1>
+<aside style="font-size: 18px;">
+<h1 style="font-size: 30px;">熱門文章</h1>
 <table><c:forEach var="sort" items="${sort}"><tr class="trcolor">
 									<td style="width: 50px;text-align: center;">${sort.ART_KIND}</td>
 									<td style="width: 300px;text-align: center;">${sort.ART_TITLE}</td>

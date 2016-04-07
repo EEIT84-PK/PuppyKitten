@@ -13,7 +13,7 @@
 <c:import url="/import/header.jsp"></c:import>
 <section>
 <article>
-<h1 style="font-size:40px;">新增文章</h1>
+<b style="font-size:40px;">新增文章</b><b style="font-size:30px;color:red">${insert}</b>
 <s:form action="/article/uploadAction" method="Post" enctype="multipart/form-data" theme="simple">
 類型:<s:select name="bean.ART_KIND" list="{'公告','活動','心得','問題'}"></s:select><br>
 <c:choose>
