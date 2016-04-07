@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="_200_model.ShopBean" table="Product_context">
+	<class name="_200_model.ShopBean" table="Product_buy_body">
 		<id name="PRO_ID" column="PRO_ID">
 			<generator class="identity"></generator>
 		</id>

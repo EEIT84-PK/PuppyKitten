@@ -18,6 +18,18 @@ public class ShopBackAction extends ActionSupport implements ServletRequestAware
 	private ShopBean shopbean;
 
 
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public ShopBean getShopbean() {
+		return shopbean;
+	}
+
 	public void setShopbean(ShopBean shopbean) {
 		this.shopbean = shopbean;
 	}
@@ -29,11 +41,15 @@ public class ShopBackAction extends ActionSupport implements ServletRequestAware
 
 	public String execute() {
 		ShopService service = new ShopService();
-		List<ShopBean> list = service.selectShop(shopbean);
+//		List<ShopBean> list = service.selectShop(shopbean);
 //		for(ShopBean bean :list){
 //			System.out.println(bean+",");
-//		}
-		request.setAttribute("select", list);
+//		}		
+//		request.setAttribute("select", list);
+		System.out.println(shopbean.getPRO_KIND()+shopbean.getPRO_PROJCET());
+		
+		service.inesrt(shopbean);
+		request.setAttribute("insertOK", "insertOK");
 		return "success";
 	}
 }
