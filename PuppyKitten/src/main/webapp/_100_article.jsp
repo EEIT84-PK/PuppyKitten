@@ -9,6 +9,7 @@
 <c:import url="/import/head.jsp"></c:import>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>米沃貓窩 - 討論區</title>
+<script src="<%=request.getContextPath()%>/javascript/article.js"></script>
 <style>
 #thead{
 width:1056px;
@@ -50,118 +51,6 @@ list-style: none;
 	text-align: center;
 }
 </style>
-<script type="text/javascript">
-$(function(){	
-	
-	var $path = "/PuppyKitten";
- 	var $url = $path+"/article/articleAction.controller";
- 	var $bodyurl = $path+"/article/articleBodyAction.controller";
- 	$('#all').click(function(){
- 		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	$('#post').click(function(){
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&use=公告&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	$('#activity').click(function() {
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&use=活動&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		console.log($url+"?"+$queryString);
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	
-	$('#reviews').click(function() {
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&use=心得&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	$('#question').click(function() {
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString = "&use=問題&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-
-	function doReadyStateChange() {
-		if(request.readyState==4) {
-			if(request.status==200) {
-				$('#success').html(request.responseText);
-				$('#success tr').click(function(){
-					$('#shide').hide();
-					$('#success').hide();
-						var $title=$(this).children().eq(1).text();
-						var $hot = $(this).children().eq(4).text();
-						var $queryString = "&title="+$title+"&hot="+$hot+"&dummy="+new Date().getTime();
-						request = new XMLHttpRequest();
-						request.onreadystatechange = doBodyReadyStateChange;
-						request.open("GET", $bodyurl+"?"+$queryString, true);
-						request.send();
-					
-				});
-			} else {
-				console.log("錯誤代碼:"+request.status+", "+request.statusText);
-			}
-		}
-	}
-	
-	function doBodyReadyStateChange() {
-		if(request.readyState==4) {
-			if(request.status==200) {
-					$('#success').hide().fadeIn(1000).html(request.responseText);
-			} else {
-				console.log("錯誤代碼:"+request.status+", "+request.statusText);
-			}
-		}
-	}
-	
-	$('#success tr').click(function(){
-		$('#shide').hide();
-		$('#success').hide();
-			var $title=$(this).children().eq(1).text();
-			var $hot = $(this).children().eq(4).text();
-			var $queryString = "&title="+$title+"&hot="+$hot+"&dummy="+new Date().getTime();
-			request = new XMLHttpRequest();
-			request.onreadystatechange = doBodyReadyStateChange;
-			request.open("GET", $bodyurl+"?"+$queryString, true);
-			request.send();
-		
-	});
-	$('#insert').mouseover(function(){
-		$(this).css("background","rgba(255, 255, 215, 0.8)").mouseout(function(){
-			$(this).css("background","rgba(255, 255, 215, 0.4)");
-		});
-	});
-	
-});
-
-</script>
 </head>
 <body>
 <c:import url="/import/header.jsp"></c:import>
@@ -182,7 +71,7 @@ $(function(){
 <table>
 
 <c:choose><c:when test="${not empty select}">
-						<thead style="background:rgba(255, 255, 215, 0.4);" id="shide">
+						<thead id="shide" style="background:rgba(255, 255, 215, 0.4);">
 							<tr>
 								<th>類型</th>
 								<th>主題</th>
@@ -203,15 +92,36 @@ $(function(){
 								</tr></c:forEach>
 						</tbody>
 					</table>
-</div>
 
+
+<div id="msghide">
+<input type="button" value="留言" style="float: right;">
+</div>
+<div id="msgdiv">
+<hr>
+<s:form action="/article/uploadAction" method="Post" enctype="multipart/form-data" theme="simple">
+<c:choose>
+<c:when test="${session.loginOK!=null}">
+</c:when>
+<c:otherwise>
+姓名:<s:textfield name="bean.MSG_MEM_ID" value="匿名"></s:textfield><br>
+</c:otherwise>
+</c:choose>
+留言內容:<br><s:textarea name="bean.MSG_BODY" cols="50" rows="5" value=""></s:textarea><br>
+
+<s:submit value="送出" />
+<s:fielderror cssStyle="color:red;list-style:none"></s:fielderror>
+</s:form>
+
+</div>
+</div>
 </article>
-<aside style="font-size: 18px;">
-<h1 style="font-size: 30px;">熱門文章</h1>
-<table><c:forEach var="sort" items="${sort}"><tr class="trcolor">
-									<td style="width: 50px;text-align: center;">${sort.ART_KIND}</td>
-									<td style="width: 300px;text-align: center;">${sort.ART_TITLE}</td>
-									<td style="width: 70px;text-align: center;">${sort.ART_HOT}</td>
+<aside>
+<h1 style="font-size: 30px;text-align: center;background:rgba(255, 255, 215, 0.4);">熱門文章</h1>
+<table><c:forEach var="sort" items="${sort}" end="5"><tr class="trcolor">
+									<td style="width: 70px;">${sort.ART_KIND}</td>
+									<td style="width: 300px;">${sort.ART_TITLE}</td>
+									<td style="width: 30px;text-align: right;">${sort.ART_HOT}</td>
 								</tr></c:forEach></table>
 </aside>
 </section>
