@@ -66,7 +66,7 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 		req.setAttribute("bean", petBean.get(0));		
 		
 		req.setAttribute("petImg", Imgbean.getPET_IMAGE());
-		
+		System.out.println("Imgbean.getPET_IMAGE()"+Imgbean.getPET_IMAGE());
 		return "success";
 	}
 

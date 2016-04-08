@@ -24,10 +24,10 @@ import _400_model.PetService;
 public class PetAction extends ActionSupport {
 	private PetBean petBean;
 	private PetImgBean petImgBean = new PetImgBean();
-	private File PET_IMAGE;
+	private File PET_IMAGE;	
 	private String PET_IMAGEContentType;
-	private String PET_IMAGEFileName;
-
+	private String PET_IMAGEFileName;	
+	
 	public File getPET_IMAGE() {
 		return PET_IMAGE;
 	}
@@ -78,16 +78,24 @@ public class PetAction extends ActionSupport {
 		this.request = request;
 	}
 
-	public void validate() {		
-		if (petBean.getPET_OWN_ID() == null) {
-			request.put("PET_OWN_ID", "請輸入會員編號");
-		}
+	public void validate() {
+		System.out.println("petBean"+petBean.getPET_AGE());
 		if (petBean.getPET_NAME().trim().length() == 0) {
 			request.put("PET_NAME", "請輸入寵物名字");
+		}else{
+			for(int i=0;i<petBean.getPET_NAME().length();i++){
+				char check=petBean.getPET_NAME().charAt(i);
+				System.out.println("check"+check);
+				if(check>=65&&check<=90||check>=97&&check<=122||(int)check>=19968 &&(int)check<=40623){					
+				}else{
+					request.put("PET_NAME", "只能輸入中文和英文");
+				}
+			}
 		}
 		if (petBean.getPET_AGE() == null) {
 			request.put("PET_AGE", "請選擇寵物出生年月日");
-		}
+		}			
+		
 		if (petBean.getPET_WEIGHT() == null) {
 			request.put("PET_WEIGHT", "請輸入寵物體重");
 		}
@@ -100,8 +108,17 @@ public class PetAction extends ActionSupport {
 		if (PET_IMAGE == null) {
 			request.put("PET_IMAGE", "請上傳一張寵物照片");
 		}
+//		else{
+//			if(PET_IMAGEContentType.equals("image/png")||PET_IMAGEContentType.equals("image/gif")||PET_IMAGEContentType.equals("image/jpeg")||PET_IMAGEContentType.equals("image/pjpeg")){
+//								
+//			}else{
+//				request.put("PET_IMAGE", "只能上傳png,gif,jpeg,pjpeg等副檔的照片");
+//			}
+		
 		if (petBean.getPET_BODY().trim().length() == 0 || petBean.getPET_BODY().trim().length() <= 50) {
 			request.put("PET_BODY", "請至少輸入50字介紹");
+		}else if (petBean.getPET_BODY().trim().length()>=150){
+			request.put("PET_BODY", "最多輸入150個字");
 		}
 	}
 
@@ -164,7 +181,7 @@ public class PetAction extends ActionSupport {
 			
 			return "success";
 		} else {
-			return "pet_insert";
+			return "input";
 		}
 	}
 }

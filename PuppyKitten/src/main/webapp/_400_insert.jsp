@@ -86,15 +86,13 @@ function clearForm() {
 <h1>寵物聯誼(新增寵物資訊)</h1>
 	<font color="red"><b><s:property value="errorMsg" /></b></font>
 	<form action="<%=request.getContextPath()%>/pet/petAction.action" method="post" enctype="multipart/form-data">
-		會員編號：<input type="text" name="petBean.PET_OWN_ID" size="20" value="${session.memberID}" readonly="readonly">
-		<span class="error">${request.PET_OWN_ID}</span><BR>
+		會員編號：<input type="text" name="petBean.PET_OWN_ID" size="20" value="${session.memberID}" readonly="readonly"><BR>		
 		寵物名字： <input type="text" name="petBean.PET_NAME" size="10" value="${petBean.PET_NAME}"> 
 		<span class="error">${request.PET_NAME}</span><BR>
 		出生年月日： <input type="text" name="petBean.PET_AGE" size="10" id="age" value="${petBean.PET_AGE}">
 		<span class="error">${request.PET_AGE}</span><BR>
-		寵物體重： <input type="text" name="petBean.PET_WEIGHT" size="10" value="${petBean.PET_WEIGHT}">
-		<span class="error">${request.PET_WEIGHT}</span><BR>
-		
+		寵物體重： <input type="number" name="petBean.PET_WEIGHT" size="10" value="${petBean.PET_WEIGHT}" >
+		<span class="error">${request.PET_WEIGHT}</span><BR>		
 			寵物種類：<select name="PET_KING_CHOICE" id="king">
 				<option value="non">請選擇種類</option>
 				<option value="cat">貓</option>
@@ -109,8 +107,9 @@ function clearForm() {
 			性別：
 			<input name="petBean.PET_SEX" type="radio" value="公" id="sex" checked="checked">公
 			<input name="petBean.PET_SEX" type="radio" value="母" id="sex">母	<br>
-			寵物照片：<input type="file" name="PET_IMAGE" size="30"/>
-			<span class="error">${request.PET_IMAGE}</span><BR>	 
+			寵物照片：<input type="file" name="PET_IMAGE" size="30" />
+			<span class="error">${request.PET_IMAGE}</span><BR>
+			<font color="red"><b><s:fielderror/></b></font>							 
 		介紹：<BR>
 			<textarea name="petBean.PET_BODY" cols="50" rows="10" ><s:property value="petBean.PET_BODY" /></textarea>
 			<span class="error">${request.PET_BODY}</span><BR>

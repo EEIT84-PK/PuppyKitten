@@ -14,7 +14,7 @@
 <section>
 	<article>
 		<h1>寵物聯誼(配對系統)</h1>
-	
+	<a href='<c:url value="/petSelect/PetSelectAction.action" ></c:url>'>查詢寵物資訊</a>
 
 	
 	</article>

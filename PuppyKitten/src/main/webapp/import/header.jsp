@@ -33,8 +33,7 @@
 			<div class="item">
 				<div class="main">寵物聯誼</div>
 				<div class="sub">
-					<ul>						
-						<li><a href='<c:url value="/petSelect/PetSelectAction.action" ></c:url>'>查詢寵物資訊</a></li>
+					<ul>					
 						<li><a href='<c:url value="/petInterceptor/petIndex.action" ></c:url>'>配對系統</a></li>
 						<li><a href="">交友中心</a></li>
 					</ul>
