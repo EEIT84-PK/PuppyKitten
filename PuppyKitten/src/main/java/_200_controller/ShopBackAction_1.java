@@ -48,7 +48,7 @@ public class ShopBackAction_1 extends ActionSupport implements ServletRequestAwa
 //		request.setAttribute("select", list);
 		
 		service.inesrt(shopbean);
-		request.setAttribute("insertOK", "insertOK");
+		request.setAttribute("insertOK", "Insert OK");
 		return "success";
 	}
 }

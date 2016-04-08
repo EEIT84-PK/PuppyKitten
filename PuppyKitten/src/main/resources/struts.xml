@@ -31,10 +31,10 @@
 
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
 		<action name="shopBackAction_1" class="_200_controller.ShopBackAction_1">
-			<result name="success">/index.jsp</result>
+			<result name="success">/_200_shop_back_insert.jsp</result>
 		</action>
 		<action name="shopBackAction_2" class="_200_controller.ShopBackAction_2">
-			<result name="success">/index.jsp</result>
+			<result name="success">/_200_shop_index.jsp</result>
 		</action>
 	</package>
 

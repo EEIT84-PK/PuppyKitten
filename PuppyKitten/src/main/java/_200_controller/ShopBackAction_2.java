@@ -51,9 +51,7 @@ public class ShopBackAction_2 extends ActionSupport implements ServletRequestAwa
 	public String execute() {
 		ShopService service = new ShopService();
 		service.update(shopbean);
-		request.setAttribute("update OK", "update OK");
-		
-		service.delete(id);
+		request.setAttribute("updateOK", "Update OK");
 		return "success";
 	}
 }

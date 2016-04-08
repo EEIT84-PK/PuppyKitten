@@ -58,8 +58,8 @@
 	<c:import url="/import/header.jsp"></c:import>
 	<section>
 		<article style="width: 1500px; background-color: white;">
-			<h2>新品上市</h2>
-			<form action="<%=request.getContextPath()%>/shop/shopBackAction.action" method="get">
+			<h2>新品上市</h2><h2 style="color: red">${insertOK}</h2>
+			<form action="<%=request.getContextPath()%>/shop/shopBackAction_1.action" method="get">
 				商品類型：<select id="sel_1">
 					<option>請選擇</option>
 					<option value="汪星人">汪星人</option>

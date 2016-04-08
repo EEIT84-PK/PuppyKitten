@@ -24,9 +24,11 @@
 				<div class="main">精品購物</div>
 				<div class="sub">
 					<ul>
-						<li><a href="">產品介紹</a></li>
-						<li><a href="">熱門商品</a></li>
-						<li><a href="">購物車清單</a></li>
+					
+						<li><a href='<c:url value="/_200_shop_index.jsp"/>'>購物中心</a></li>
+						<li><a href='<c:url value="/_200_shop_car.jsp"/>'>購物車</a></li>
+						<li><a href='<c:url value="/_200_shop_back_insert.jsp"/>'>後台系統(新增)</a></li>
+						<li><a href='<c:url value="/_200_shop_back_update.jsp"/>'>後台系統(更新)</a></li>
 					</ul>
 				</div>
 			</div>
@@ -45,8 +47,8 @@
 					<ul>
 						<li><a href="">旅遊介紹</a></li>
 						<li><a href="<%=request.getContextPath()%>/_300_google.jsp">店家位置</a></li>
-						<li><a
-							href='<c:url value="/map/mapActionBack.action" ><c:param name="mapBean.MAP_ID"></c:param></c:url>'>後台系統</a></li>
+						<li><a href='<c:url value="/map/mapActionBack.action" >
+									 <c:param name="mapBean.MAP_ID"></c:param></c:url>'>後台系統</a></li>
 					</ul>
 				</div>
 			</div>
