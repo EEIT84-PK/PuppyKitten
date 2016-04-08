@@ -127,7 +127,7 @@ aside {
 	width:310px;
 	float:right;
 	position: relative;
-	min-height:550px;
+	min-height:300px;
 	max-height: 565px;
 	overflow: auto;
 	background:rgba(250, 235, 215, 0.8);

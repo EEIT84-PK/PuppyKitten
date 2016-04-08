@@ -1,11 +1,19 @@
 package _100_model;
 
 public class MessageBean {
+	private Integer MSG_ID;
 	private String MSG_ART_ID;
 	private String MSG_MEM_ID;
 	private String MSG_BODY;
 	private String MSG_REBODY;
 	private java.util.Date MSG_TIME;
+	
+	public Integer getMSG_ID() {
+		return MSG_ID;
+	}
+	public void setMSG_ID(Integer mSG_ID) {
+		MSG_ID = mSG_ID;
+	}
 	public String getMSG_ART_ID() {
 		return MSG_ART_ID;
 	}
