@@ -30,10 +30,14 @@
 	</package>
 
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
-		<action name="shopBackAction" class="_200_controller.ShopBackAction">
+		<action name="shopBackAction_1" class="_200_controller.ShopBackAction_1">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="shopBackAction_2" class="_200_controller.ShopBackAction_2">
 			<result name="success">/index.jsp</result>
 		</action>
 	</package>
+
 
 	<package name="mapPackage" namespace="/map" extends="struts-default">
 		<action name="mapAction" class="_300_controller.MapAction">
@@ -43,6 +47,8 @@
 			<result name="success">/_300_google_back.jsp</result>
 		</action>
 	</package>
+	
+	
 	<package name="petPackage" namespace="/pet" extends="struts-default">
 		<action name="petAction" class="_400_controller.PetAction">
 			<interceptor-ref name="fileUpload">

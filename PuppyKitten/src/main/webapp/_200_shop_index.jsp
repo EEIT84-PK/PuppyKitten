@@ -54,7 +54,7 @@
 
 .index_pro3 {
 	width: 140px;
-	border: 1px solid red;
+	border: 1px solid blue;
 	margin: 10px;
 	height: 90px;
 }

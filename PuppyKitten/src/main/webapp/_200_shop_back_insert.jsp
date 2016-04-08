@@ -20,17 +20,6 @@
 	font-size: 15px
 }
 </style>
-<script type="text/javascript">
-	$win.bind('scroll resize', function() {
-		var $this = $(this);
-
-		// 控制 #abgne_float_ad 的移動
-		$ad.stop().animate({
-			top : $this.scrollTop() + $this.height() - _height - _diffY,
-			left : $this.scrollLeft() + $this.width() - _width - _diffX
-		}, _moveSpeed);
-	}).scroll();
-</script>
 					<script>
 					//1.找到位置     2.先取值     3.放入指定位置     4.不必要顯示區域隱藏
 						$(function(){
@@ -51,6 +40,17 @@
 							})
 						});
 					</script>
+					<script type="text/javascript">
+	$win.bind('scroll resize', function() {
+		var $this = $(this);
+
+		// 控制 #abgne_float_ad 的移動
+		$ad.stop().animate({
+			top : $this.scrollTop() + $this.height() - _height - _diffY,
+			left : $this.scrollLeft() + $this.width() - _width - _diffX
+		}, _moveSpeed);
+	}).scroll();
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>米沃貓窩 -後台系統</title>
 </head>
@@ -61,12 +61,14 @@
 			<h2>新品上市</h2>
 			<form action="<%=request.getContextPath()%>/shop/shopBackAction.action" method="get">
 				商品類型：<select id="sel_1">
+					<option>請選擇</option>
 					<option value="汪星人">汪星人</option>
 					<option value="喵星人">喵星人</option>
 				</select><br><br><input type="text" id="val_1" name="shopbean.PRO_ANIMAL">
 				
 				
 				商品種類：<select id="sel_2">
+					<option>請選擇</option>
 					<option>主食乾糧</option>
 					<option>外出專用</option>
 					<option>精選罐頭</option>
@@ -80,6 +82,7 @@
 				商品名稱：<input type="text" name="shopbean.PRO_NAME"><br><br> 
 				
 				優惠方案：<select id="sel_3">
+					<option>請選擇</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
 					<option>指定折扣</option>
@@ -94,6 +97,7 @@
 
 			
 				<br> <input type="submit" value="新增上架">
+
 			</form>
 
 		</article>

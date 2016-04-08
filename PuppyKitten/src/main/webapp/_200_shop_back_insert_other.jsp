@@ -21,6 +21,33 @@
 }
 </style>
 <script type="text/javascript">
+$(function(){
+	$('#val_1').hide();
+	$('#sel_1').change(function(){
+		$('#val_1').val($(this).val());
+	});
+	
+	$('#val_2').hide();
+	$('#sel_2').change(function(){
+		$('#val_2').val($(this).val());
+	});
+	
+	$('#val_3').hide();
+	$('#sel_3').change(function(){
+		$('#val_3').val($(this).val());
+	});
+	
+	$('#send_delete').hide();
+	$('#send_update').hide();
+	
+	
+});
+
+
+
+</script>
+
+<script type="text/javascript">
 	$win.bind('scroll resize', function() {
 		var $this = $(this);
 
@@ -40,12 +67,15 @@
 
 		<article style="width: 1500px; background-color: white;">
 		<h2>商品維護</h2>
-			<form action="/shop/shopbackAction" method="get" id="shop_form">
-				商品編號：<input type="text" name="shopbean.PRO_ID"><br>
-				<br> 商品類型：<select name="shopbean.PRO_ANIMAL">
+			<form action="<%=request.getContextPath()%>/shop/shopBackAction_2" method="get" id="shop_form">
+				商品編號：<input type="text" name="shopbean.PRO_ID"><br><br> 
+				商品類型：<select id="sel_1">
+					<option>請選擇</option>
 					<option>汪星人</option>
 					<option>喵星人</option>
-				</select><br> <br> 商品種類：<select name="shopbean.PRO_KIND">
+					</select><br><br><input id="val_1" type="text" name="shopbean.PRO_ANIMAL">
+				商品種類：<select id="sel_2">
+					<option>請選擇</option>
 					<option>主食乾糧</option>
 					<option>外出專用</option>
 					<option>精選罐頭</option>
@@ -53,18 +83,20 @@
 					<option>休閒玩具</option>
 					<option>生活用品</option>
 					<option>衣著打扮</option>
-				</select><br> <br> 商品名稱：<input type="text" name="shopbean.PRO_NAME"><br>
-				<br> 優惠方案：<select name="shopbean.PRO_PROJCET">
+					</select><br><br><input id="val_2" type="text" name="shopbean.PRO_KIND"> 
+				商品名稱：<input type="text" name="shopbean.PRO_NAME"><br><br> 
+				優惠方案：<select id="sel_3">
+					<option>請選擇</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
 					<option>指定折扣</option>
-				</select><br> <br> 商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br>
-				<br> 販售價格：<input type="text" name="shopbean.PRO_PRICE"><br>
-				<br> 庫存數量：<input type="text" name="shopbean.PRO_STOCK"><br>
-				<br> 商品照片：<input type="file" name="shopbean.PRO_IMAGE"><br>
-				<br> 商品介紹：<br>
+					</select><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJCET"> 
+				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 
+				販售價格：<input type="text" name="shopbean.PRO_PRICE"><br><br>
+				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><br><br> 
+				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><br><br> 
+				商品介紹：<br>
 				<textarea name="shopbean.PRO_BODY" id="content" rows="10" cols="80"></textarea>
-				<input type='button' value='送出' onclick='processData()'>
 				<script>
 					CKEDITOR.replace('shopbean.PRO_BODY', {});
 				</script>
@@ -73,8 +105,7 @@
 						<th style="vertical-align: bottom;"></th>
 					</tr>
 				</table>
-				<br> <input type="submit" value="更新上架"> <input
-					type="submit" value="商品下架">
+				<br> <input type="submit" value="更新上架">
 			</form>
 
 		</article>

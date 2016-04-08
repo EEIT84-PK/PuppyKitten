@@ -21,8 +21,9 @@ public class ShopDAO implements ShopDAO_interface {
 		List<ShopBean> list;
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery(SELECT_ALL);
-			list = query.list();
+			list = session.createQuery(SELECT_ALL).list();
+//			Query query = session.createQuery(SELECT_ALL);
+//			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
