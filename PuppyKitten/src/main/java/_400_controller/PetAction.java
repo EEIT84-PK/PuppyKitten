@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -112,7 +115,7 @@ public class PetAction extends ActionSupport {
 			InputStream is = null;
 			OutputStream os = null;
 			try {
-				saved.getParentFile().mkdirs();// 確保資料夾/pet_images存在
+				saved.getParentFile().mkdirs();// 確保資料夾/_400_images存在
 				is = new FileInputStream(PET_IMAGE); // 讀入暫存檔案
 				os = new FileOutputStream(saved); // 寫入到/_400_images下
 
@@ -141,27 +144,24 @@ public class PetAction extends ActionSupport {
 						e.printStackTrace();
 					}
 				}
-			}
-
-			// petImgBean.setPET_ID(bean.getPET_ID());
-			// petImgBean.setPET_IMAGE("/images");
-			// PetImgBean Imgbean = petService.insert(petImgBean);
-			// byte[] Img;
-			// try {
-			// FileInputStream fis = new FileInputStream(PET_IMAGE);
-			// Img = new byte[(int) PET_IMAGE.length()];
-			// fis.read(Img);
-			// petImgBean.setPET_ID(bean.getPET_ID());
-			// System.out.println("petImgBean.PET_ID=" +
-			// petImgBean.getPET_ID());
-			// petImgBean.setPET_IMAGE(Img);
-			// PetImgBean Imgbean = petService.insert(petImgBean);
-			// System.out.println("Imgbean.PET_ID=" + Imgbean.getPET_ID());
-			// } catch (FileNotFoundException e) {
-			// e.printStackTrace();
-			// } catch (IOException e) {
-			// e.printStackTrace();
-			// }
+			}			
+						HttpServletRequest request = ServletActionContext.getRequest(); // 取得HttpServletRequest
+						HttpSession session = request.getSession(); // 取得HttpSession						
+						//看看有沒有來源網頁 如果有就重導到原來的網頁
+						try {
+							String location = (String) session.getAttribute("location");
+							System.out.println("location(LoginHandler)=" + location);
+							if (location != null) {
+								session.removeAttribute("location");
+								HttpServletResponse response = ServletActionContext
+										.getResponse();
+								response.sendRedirect(location);
+								return null;
+							}
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+			
 			return "success";
 		} else {
 			return "pet_insert";

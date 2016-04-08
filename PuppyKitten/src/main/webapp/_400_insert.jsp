@@ -17,7 +17,9 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript">
-$(function() {
+$(function() {	
+		  $("input[name='petBean.PET_SORT_ID']").hide();
+		  $("input[name='petBean.PET_KING']").hide();
     $( "#age" ).attr("readonly", "readonly").datepicker({		
 		showOn: "focus",
 		changeMonth: true,
@@ -82,6 +84,7 @@ function clearForm() {
 <section>
 <article>
 <h1>寵物聯誼(新增寵物資訊)</h1>
+	<font color="red"><b><s:property value="errorMsg" /></b></font>
 	<form action="<%=request.getContextPath()%>/pet/petAction.action" method="post" enctype="multipart/form-data">
 		會員編號：<input type="text" name="petBean.PET_OWN_ID" size="20" value="${session.memberID}" readonly="readonly">
 		<span class="error">${request.PET_OWN_ID}</span><BR>
@@ -112,7 +115,7 @@ function clearForm() {
 			<textarea name="petBean.PET_BODY" cols="50" rows="10" ><s:property value="petBean.PET_BODY" /></textarea>
 			<span class="error">${request.PET_BODY}</span><BR>
 			<input type="submit" value="送出"><input type="button" value="清除" onclick="clearForm()"><BR>
-	</form>
+	</form>	
 </article>
 <aside>
 

@@ -54,7 +54,7 @@
 				</tr>
 				<tr>
 					<td>寵物照片：</td>
-					<td><img src="${petImg }"></td>
+					<td><img src="${petImg}"></td>
 				</tr>
 			</table>
 			
