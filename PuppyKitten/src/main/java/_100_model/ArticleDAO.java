@@ -8,7 +8,7 @@ import hibernate.util.HibernateUtil;
 
 public class ArticleDAO implements ArticleDAO_interface {	
 	private static final String GET_BY_TITLE = "from ArticleBean where ART_TITLE=?";
-	private static final String GET_SORT = "from ArticleBean order by ART_HOT asc";
+	private static final String GET_SORT = "from ArticleBean order by ART_HOT desc";
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ArticleBean> selectAll() {

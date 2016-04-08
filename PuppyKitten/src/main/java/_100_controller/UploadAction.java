@@ -3,6 +3,7 @@ package _100_controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.servlet.ServletContext;
@@ -71,7 +72,7 @@ public class UploadAction extends ActionSupport implements ServletRequestAware{
 			}
 			out.close();
 			input.close();
-			req.setAttribute("path",path);
+			
 		}
 		String string = bean.getART_BODY();
 		String newString = "";
@@ -85,6 +86,7 @@ public class UploadAction extends ActionSupport implements ServletRequestAware{
 		bean.setART_IMG(path);
 		
 		service.insert(bean);
+		req.setAttribute("insert","新增成功!");
 		return SUCCESS;
 	}
 	@Override

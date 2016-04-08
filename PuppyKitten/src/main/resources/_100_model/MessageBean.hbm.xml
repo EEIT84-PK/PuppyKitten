@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+		<class name="_100_model.MessageBean" table="Message">
+			<id name="MSG_ID" column="MSG_ID">
+				<generator class="identity"></generator>
+			</id>
+			<property name="MSG_REBODY" column="MSG_REBODY" />
+			<property name="MSG_MEM_ID" column="MSG_MEM_ID" />
+			<property name="MSG_BODY" column="MSG_BODY" />
+			<property name="MSG_ART_ID" column="MSG_ART_ID" />
+			<property name="MSG_TIME" column="MSG_TIME" />
+		</class>
+</hibernate-mapping>

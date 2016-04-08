@@ -46,12 +46,12 @@
 			<interceptor-ref name="fileUpload">
 				<param name="maximumSize">1048576</param>
 				<param name="allowedTypes">
-					image/png,image/gif,image/jpeg,image/pjpeg
+					image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
 				</param>
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success">/index.jsp</result>
-			<result name="pet_insert">/_400_insert.jsp</result>
+			<result name="input">/_400_insert.jsp</result>
 		</action>
 	</package>
 	<package name="petSelectPackage" namespace="/petSelect"
@@ -60,6 +60,27 @@
 			<result name="success">/_400_select.jsp</result>
 		</action>
 	</package>
+	
+	<package name="petInterceptorPackage" namespace="/petInterceptor" extends="struts-default">
+		<interceptors>
+			<interceptor name="CheckInsert" class="_400_interceptor.PetInterceptor" />
+			<interceptor-stack name="myInsertDefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="CheckInsert" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myInsertDefault" />
+		<global-results>
+			<result name="insertPet">/_400_insert.jsp</result>
+		</global-results>
+		<action name="petIndex" class="_400_interceptor.PetIndex">
+			<result>/_400_index.jsp</result>
+		</action>
+		<action name="*">
+			<result>{1}.jsp</result>
+		</action>
+	</package>
+	
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>

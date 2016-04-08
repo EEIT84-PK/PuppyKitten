@@ -1,5 +1,4 @@
 package _100_controller;
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,11 +37,12 @@ public class ArticleAction  extends ActionSupport implements ServletRequestAware
 	public String execute(){
 		ArticleService service= new ArticleService();
 		List<ArticleBean> list=null;
-			list = service.selectAll();
+		list = service.selectAll();
+		req.setAttribute("select", list);
+
 		List<ArticleBean> sort=null;
 			sort = service.selectSort();
-		req.setAttribute("select",list);
-		req.setAttribute("sort",list);
+			req.setAttribute("sort",sort);
 		return SUCCESS;
 	}
 }
