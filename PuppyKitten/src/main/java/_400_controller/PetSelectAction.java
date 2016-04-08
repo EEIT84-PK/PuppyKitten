@@ -1,11 +1,12 @@
 package _400_controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 import _400_model.PetBean;
@@ -14,8 +15,18 @@ import _400_model.PetService;
 import _400_model.PetSortCatBean;
 import _400_model.PetSortDogBean;
 
+
 public class PetSelectAction extends ActionSupport implements ServletRequestAware {
-	private HttpServletRequest req;
+	private HttpServletRequest req;	
+	private PetBean petBean;
+	
+	public PetBean getPetBean() {
+		return petBean;
+	}
+
+	public void setPetBean(PetBean petBean) {
+		this.petBean = petBean;
+	}
 
 	public HttpServletRequest getReq() {
 		return req;
@@ -30,33 +41,35 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 		this.req = req;
 
 	}
-
+	
 	public String execute() {
-		PetService petService = new PetService();
-		PetBean bean = petService.selectId(4001);
-
-		if (bean.getPET_SORT_ID().startsWith("41")) {
-			PetSortCatBean Catbean = petService.selectSortCat(bean.getPET_SORT_ID());
-			req.setAttribute("Sortbean", Catbean);
-			System.out.println(Catbean.getPET_SORT_NAME());
+		PetService petService = new PetService();	
+		HttpSession session= req.getSession();		
+		
+		List<PetBean> petBean=petService.selecPettId((Integer)session.getAttribute("memberID"));
+				
+		if (petBean.get(0).getPET_SORT_ID().startsWith("41")) {
+			System.out.println("petBean.get(0).getPET_SORT_ID()="+petBean.get(0).getPET_SORT_ID());
+			PetSortCatBean Catbean = petService.selectSortCat(petBean.get(0).getPET_SORT_ID());			
+			req.setAttribute("Sortbean", Catbean);			
 		} else {
-			PetSortDogBean Dogbean = petService.selectSortDog(bean.getPET_SORT_ID());
-			req.setAttribute("Sortbean", Dogbean);
-			System.out.println(Dogbean.getPET_SORT_NAME());
+			System.out.println("petBean.get(0).getPET_SORT_ID()="+petBean.get(0).getPET_SORT_ID());
+			PetSortDogBean Dogbean = petService.selectSortDog(petBean.get(0).getPET_SORT_ID());			
+			req.setAttribute("Sortbean", Dogbean);			
 		}
+		
 		Date now=new Date();
-		long s=(now.getTime()-bean.getPET_AGE().getTime())/1000/ (60 * 60 * 24)/365;
-		req.setAttribute("PET_AGE", s);
+		long s=(now.getTime()-petBean.get(0).getPET_AGE().getTime())/1000/ (60 * 60 * 24)/365;
+		req.setAttribute("PET_AGE", s);		
 		
-		System.out.println("bean.getPET_AGE().getTime()="+bean.getPET_AGE().getTime());
+		PetImgBean Imgbean = petService.selectId2(petBean.get(0).getPET_ID());
+		req.setAttribute("bean", petBean.get(0));		
 		
-		PetImgBean Imgbean = petService.selectId2(4001);
-		req.setAttribute("bean", bean);
-		System.out.println("Imgbean.getPET_IMAGE()="+Imgbean.getPET_IMAGE());
-		
-				req.setAttribute("petImg", Imgbean.getPET_IMAGE());
-		
+		req.setAttribute("petImg", Imgbean.getPET_IMAGE());
+		System.out.println("Imgbean.getPET_IMAGE()"+Imgbean.getPET_IMAGE());
 		return "success";
 	}
+
+	
 
 }
