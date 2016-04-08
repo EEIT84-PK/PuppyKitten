@@ -47,6 +47,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			this.addFieldError("password", "密碼不可以空白");
 		}
 	}
+	
 
 	
 
