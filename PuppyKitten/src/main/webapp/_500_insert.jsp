@@ -99,7 +99,7 @@
 
 					<tr>
 						<td></td>
-						<td style="float: right"><input type="submit" name="use" value="寄送驗證碼"><input type="submit" value="加入會員"></td>
+						<td style="float: right"><input type="submit" name="use" value="寄送驗證碼"><input name="use" type="submit" value="加入會員"></td>
 					</tr>
 
 				</table>

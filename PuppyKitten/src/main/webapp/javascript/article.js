@@ -18,7 +18,7 @@ $(function(){
  	function doMsgReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
-				$('#msg').html(request.responseText);
+				$('#msg').html(request.responseText).fadeOut(5000);
 				
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);

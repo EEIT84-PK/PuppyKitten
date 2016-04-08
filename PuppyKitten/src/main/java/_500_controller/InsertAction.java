@@ -1,18 +1,27 @@
 package _500_controller;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.ServletRequestAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import _500_model.MemberBean;
 import _500_model.MemberService;
 
 @SuppressWarnings("serial")
-public class InsertAction extends ActionSupport {
+public class InsertAction extends ActionSupport implements ServletRequestAware{
 	private MemberBean bean;
 	private String password;
 	private String checkpassword;
 	private String account;
 	private String checkcode;
 	private String use;
+	private HttpServletRequest req;
 
 	public String getAccount() {
 		return account;
@@ -50,6 +59,7 @@ public class InsertAction extends ActionSupport {
 	public void setUse(String use) {
 		this.use = use;
 	}
+
 	// 驗證
 	public void validate() {
 		// 帳號驗證
@@ -84,7 +94,6 @@ public class InsertAction extends ActionSupport {
 		}
 		for (int i = 0; i < bean.getMEM_NAME().length(); i++) {
 			char name = bean.getMEM_NAME().charAt(i);
-			System.out.println("name" + bean.getMEM_NAME());
 			if (name >= 65 && name <= 90 || name >= 97 && name <= 122 || (int) name >= 19968 && (int) name <= 40623) {
 			} else {
 				this.addFieldError("MEM_NAME", "請輸入中,英文");
@@ -110,7 +119,6 @@ public class InsertAction extends ActionSupport {
 		}
 		for (int k = 0; k < bean.getMEM_ADD().length(); k++) {
 			char charadd = bean.getMEM_ADD().charAt(k);
-			System.out.println("charardd" + bean.getMEM_ADD());
 			if ((int) charadd >= 19968 && (int) charadd <= 40623) {
 
 			} else {
@@ -126,7 +134,6 @@ public class InsertAction extends ActionSupport {
 			this.addFieldError("MEM_PHONE", "電話至少輸入10碼");
 		}
 		for (int a = 0; a < bean.getMEM_PHONE().length(); a++) {
-			System.out.println("bean.getMEM_PHONE" + bean.getMEM_PHONE());
 			char checkphone = bean.getMEM_PHONE().charAt(a);
 			if (checkphone >= 48 && checkphone <= 57) {
 
@@ -138,7 +145,7 @@ public class InsertAction extends ActionSupport {
 
 	// 執行 並呼叫model
 	public String execute() throws Exception {
-
+		HttpSession session = req.getSession();
 		MemberService service = new MemberService();
 		bean.setMEM_PASSWORD(password.getBytes());
 		String sum="";
@@ -148,16 +155,32 @@ public class InsertAction extends ActionSupport {
 				String x =a.toString();			
 				sum+=x;
 			}
-			setCheckcode(sum);
-			service.sendemail(bean.getMEM_EMAIL(),bean.getMEM_NAME(),checkcode);
+			
+			service.sendemail(bean.getMEM_EMAIL(),bean.getMEM_NAME(),sum);
+			session.setAttribute("code", sum);
+			this.addFieldError("checkcode", "驗證碼已寄送成功!");
 			System.out.println("寄信成功");
-
+			
 			
 			return INPUT;
 		}else{
-			service.insert(bean);
-			return SUCCESS;
+			System.out.println("CHECK:"+this.checkcode);
+			System.out.println("SESSION:"+session.getAttribute("code"));
+			if(checkcode.equals(session.getAttribute("code"))){
+				service.insert(bean);
+				return SUCCESS;
+			}else{
+				this.addFieldError("checkcode", "驗證碼錯誤,請重新輸入!");
+				return INPUT;
+			}
+			
 		}
 			
+	}
+
+	@Override
+	public void setServletRequest(HttpServletRequest req) {
+		this.req=req;
+		
 	}
 }

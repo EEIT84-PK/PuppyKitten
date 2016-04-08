@@ -45,8 +45,8 @@ public class ArticleBodyServlet extends HttpServlet {
 				List<MessageBean> MSGlist = MSGservice.selectId(id);
 				for(int i = 0;i<MSGlist.size();i++){
 					
-					output.append("<div style='background:rgba(250, 235, 215, 0.4);'><h3>"+MSGlist.get(i).getMSG_MEM_ID()+"</h3>");
-					output.append("<h3>"+MSGlist.get(i).getMSG_BODY()+"</h3></div>");
+					output.append("<div style='background:rgba(250, 235, 215, 0.4);'><h3 style='font-size:24px;background:rgba(255, 255, 215, 0.4);'>"+MSGlist.get(i).getMSG_MEM_ID()+"</h3>");
+					output.append("<h3 style='font-size:20px;'>"+MSGlist.get(i).getMSG_BODY()+"</h3></div>");
 				}
 				
 				out = response.getWriter();
