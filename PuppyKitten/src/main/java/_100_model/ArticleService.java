@@ -13,6 +13,10 @@ public class ArticleService {
 		List<ArticleBean> list = dao.selectAll();
 		return list;
 	}
+	public List<ArticleBean> selectSort() {
+		List<ArticleBean> list = dao.selectSort();
+		return list;
+	}
 	public List<ArticleBean> selectPost() {
 		List<ArticleBean> list = dao.selectPost();
 		return list;
@@ -37,4 +41,12 @@ public class ArticleService {
 			dao.insert(bean);
 		return bean;
 	} 
+	public ArticleBean update(ArticleBean bean){
+		dao.update(bean);
+	return bean;
+} 
+	public int delete(int id){
+		dao.delete(id);
+	return id;
+} 
 }
