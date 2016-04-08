@@ -16,6 +16,8 @@
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+		
+		
 		<default-interceptor-ref name="atguigustack"></default-interceptor-ref>
 
 		<action name="articleAction" class="_100_controller.ArticleAction">

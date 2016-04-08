@@ -13,7 +13,6 @@
 <c:import url="/import/nav.jsp"></c:import>
 
 <article>
-<h2>${insertOK}</h2>
 </article>
 <aside>
 </aside>

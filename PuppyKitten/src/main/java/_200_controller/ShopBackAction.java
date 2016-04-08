@@ -46,8 +46,7 @@ public class ShopBackAction extends ActionSupport implements ServletRequestAware
 //			System.out.println(bean+",");
 //		}		
 //		request.setAttribute("select", list);
-		System.out.println(shopbean.getPRO_KIND()+shopbean.getPRO_PROJCET());
-		
+
 		service.inesrt(shopbean);
 		request.setAttribute("insertOK", "insertOK");
 		return "success";
