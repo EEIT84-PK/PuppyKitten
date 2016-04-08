@@ -46,7 +46,7 @@
 					<h3>搜尋到的店家:</h3>
 					<table id="datatable" border="1" style="border-collapse: collapse;">
 						<thead>
-							<tr style="background: #DDDDDD">
+							<tr style="background: rgba(255, 255, 215, 0.4)">
 								<th>編號</th>
 								<th>類別</th>
 								<th>店名</th>
@@ -74,7 +74,6 @@
 				</c:otherwise>
 			</c:choose>
 		</article>
-		<aside></aside>
 		<div id="map"></div>
 
 		<h3 id="msg" style="float: right;"></h3>

@@ -2,16 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <c:import url="/import/head.jsp"></c:import>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>米沃貓窩 - 討論區</title>
+<script src="<%=request.getContextPath()%>/javascript/article.js"></script>
 <style>
-
+#thead{
+width:1056px;
+}
 #thead div{
-	width:100px;
+	width:150px;
 	cursor: pointer;
 	height:30px;	
 	background:rgba(250, 235, 215, 0.4);
@@ -20,6 +24,7 @@
 	font-size: 20px;
 	border-top-right-radius:15px ;
 	border-top-left-radius:15px ;
+	
 }
 
 #tbody{
@@ -28,6 +33,7 @@
 	width:1016px;
 	overflow:auto;
 	padding: 20px;
+	font-size: 20px;
 }
 #success td{
 	text-align: center;
@@ -37,158 +43,86 @@
 color:red;
 list-style: none;
 }
+
+#insert{
+	float:right;
+	font-size:20px;
+	width:150px;
+	text-align: center;
+}
 </style>
-<script type="text/javascript">
-$(function(){	
-	
-	var $path = "/PuppyKitten";
- 	var $url = $path+"/article/articleAction.controller";
- 	var $bodyurl = $path+"/article/articleBodyAction.controller";
- 	$('#all').click(function(){
- 		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	$('#post').click(function(){
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&use=公告&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	$('#activity').click(function() {
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&use=活動&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		console.log($url+"?"+$queryString);
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	
-	$('#reviews').click(function() {
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString ="&use=心得&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-	$('#question').click(function() {
-		$('#shide').show();
-		$(this).css("background","rgba(250, 235, 215, 0.8)");
-		$(this).siblings().css("background","rgba(250, 235, 215, 0.4)");
-		var $queryString = "&use=問題&dummy="+new Date().getTime();
-		request = new XMLHttpRequest();
-		request.onreadystatechange = doReadyStateChange;
-		request.open("GET", $url+"?"+$queryString, true);
-		request.send();
-    });
-
-	function doReadyStateChange() {
-		if(request.readyState==4) {
-			if(request.status==200) {
-				$('#success').html(request.responseText);
-				$('#success tr').click(function(){
-					$('#shide').hide();
-					$('#success').hide();
-						var $title=$(this).children().eq(1).text();
-						var $queryString = "&title="+$title+"&dummy="+new Date().getTime();
-						request = new XMLHttpRequest();
-						request.onreadystatechange = doBodyReadyStateChange;
-						request.open("GET", $bodyurl+"?"+$queryString, true);
-						request.send();
-					
-				});
-			} else {
-				console.log("錯誤代碼:"+request.status+", "+request.statusText);
-			}
-		}
-	}
-	
-	function doBodyReadyStateChange() {
-		if(request.readyState==4) {
-			if(request.status==200) {
-					$('#success').hide().fadeIn(1000).html(request.responseText);
-			} else {
-				console.log("錯誤代碼:"+request.status+", "+request.statusText);
-			}
-		}
-	}
-	
-	$('#success tr').click(function(){
-		$('#shide').hide();
-		$('#success').hide();
-			var $title=$(this).children().eq(1).text();
-			var $queryString = "&title="+$title+"&dummy="+new Date().getTime();
-			request = new XMLHttpRequest();
-			request.onreadystatechange = doBodyReadyStateChange;
-			request.open("GET", $bodyurl+"?"+$queryString, true);
-			request.send();
-		
-	});
-	
-});
-
-</script>
 </head>
 <body>
 <c:import url="/import/header.jsp"></c:import>
 <section>
 <article>
+
 <div id="thead">
 <div id="all" style="background:rgba(250, 235, 215, 0.8);">所有</div>
 <div id="post">公告</div>
 <div id="activity">活動</div>
 <div id="reviews">心得</div>
 <div id="question">問題</div>
+
+<div id="insert" style="width:120px;"><a href="<%=request.getContextPath()%>/_100_insert.jsp">新增文章</a></div>
 </div>
 
 <div id="tbody">
-
 <table>
 
-
 <c:choose><c:when test="${not empty select}">
-						<thead style="background: #DDDDDD;" id="shide">
+						<thead id="shide" style="background:rgba(255, 255, 215, 0.4);">
 							<tr>
 								<th>類型</th>
 								<th>主題</th>
 								<th>發言人</th>
 								<th>時間</th>
-								<th>次數</th>
+								<th>點擊率</th>
 							</tr>
 						</thead>
 						</c:when></c:choose>
 						<tbody id="success">
 							
 							<c:forEach var="article" items="${select}"><tr class="trcolor">
-									<td style="width: 50px;text-align: center;">${article.ART_KIND}</td>
-									<td style="width: 300px;text-align: center;">${article.ART_TITLE}</td>
-									<td style="width: 100px;text-align: center;">${article.ART_MEM_ID}</td>
-									<td style="width: 200px;text-align: center;">${article.ART_TIME}</td>
-									<td style="width: 50px;text-align: center;">${article.ART_HOT}</td>
+									<td style="width: 100px;text-align: center;">${article.ART_KIND}</td>
+									<td style="width: 350px;text-align: center;">${article.ART_TITLE}</td>
+									<td style="width: 150px;text-align: center;">${article.ART_MEM_ID}</td>
+									<td style="width: 250px;text-align: center;"><fmt:formatDate value="${article.ART_TIME}" pattern="yyyy-MM-dd HH:mm"/></td>
+									<td style="width: 120px;text-align: center;">${article.ART_HOT}</td>
 								</tr></c:forEach>
 						</tbody>
 					</table>
-					
+
+
+<div id="msghide">
+<input type="button" value="留言" style="float: right;">
+</div>
+<div id="msgdiv">
+<hr>
+<s:form action="/article/uploadAction" method="Post" enctype="multipart/form-data" theme="simple">
+<c:choose>
+<c:when test="${session.loginOK!=null}">
+</c:when>
+<c:otherwise>
+姓名:<s:textfield name="bean.MSG_MEM_ID" value="匿名"></s:textfield><br>
+</c:otherwise>
+</c:choose>
+留言內容:<br><s:textarea name="bean.MSG_BODY" cols="50" rows="5" value=""></s:textarea><br>
+
+<s:submit value="送出" />
+<s:fielderror cssStyle="color:red;list-style:none"></s:fielderror>
+</s:form>
 
 </div>
-
+</div>
 </article>
 <aside>
+<h1 style="font-size: 30px;text-align: center;background:rgba(255, 255, 215, 0.4);">熱門文章</h1>
+<table><c:forEach var="sort" items="${sort}" end="5"><tr class="trcolor">
+									<td style="width: 70px;">${sort.ART_KIND}</td>
+									<td style="width: 300px;">${sort.ART_TITLE}</td>
+									<td style="width: 30px;text-align: right;">${sort.ART_HOT}</td>
+								</tr></c:forEach></table>
 </aside>
 </section>
 <c:import url="/import/footer.jsp"></c:import>

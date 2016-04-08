@@ -21,10 +21,15 @@ public class ArticleBodyServlet extends HttpServlet {
 		response.setContentType("text/plain; charset=UTF-8");
 		PrintWriter out;
 		ArticleBean bean = new ArticleBean();
+		
 		StringBuilder output = new StringBuilder();
 		ArticleService service = new ArticleService();
 		bean.setART_TITLE(request.getParameter("title"));
 		 List<ArticleBean> list =service.selectByTitle(bean.getART_TITLE());
+		 bean=list.get(0);
+		 bean.setART_HOT(Integer.parseInt(request.getParameter("hot"))+1);
+		 service.update(bean);
+
 				output.append("<h1 style='font-size:40px'>"+list.get(0).getART_TITLE()+"</h1>");
 				if(list.get(0).getART_IMG()!=null){
 					output.append("<img src='"+list.get(0).getART_IMG()+"' width='300px;'>");

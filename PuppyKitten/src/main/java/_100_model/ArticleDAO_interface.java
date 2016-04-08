@@ -11,5 +11,8 @@ public interface ArticleDAO_interface {
 	public List<ArticleBean> selectQuestion();
 	public List<ArticleBean> selectByTitle(String title);
 	public void insert(ArticleBean bean);
+	public void update(ArticleBean bean);
+	public void delete(int ART_ID);
+	public List<ArticleBean> selectSort();
 
 }

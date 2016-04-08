@@ -8,7 +8,8 @@ body{
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 	background-size: cover;
-	-moz-background-size: cover;	
+	-moz-background-size: cover;
+	overflow: hidden;	
 }
 
 body a{
@@ -103,28 +104,34 @@ a:hover {
 section{
 	margin-left:180px;
 	width:1580px;
-	min-height: 650px;
+	min-height: 1150px;
 	clear:both;
 	background:rgba(139, 115, 85, 0.4) ;
 	padding: 15px;
+	border-radius:15px ;
 }
 
 article {	
 	padding:40px;
-	width:1120px;
+	width:1080px;
 	float:left;
 	position:relative;
 	max-height: 565px;
 	overflow: auto;
+	
 }
 
 aside {	
-	padding:40px;
-	width:300px;
+	margin:40px;
+	padding:0 10px;
+	width:310px;
 	float:right;
 	position: relative;
+	min-height:550px;
 	max-height: 565px;
 	overflow: auto;
+	background:rgba(250, 235, 215, 0.8);
+	border-radius:15px ;
 }
 /* footer */
 footer {
