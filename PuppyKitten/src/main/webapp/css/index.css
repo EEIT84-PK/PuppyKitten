@@ -3,7 +3,7 @@ body{
 	height: 90%;
 	width:100%;
 	margin:0 auto;
-	font-family: 'puppykittenFont';
+	font-family: '微軟正黑體';
 	background-image:url("/PuppyKitten/images/background.png");
 	background-repeat:no-repeat;
 	background-attachment:fixed;
@@ -68,7 +68,7 @@ a:hover {
 		margin:0;
 		padding:5px 0;
 		color:#400000;
-		font-size:38px;
+		font-size:32px;
 		font-weight:bolder;
 		cursor: pointer;
 		text-align: center;
@@ -78,7 +78,6 @@ a:hover {
 	.sub{
 		margin:0;
 		padding:0;
-		font-weight:bolder;
 		text-align:center;
 		width: 200px;
 		
@@ -88,7 +87,7 @@ a:hover {
 		padding:0;
 	}
 	.sub li{
-		font-size:28px;
+		font-size:24px;
 		list-style-type:none;
 		background:rgba(139, 115, 85, 0.2) ;	
 	}
@@ -106,7 +105,6 @@ section{
 	background:rgba(139, 115, 85, 0.4) ;
 	padding: 15px;
 	border-radius:15px ;
-	font-size: 24px;
 }
 
 article {	
@@ -125,7 +123,7 @@ aside {
 	width:310px;
 	float:right;
 	position: relative;
-	min-height:300px;
+	min-height:370px;
 	max-height: 565px;
 	overflow: auto;
 	background:rgba(250, 235, 215, 0.8);

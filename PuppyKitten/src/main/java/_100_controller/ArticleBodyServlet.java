@@ -25,38 +25,42 @@ public class ArticleBodyServlet extends HttpServlet {
 		response.setContentType("text/plain; charset=UTF-8");
 		PrintWriter out;
 		ArticleBean bean = new ArticleBean();
+		ArticleService ARTservice = new ArticleService();
 		HttpSession session = request.getSession();
 		StringBuilder output = new StringBuilder();
-		ArticleService service = new ArticleService();
 		bean.setART_TITLE(request.getParameter("title"));
-		 List<ArticleBean> list =service.selectByTitle(bean.getART_TITLE());
-		 bean=list.get(0);
+		 List<ArticleBean> ARTlist =ARTservice.selectByTitle(bean.getART_TITLE());
+		 bean=ARTlist.get(0);
 		 bean.setART_HOT(Integer.parseInt(request.getParameter("hot"))+1);
-		 service.update(bean);
-
-				output.append("<h1 style='font-size:40px'>"+list.get(0).getART_TITLE()+"</h1>");
-				if(list.get(0).getART_IMG()!=null){
-					output.append("<img src='"+list.get(0).getART_IMG()+"' width='300px;'>");
+		 ARTservice.update(bean);
+				output.append("<h1 style='font-size:40px'>"+bean.getART_TITLE()+"</h1>");
+				if(bean.getART_IMG()!=null){
+					output.append("<img src='"+bean.getART_IMG()+"' width='300px;'>");
 				}
-				output.append("<h1>"+list.get(0).getART_BODY()+"</h1>");
-				session.setAttribute("articleID", list.get(0).getART_ID());
+				output.append("<p>"+bean.getART_BODY()+"</p>");
+				session.setAttribute("articleID", bean.getART_ID());
 				MessageService MSGservice = new MessageService();
-				String id=list.get(0).getART_ID().toString();
+				String id=bean.getART_ID().toString();
 				List<MessageBean> MSGlist = MSGservice.selectId(id);
 				for(int i = 0;i<MSGlist.size();i++){
+					output.append("<div style='background:rgba(250, 235, 215, 0.4);'><div style='background:rgba(255, 255, 215, 0.4);'><b style='font-size:24px;'>"+MSGlist.get(i).getMSG_MEM_ID()+" </b><b style='font-size:18px;'> "+MSGlist.get(i).getMSG_TIME()+"</b></div>");
+					output.append("<p style='font-size:20px;'>"+MSGlist.get(i).getMSG_BODY()+"</p>");
+					if(MSGlist.get(i).getMSG_REBODY()!=null){
+						output.append("<p style='font-size:16px;right:10px;'>回覆:"+MSGlist.get(i).getMSG_REBODY()+"</p>");
+					}
 					
-					output.append("<div style='background:rgba(250, 235, 215, 0.4);'><h3 style='font-size:24px;background:rgba(255, 255, 215, 0.4);'>"+MSGlist.get(i).getMSG_MEM_ID()+"</h3>");
-					output.append("<h3 style='font-size:20px;'>"+MSGlist.get(i).getMSG_BODY()+"</h3>");
-					output.append("<input /><input type='button' value='回覆'/></div>");
+					if(bean.getART_MEM_ID().equals(session.getAttribute("loginOK"))&&MSGlist.get(i).getMSG_REBODY()==null){
+						output.append("<input /><input class='reply' type='button' value='回覆'/></div>");
+					}
+					
+					
 				}
-				
 				out = response.getWriter();
 				out.print(output);
 			    out.close();
 			    return;
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -3,6 +3,7 @@ $(function(){
  	var $url = $path+"/article/articleAction.controller";
  	var $bodyurl = $path+"/article/articleBodyAction.controller";
  	var $msgurl = $path+"/message/messageAction.controller";
+ 	var $replyurl = $path+"/message/replyAction.controller";
 	
  	$('#msgsubmit').click(function(){
 		var $name=$('#msgname').val();
@@ -18,7 +19,7 @@ $(function(){
  	function doMsgReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
-				$('#msg').html(request.responseText).fadeOut(5000);
+				$('#msg').html(request.responseText).show().fadeOut(5000);
 				
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);
@@ -114,6 +115,15 @@ $(function(){
 			if(request.status==200) {
 					$('#success').hide().fadeIn(1000).html(request.responseText);
 					$('#msgdiv').fadeIn(1000);
+					$('.reply').click(function(){
+						var $reply=$(this).siblings().eq(2).val();
+						var $time =$(this).siblings().eq(0).text();
+						var $queryString = "&reply="+$reply+"&time="+$time+"&dummy="+new Date().getTime();
+						request = new XMLHttpRequest();
+						request.onreadystatechange = doMsgReadyStateChange;
+						request.open("GET", $replyurl+"?"+$queryString, true);
+						request.send();
+					});
 			} else {
 				console.log("錯誤代碼:"+request.status+", "+request.statusText);
 			}
@@ -137,5 +147,6 @@ $(function(){
 		$(this).css("background","rgba(255, 255, 215, 0.8)").mouseout(function(){
 			$(this).css("background","rgba(255, 255, 215, 0.4)");
 		});
-	});
+	});	
+	
 });

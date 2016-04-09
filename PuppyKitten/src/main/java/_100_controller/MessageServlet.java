@@ -2,6 +2,7 @@ package _100_controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -31,13 +32,17 @@ public class MessageServlet extends HttpServlet {
 		MessageService service = new MessageService();
 		MessageBean bean = new MessageBean();
 		if(session.getAttribute("loginOK")!=null){
-			bean.setMSG_MEM_ID(session.getAttribute("loginOK").toString());
+			bean.setMSG_MEM_ID("會員("+session.getAttribute("loginOK").toString()+")");
 		}else{
-			bean.setMSG_MEM_ID((request.getParameter("name")));
+			bean.setMSG_MEM_ID("訪客("+(request.getParameter("name"))+")");
 		}
 		bean.setMSG_ART_ID(session.getAttribute("articleID").toString());
 		bean.setMSG_BODY(((request.getParameter("area"))));
-		bean.setMSG_TIME(new Date());	
+
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String dateString = sdf.format(date);
+		bean.setMSG_TIME(dateString);	
 		service.insert(bean);
 					output.append("<p style='color:#400000'>留言成功</p>");
 

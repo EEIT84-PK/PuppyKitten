@@ -6,7 +6,7 @@ public class MessageBean {
 	private String MSG_MEM_ID;
 	private String MSG_BODY;
 	private String MSG_REBODY;
-	private java.util.Date MSG_TIME;
+	private String MSG_TIME;
 	
 	public Integer getMSG_ID() {
 		return MSG_ID;
@@ -38,10 +38,10 @@ public class MessageBean {
 	public void setMSG_REBODY(String mSG_REBODY) {
 		MSG_REBODY = mSG_REBODY;
 	}
-	public java.util.Date getMSG_TIME() {
+	public String getMSG_TIME() {
 		return MSG_TIME;
 	}
-	public void setMSG_TIME(java.util.Date mSG_TIME) {
+	public void setMSG_TIME(String mSG_TIME) {
 		MSG_TIME = mSG_TIME;
 	}
 	

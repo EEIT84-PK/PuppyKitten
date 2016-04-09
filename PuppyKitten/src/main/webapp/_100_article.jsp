@@ -10,7 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>米沃貓窩 - 討論區</title>
 <script src="<%=request.getContextPath()%>/javascript/article.js"></script>
+<script type="text/javascript">
 
+</script>
 <style>
 #thead{
 width:1056px;
@@ -22,7 +24,7 @@ width:1056px;
 	background:rgba(250, 235, 215, 0.4);
 	text-align: center;
 	display: inline-block;
-	font-size: 24px;
+	font-size: 20px;
 	border-top-right-radius:15px ;
 	border-top-left-radius:15px ;
 	
@@ -34,7 +36,7 @@ width:1056px;
 	width:1016px;
 	overflow:auto;
 	padding: 20px;
-	font-size: 24px;
+	font-size: 20px;
 }
 #success td{
 	text-align: center;
@@ -47,7 +49,7 @@ list-style: none;
 
 #insert{
 	float:right;
-	font-size:24px;
+	font-size:20px;
 	width:150px;
 	text-align: center;
 }
@@ -118,8 +120,8 @@ list-style: none;
 </div>
 </article>
 <aside>
-<h1 style="font-size: 24px;text-align: center;background:rgba(255, 255, 215, 0.4);">熱門文章</h1>
-<table><c:forEach var="sort" items="${sort}" end="5"><tr class="trcolor">
+<h1 style="font-size: 20px;text-align: center;background:rgba(255, 255, 215, 0.4);">熱門文章</h1>
+<table style="font-size: 20px;"><c:forEach var="sort" items="${sort}" end="5"><tr class="trcolor">
 									<td style="width: 70px;">${sort.ART_KIND}</td>
 									<td style="width: 300px;">${sort.ART_TITLE}</td>
 									<td style="width: 30px;text-align: right;">${sort.ART_HOT}</td>
