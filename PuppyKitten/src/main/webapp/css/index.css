@@ -3,7 +3,7 @@ body{
 	height: 90%;
 	width:100%;
 	margin:0 auto;
-	font-family: '微軟正黑體';
+	font-family: 'puppykittenFont';
 	background-image:url("/PuppyKitten/images/background.png");
 	background-repeat:no-repeat;
 	background-attachment:fixed;
@@ -21,7 +21,7 @@ html{
 
 /* header */
 header{
-	min-height:180px;
+	min-height:135px;
 	padding-bottom: 10px;
 }
 a:link {
@@ -68,15 +68,12 @@ a:hover {
 		margin:0;
 		padding:5px 0;
 		color:#400000;
-		font-size:36px;
+		font-size:38px;
 		font-weight:bolder;
 		cursor: pointer;
 		text-align: center;
-		height: 35px;
 		line-height: 35px;
 		width: 200px;
-		
-		
 	}
 	.sub{
 		margin:0;
@@ -91,7 +88,7 @@ a:hover {
 		padding:0;
 	}
 	.sub li{
-		font-size:25px;
+		font-size:28px;
 		list-style-type:none;
 		background:rgba(139, 115, 85, 0.2) ;	
 	}
@@ -109,6 +106,7 @@ section{
 	background:rgba(139, 115, 85, 0.4) ;
 	padding: 15px;
 	border-radius:15px ;
+	font-size: 24px;
 }
 
 article {	
