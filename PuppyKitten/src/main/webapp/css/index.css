@@ -1,0 +1,151 @@
+@CHARSET "UTF-8";
+body{
+	height: 90%;
+	width:100%;
+	margin:0 auto;
+	font-family: '微軟正黑體';
+	background-image:url("/PuppyKitten/images/background.png");
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size: cover;
+	-moz-background-size: cover;
+	overflow: hidden;	
+}
+
+body a{
+	color:#400000;
+}
+html{
+	height: 90%;
+}
+
+/* header */
+header{
+	min-height:180px;
+	padding-bottom: 10px;
+}
+a:link {
+	text-decoration:none;
+}
+
+a:visited {
+	color:#400000;
+}
+
+a:hover {
+	color:#400000;
+}
+	#header_left li {
+		float: left;
+		list-style-type:none;
+		padding:0px 5px;
+		border-right:1px solid #ede3c5;
+		font-size:20px;
+	}
+
+	#header_right li {
+		float: right;
+		list-style-type: none;
+		padding: 0px 5px;
+		border-left:1px solid #ede3c5;
+		margin: 0px;
+		font-size: 20px;
+	}
+
+#nav_main{
+	margin:0;
+	padding: 0;
+	float: left;
+	position: relative;
+}
+	#menu{
+		width:1000px;
+	}
+	.item{
+		float:left;
+	}
+	.main{
+		margin:0;
+		padding:5px 0;
+		color:#400000;
+		font-size:36px;
+		font-weight:bolder;
+		cursor: pointer;
+		text-align: center;
+		height: 35px;
+		line-height: 35px;
+		width: 200px;
+		
+		
+	}
+	.sub{
+		margin:0;
+		padding:0;
+		font-weight:bolder;
+		text-align:center;
+		width: 200px;
+		
+	}
+	.sub ul{
+		margin:0;
+		padding:0;
+	}
+	.sub li{
+		font-size:25px;
+		list-style-type:none;
+		background:rgba(139, 115, 85, 0.2) ;	
+	}
+	.sub li:hover{
+		background:rgba(139, 115, 85, 0.6) ;
+	}
+
+
+/* content */
+section{
+	margin-left:180px;
+	width:1580px;
+	min-height: 1150px;
+	clear:both;
+	background:rgba(139, 115, 85, 0.4) ;
+	padding: 15px;
+	border-radius:15px ;
+}
+
+article {	
+	padding:40px;
+	width:1080px;
+	float:left;
+	position:relative;
+	max-height: 565px;
+	overflow: auto;
+	
+}
+
+aside {	
+	margin:40px;
+	padding:0 10px;
+	width:310px;
+	float:right;
+	position: relative;
+	min-height:550px;
+	max-height: 565px;
+	overflow: auto;
+	background:rgba(250, 235, 215, 0.8);
+	border-radius:15px ;
+}
+/* footer */
+footer {
+	width:100%;
+	background:-webkit-radial-gradient(circle,#5e4200,#310000);
+	opacity:0.6;
+	position:fixed;
+    bottom:0px;
+    z-index:3;
+}
+	#footer_left li {
+		list-style-type:none;
+		font-size:16px;
+		color:#f2daa8;
+	}
+
+

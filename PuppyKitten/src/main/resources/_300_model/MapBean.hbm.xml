@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+		<class name="_300_model.MapBean" table="GoogleMap">
+		
+			<id name="MAP_ID" column="MAP_ID">
+				<generator class="identity"></generator>
+			</id>
+			<property name="MAP_KIND" column="MAP_KIND" />
+			<property name="MAP_NAME" column="MAP_NAME" />
+			<property name="MAP_PHONE" column="MAP_PHONE" />
+			<property name="MAP_CITY" column="MAP_CITY" />
+			<property name="MAP_AREA" column="MAP_AREA" />
+			<property name="MAP_ADD" column="MAP_ADD" />
+			<property name="MAP_BODY" column="MAP_BODY" />
+
+		</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="_200_model.ShopBean" table="Product_context">
+		<id name="PRO_ID" column="PRO_ID">
+			<generator class="identity"></generator>
+		</id>
+		<property name="PRO_ANIMAL" column="PRO_ANIMAL"></property>
+		<property name="PRO_KIND" column="PRO_KIND"></property>
+		<property name="PRO_NAME" column="PRO_NAME"></property>
+		<property name="PRO_PROJCET" column="PRO_PROJCET"></property>
+		<property name="PRO_WEIGHT" column="PRO_WEIGHT"></property>
+		<property name="PRO_PRICE" column="PRO_PRICE"></property>
+		<property name="PRO_STOCK" column="PRO_STOCK"></property>
+		<property name="PRO_BODY" column="PRO_BODY"></property>
+	</class>
+
+</hibernate-mapping>
