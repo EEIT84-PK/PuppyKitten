@@ -25,6 +25,9 @@ color: red;
 </style>
 <script type="text/javascript">
 $(function(){
+	$('#price_5').hide();
+	$('#price_6').hide();
+	
 	$('#val_1').hide();
 	$('#sel_1').change(function(){
 		$('#val_1').val($(this).val());
@@ -38,10 +41,19 @@ $(function(){
 	$('#val_3').hide();
 	$('#sel_3').change(function(){
 		$('#val_3').val($(this).val());
+		
+		if($('#val_3').val()=="指定價格"){
+			$('#price_6').hide();
+			$('#price_5').show();
+			}else{
+			if($('#val_3').val()=="買X送X"){
+			$('#price_6').show();
+			$('#price_5').hide();
+			}
+		}
+		
 	});
 	
-	$('#send_delete').hide();
-	$('#send_update').hide();
 	
 	$('#update_number').attr("readonly","readonly")
 });
@@ -93,10 +105,15 @@ $(function(){
 					<option>請選擇</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
-					<option>指定折扣</option>
 					</select><span class="errorUpdate">${errors.errorUpdateProject[0]}</span><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJCET"> 
-				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 
-				販售價格：<input type="text" name="shopbean.PRO_PRICE"><span class="errorUpdate">${errors.errorUpdatePrice[0]}</span><br><br>
+				<span id="price_5">
+				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
+				</span>		
+				<span id="price_6">
+				買：<input type="text" name="shopbean.PRO_PRICE" id="price_2"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
+				送：<input type="text" name="shopbean.PRO_PRICE" id="price_3"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
+				</span>	
+				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 	
 				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorUpdate">${errors.errorUpdateStock[0]}</span><br><br> 
 				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><span class="errorUpdate">${errors.errorUpdateImage[0]}</span><br><br> 
 				商品介紹：<br>

@@ -28,6 +28,9 @@ color: red;
 					<script>
 					//1.找到位置     2.先取值     3.放入指定位置     4.不必要顯示區域隱藏
 						$(function(){
+							$('#price_5').hide();
+							$('#price_6').hide();
+							
 							$('#val_1').hide();
 							$('#sel_1').change(function(){
 								$('#val_1').val($(this).val());
@@ -42,7 +45,19 @@ color: red;
 							$('#val_3').hide();
 							$('#sel_3').change(function(){
 								$('#val_3').val($(this).val());
+								
+								if($('#val_3').val()=="指定價格"){
+								$('#price_6').hide();
+								$('#price_5').show();
+								}else{
+								if($('#val_3').val()=="買X送X"){
+								$('#price_6').show();
+								$('#price_5').hide();
+								}
+							}
 							})
+							
+							
 						});
 					</script>
 					<script type="text/javascript">
@@ -91,22 +106,21 @@ color: red;
 				
 				優惠方案：<select id="sel_3">
 					<option>請選擇</option>
-					<option>無</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
-					<option>指定折扣</option>
 				</select><span class="errorInsert">${errors.errorInsertProject[0]}</span><br> <br><input type="text" id="val_3" name="shopbean.PRO_PROJCET">
-				
+				<span id="price_5">
+				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
+				</span>		
+				<span id="price_6">
+				買：<input type="text" name="shopbean.PRO_PRICE" id="price_2"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
+				送：<input type="text" name="shopbean.PRO_PRICE" id="price_3"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
+				</span>	
 				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 
-				販售價格：<input type="text" name="shopbean.PRO_PRICE"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
-				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorInsert">${errors.errorInsertStock[0]}</span><br><br> 
-					   
-				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><span class="errorInsert">${errors.errorInsertImage[0]}</span><br><br> 
-					   
+				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorInsert">${errors.errorInsertStock[0]}</span><br><br> 					   
+				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><span class="errorInsert">${errors.errorInsertImage[0]}</span><br><br> 				   
 				商品介紹：<br>
-				<textarea id="content" rows="10" cols="80" name="shopbean.PRO_BODY"></textarea>
-
-			
+				<textarea id="content" rows="10" cols="80" name="shopbean.PRO_BODY"></textarea>		
 				<br> <input type="submit" value="新增上架">
 
 			</form>
