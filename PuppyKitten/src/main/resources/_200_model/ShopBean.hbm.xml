@@ -14,6 +14,7 @@
 		<property name="PRO_WEIGHT" column="PRO_WEIGHT"></property>
 		<property name="PRO_PRICE" column="PRO_PRICE"></property>
 		<property name="PRO_STOCK" column="PRO_STOCK"></property>
+		<property name="PRO_IMAGE" column="PRO_IMAGE"></property>
 		<property name="PRO_BODY" column="PRO_BODY"></property>
 	</class>
 

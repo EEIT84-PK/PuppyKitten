@@ -32,9 +32,12 @@
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
 		<action name="shopBackAction_1" class="_200_controller.ShopBackAction_1">
 			<result name="success">/_200_shop_back_insert.jsp</result>
+			<result name="input">/_200_shop_back_insert.jsp</result>
+			
 		</action>
 		<action name="shopBackAction_2" class="_200_controller.ShopBackAction_2">
-			<result name="success">/_200_shop_index.jsp</result>
+			<result name="success">/_200_shop_back_update_2.jsp</result>
+			<result name="input">/_200_shop_back_update_2.jsp</result>
 		</action>
 	</package>
 
@@ -42,6 +45,7 @@
 	<package name="mapPackage" namespace="/map" extends="struts-default">
 		<action name="mapAction" class="_300_controller.MapAction">
 			<result name="success">/_300_google.jsp</result>
+			
 		</action>
 		<action name="mapActionBack" class="_300_controller.MapActionBack">
 			<result name="success">/_300_google_back.jsp</result>

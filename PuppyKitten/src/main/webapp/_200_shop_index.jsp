@@ -96,8 +96,8 @@
 
 		<article style="width: 1500px; background-color: white;">
 			<form action="/shop/shopAction" method="get" id="shop_form">
-				<input class="btn_1" type="submit" name="dog" value="汪星人"> <input
-					class="btn_1" type="submit" name="cat" value="喵星人"> 
+				<input class="btn_1" type="submit" name="dog" value="汪星人"> 
+				<input class="btn_1" type="submit" name="cat" value="喵星人"> 
 					<select class="btn_1">
 					<option>主食乾糧</option>
 					<option>外出專用</option>
@@ -197,7 +197,7 @@
 					</div>
 					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
-						<br> <input class="button1" type="button" value="加入購物車">
+						<br> <input class="button1" type="button" value="加入購物車" onclick="www.yahoo.com.tw">
 					</div>
 				</div>
 

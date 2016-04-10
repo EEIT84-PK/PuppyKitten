@@ -9,6 +9,7 @@ public class ShopBean {
 	private String PRO_WEIGHT;
 	private Integer PRO_PRICE;
 	private Integer PRO_STOCK;
+	private String PRO_IMAGE;
 	private String PRO_BODY;
 
 	public Integer getPRO_ID() {
@@ -73,6 +74,14 @@ public class ShopBean {
 
 	public void setPRO_STOCK(Integer pRO_STOCK) {
 		PRO_STOCK = pRO_STOCK;
+	}
+	
+	public String getPRO_IMAGE() {
+		return PRO_IMAGE;
+	}
+
+	public void setPRO_IMAGE(String pRO_IMAGE) {
+		PRO_IMAGE = pRO_IMAGE;
 	}
 
 	public String getPRO_BODY() {

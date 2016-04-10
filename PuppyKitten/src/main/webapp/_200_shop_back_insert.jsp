@@ -7,6 +7,11 @@
 <script src="ckeditor/ckeditor.js"></script>
 <c:import url="/import/head.jsp"></c:import>
 <style type="text/css">
+
+.errorInsert{
+color: red;
+}
+
 .pro_1 {
 	float: left;
 	margin: 10px;
@@ -64,7 +69,8 @@
 					<option>請選擇</option>
 					<option value="汪星人">汪星人</option>
 					<option value="喵星人">喵星人</option>
-				</select><br><br><input type="text" id="val_1" name="shopbean.PRO_ANIMAL">
+				</select><span class="errorInsert">${errors.errorInsertAnimal[0]}</span><br><br><input type="text" id="val_1" name="shopbean.PRO_ANIMAL">
+								 
 				
 				
 				商品種類：<select id="sel_2">
@@ -76,22 +82,27 @@
 					<option>休閒玩具</option>
 					<option>生活用品</option>
 					<option>衣著打扮</option>
-				</select><br><br><input type="text" id="val_2" name="shopbean.PRO_KIND"> 
+				</select><span class="errorInsert">${errors.errorInsertKind[0]}</span><br><br>
+				<input type="text" id="val_2" name="shopbean.PRO_KIND">
+								 
 				
 				
-				商品名稱：<input type="text" name="shopbean.PRO_NAME"><br><br> 
+				商品名稱：<input type="text" name="shopbean.PRO_NAME"><span class="errorInsert">${errors.errorInsertName[0]}</span><br><br> 
 				
 				優惠方案：<select id="sel_3">
 					<option>請選擇</option>
+					<option>無</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
 					<option>指定折扣</option>
-				</select><br> <br><input type="text" id="val_3" name="shopbean.PRO_PROJCET">
+				</select><span class="errorInsert">${errors.errorInsertProject[0]}</span><br> <br><input type="text" id="val_3" name="shopbean.PRO_PROJCET">
 				
 				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 
-				販售價格：<input type="text" name="shopbean.PRO_PRICE"><br><br>
-				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><br><br> 
-				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><br><br> 
+				販售價格：<input type="text" name="shopbean.PRO_PRICE"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
+				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorInsert">${errors.errorInsertStock[0]}</span><br><br> 
+					   
+				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><span class="errorInsert">${errors.errorInsertImage[0]}</span><br><br> 
+					   
 				商品介紹：<br>
 				<textarea id="content" rows="10" cols="80" name="shopbean.PRO_BODY"></textarea>
 

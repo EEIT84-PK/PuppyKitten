@@ -7,6 +7,9 @@
 <script src="ckeditor/ckeditor.js"></script>
 <c:import url="/import/head.jsp"></c:import>
 <style type="text/css">
+.errorUpdate{
+color: red;
+}
 .pro_1 {
 	float: left;
 	margin: 10px;
@@ -40,7 +43,7 @@ $(function(){
 	$('#send_delete').hide();
 	$('#send_update').hide();
 	
-	
+	$('#update_number').attr("readonly","readonly")
 });
 
 
@@ -68,12 +71,13 @@ $(function(){
 		<article style="width: 1500px; background-color: white;">
 		<h2>商品維護</h2><h2 style="color: red">${updateOK}</h2>
 			<form action="<%=request.getContextPath()%>/shop/shopBackAction_2" method="get" id="shop_form">
-				商品編號：<input type="text" name="shopbean.PRO_ID"><br><br> 
+				商品編號：<input type="text" name="shopbean.PRO_ID" id="update_number"><br><br> 
 				商品類型：<select id="sel_1">
 					<option>請選擇</option>
 					<option>汪星人</option>
 					<option>喵星人</option>
-					</select><br><br><input id="val_1" type="text" name="shopbean.PRO_ANIMAL">
+					</select><span class="errorUpdate">${errors.errorUpdateAnimal[0]}</span><br><br>
+					<input id="val_1" type="text" name="shopbean.PRO_ANIMAL">
 				商品種類：<select id="sel_2">
 					<option>請選擇</option>
 					<option>主食乾糧</option>
@@ -83,18 +87,18 @@ $(function(){
 					<option>休閒玩具</option>
 					<option>生活用品</option>
 					<option>衣著打扮</option>
-					</select><br><br><input id="val_2" type="text" name="shopbean.PRO_KIND"> 
-				商品名稱：<input type="text" name="shopbean.PRO_NAME"><br><br> 
+					</select><span class="errorUpdate">${errors.errorUpdateKind[0]}</span><br><br><input id="val_2" type="text" name="shopbean.PRO_KIND"> 
+				商品名稱：<input type="text" name="shopbean.PRO_NAME"><span class="errorUpdate">${errors.errorUpdateName[0]}</span><br><br> 
 				優惠方案：<select id="sel_3">
 					<option>請選擇</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
 					<option>指定折扣</option>
-					</select><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJCET"> 
+					</select><span class="errorUpdate">${errors.errorUpdateProject[0]}</span><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJCET"> 
 				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 
-				販售價格：<input type="text" name="shopbean.PRO_PRICE"><br><br>
-				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><br><br> 
-				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><br><br> 
+				販售價格：<input type="text" name="shopbean.PRO_PRICE"><span class="errorUpdate">${errors.errorUpdatePrice[0]}</span><br><br>
+				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorUpdate">${errors.errorUpdateStock[0]}</span><br><br> 
+				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><span class="errorUpdate">${errors.errorUpdateImage[0]}</span><br><br> 
 				商品介紹：<br>
 				<textarea name="shopbean.PRO_BODY" id="content" rows="10" cols="80"></textarea>
 				<script>
@@ -105,7 +109,7 @@ $(function(){
 						<th style="vertical-align: bottom;"></th>
 					</tr>
 				</table>
-				<br> <input type="submit" value="更新上架">
+				<br> <input type="submit" value="送出">
 			</form>
 
 		</article>
