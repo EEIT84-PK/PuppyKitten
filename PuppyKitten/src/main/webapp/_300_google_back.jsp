@@ -3,24 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<c:import url="/import/head_back.jsp"></c:import>
 <title>後台系統 - Google Map</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/google_back.css">
-
-<script src="<%=request.getContextPath()%>/jquery/jquery-2.2.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/jquery/jquery-ui.min.js"></script>
-<script src="<%=request.getContextPath()%>/jquery/jquery.dataTables.min.js"></script>
-
 <script src="<%=request.getContextPath()%>/javascript/googlemap_back.js"></script>
 
 <body>
-<form action="<%=request.getContextPath()%>/map/mapActionBack.action" method="get">
+<form action="<%=request.getContextPath()%>/map/mapBackAction.action" method="get">
 	<input id="inputforhide" type="text" name="mapBean.MAP_ID"  />
-	<input type="submit" value="查詢" style="float:left;height:35px;">
+	<input type="submit" value="查詢" style="float:left;height:25px;">
 </form>
+
 <!-- MapBean -->
 <c:choose>
 <c:when test="${not empty select}">
@@ -48,8 +42,7 @@
 		<td style="width:150px;"><input type="text" value="${map.MAP_NAME}" style="border-style: none;"></td>
 		<td style="width:250px;"><input type="text" value="${map.MAP_ADD}" style="border-style:none;width:250px;"></td>
 		<td style="width:100px;"><input type="text" value="${map.MAP_PHONE}" style="border-style:none;width:100px;"></td>
-		<td style="width:50px;"><input type="button" class="update" value="修改" />
-		<input type="button" class="delete" value="移除" /></td>		
+		<td style="width:75px;"><input style="display:inline" type="button" class="update" value="修改" /><input style="display:inline" type="button" class="delete" value="移除" /></td>		
 	</tr>
 	
 	</c:forEach>

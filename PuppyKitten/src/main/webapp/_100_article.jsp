@@ -7,7 +7,7 @@
 <html>
 <head>
 <c:import url="/import/head.jsp"></c:import>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>米沃貓窩 - 討論區</title>
 <script src="<%=request.getContextPath()%>/javascript/article.js"></script>
 <script type="text/javascript">

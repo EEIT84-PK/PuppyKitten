@@ -3,7 +3,6 @@ body{
 	height: 90%;
 	width:100%;
 	margin:0 auto;
-	font-family: '微軟正黑體';
 	background-image:url("/PuppyKitten/images/background.png");
 	background-repeat:no-repeat;
 	background-attachment:fixed;
@@ -11,7 +10,10 @@ body{
 	-moz-background-size: cover;
 	overflow: hidden;	
 }
-
+.jf-active body { /*如果處理成功，直接顯示*/
+      opacity: 1;
+      visibility: visible;
+}
 body a{
 	color:#400000;
 }
@@ -21,6 +23,7 @@ html{
 
 /* header */
 header{
+	font-family:'meow';
 	min-height:135px;
 	padding-bottom: 10px;
 }
@@ -40,7 +43,7 @@ a:hover {
 		list-style-type:none;
 		padding:0px 5px;
 		border-right:1px solid #ede3c5;
-		font-size:20px;
+		font-size:24px;
 	}
 
 	#header_right li {
@@ -49,7 +52,7 @@ a:hover {
 		padding: 0px 5px;
 		border-left:1px solid #ede3c5;
 		margin: 0px;
-		font-size: 20px;
+		font-size: 24px;
 	}
 
 #nav_main{
@@ -68,7 +71,7 @@ a:hover {
 		margin:0;
 		padding:5px 0;
 		color:#400000;
-		font-size:32px;
+		font-size:40px;
 		font-weight:bolder;
 		cursor: pointer;
 		text-align: center;
@@ -87,7 +90,7 @@ a:hover {
 		padding:0;
 	}
 	.sub li{
-		font-size:24px;
+		font-size:28px;
 		list-style-type:none;
 		background:rgba(139, 115, 85, 0.2) ;	
 	}
@@ -98,6 +101,7 @@ a:hover {
 
 /* content */
 section{
+	font-family: '微軟正黑體';
 	margin-left:180px;
 	width:1580px;
 	min-height: 1150px;
@@ -137,6 +141,8 @@ footer {
 	position:fixed;
     bottom:0px;
     z-index:3;
+    font-family:'meow';
+    font-size:18px;
 }
 	#footer_left li {
 		list-style-type:none;

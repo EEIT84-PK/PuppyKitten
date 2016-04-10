@@ -21,6 +21,9 @@
 		<action name="articleAction" class="_100_controller.ArticleAction">
 			<result name="success">/_100_article.jsp</result>
 		</action>
+		<action name="articleBackAction" class="_100_controller.ArticleBackAction">
+			<result name="success">/_100_article_back.jsp</result>
+		</action>
 		<action name="uploadAction" class="_100_controller.UploadAction">
 			<result name="success">/_100_insert.jsp</result>
 			<result name="input">/_100_insert.jsp</result>
@@ -37,7 +40,7 @@
 		<action name="mapAction" class="_300_controller.MapAction">
 			<result name="success">/_300_google.jsp</result>
 		</action>
-		<action name="mapActionBack" class="_300_controller.MapActionBack">
+		<action name="mapBackAction" class="_300_controller.MapBackAction">
 			<result name="success">/_300_google_back.jsp</result>
 		</action>
 	</package>
