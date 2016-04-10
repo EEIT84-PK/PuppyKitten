@@ -43,30 +43,33 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 	}
 	
 	public String execute() {
-		PetService petService = new PetService();	
-		HttpSession session= req.getSession();		
+
+		PetService petService = new PetService();			
 		
-		List<PetBean> petBean=petService.selecPettId((Integer)session.getAttribute("memberID"));
+		List<PetBean> petBean=petService.selecPettId((Integer)req.getSession().getAttribute("memberID"));
 				
-		if (petBean.get(0).getPET_SORT_ID().startsWith("41")) {
-			System.out.println("petBean.get(0).getPET_SORT_ID()="+petBean.get(0).getPET_SORT_ID());
-			PetSortCatBean Catbean = petService.selectSortCat(petBean.get(0).getPET_SORT_ID());			
-			req.setAttribute("Sortbean", Catbean);			
-		} else {
-			System.out.println("petBean.get(0).getPET_SORT_ID()="+petBean.get(0).getPET_SORT_ID());
-			PetSortDogBean Dogbean = petService.selectSortDog(petBean.get(0).getPET_SORT_ID());			
-			req.setAttribute("Sortbean", Dogbean);			
+		if (petBean.get(0).getPET_SORT_ID().startsWith("41")) {			
+			PetSortCatBean Catbean = petService.selectSortCat(petBean.get(0).getPET_SORT_ID());		
+			req.getSession().removeAttribute("Sortbean");
+			req.getSession().setAttribute("Sortbean", Catbean);			
+		} else {			
+			PetSortDogBean Dogbean = petService.selectSortDog(petBean.get(0).getPET_SORT_ID());	
+			req.getSession().removeAttribute("Sortbean");
+			req.getSession().setAttribute("Sortbean", Dogbean);			
 		}
 		
 		Date now=new Date();
 		long s=(now.getTime()-petBean.get(0).getPET_AGE().getTime())/1000/ (60 * 60 * 24)/365;
-		req.setAttribute("PET_AGE", s);		
+		req.getSession().removeAttribute("PET_AGE");
+		req.getSession().setAttribute("PET_AGE", s);		
 		
 		PetImgBean Imgbean = petService.selectId2(petBean.get(0).getPET_ID());
-		req.setAttribute("bean", petBean.get(0));		
+		req.getSession().removeAttribute("bean");
+		req.getSession().setAttribute("bean", petBean.get(0));		
 		
-		req.setAttribute("petImg", Imgbean.getPET_IMAGE());
-		System.out.println("Imgbean.getPET_IMAGE()"+Imgbean.getPET_IMAGE());
+		req.getSession().removeAttribute("petImg");
+		req.getSession().setAttribute("petImg", Imgbean.getPET_IMAGE());
+		
 		return "success";
 	}
 

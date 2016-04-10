@@ -26,6 +26,7 @@
 		
 		<!-- 實體映射檔的描述 -->
 		<mapping resource="_100_model/ArticleBean.hbm.xml" />
+
 		<mapping resource="_100_model/MessageBean.hbm.xml" />
 		<mapping resource="_200_model/ShopBean.hbm.xml" />
 		<mapping resource="_300_model/MapBean.hbm.xml" />
@@ -33,6 +34,7 @@
 		<mapping resource="_400_model/PetImgBean.hbm.xml" />
 		<mapping resource="_400_model/PetSortCatBean.hbm.xml" />
 		<mapping resource="_400_model/PetSortDogBean.hbm.xml" />
+		<mapping resource="_400_model/PetRelationBean.hbm.xml" />
 		<mapping resource="_500_model/MemberBean.hbm.xml" />
 
 		

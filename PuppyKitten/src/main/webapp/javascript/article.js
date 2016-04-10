@@ -1,4 +1,4 @@
-$(function(){	
+$(function(){
 	var $path = "/PuppyKitten";
  	var $url = $path+"/article/articleAction.controller";
  	var $bodyurl = $path+"/article/articleBodyAction.controller";
@@ -148,5 +148,4 @@ $(function(){
 			$(this).css("background","rgba(255, 255, 215, 0.4)");
 		});
 	});	
-	
-});
+	});

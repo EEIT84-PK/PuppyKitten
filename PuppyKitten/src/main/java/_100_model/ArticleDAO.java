@@ -72,8 +72,7 @@ public class ArticleDAO implements ArticleDAO_interface {
 			throw ex;
 		}
 		return list;
-	}
-	
+	}	
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ArticleBean> selectSort() {

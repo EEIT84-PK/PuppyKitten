@@ -2,8 +2,8 @@ package _500_model;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
+import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -73,3 +73,4 @@ public class MemberService {
 		  
 		
 	
+
