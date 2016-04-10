@@ -43,6 +43,7 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 	}
 	
 	public String execute() {
+
 		PetService petService = new PetService();			
 		
 		List<PetBean> petBean=petService.selecPettId((Integer)req.getSession().getAttribute("memberID"));

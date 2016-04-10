@@ -65,6 +65,7 @@ $(function(){
 
 </head>
 <body>
+<<<<<<< HEAD
 	<div id="adBlock">
 		<ul class="list">
 			<li><img src="images/ad/01.jpg"></li>
@@ -78,6 +79,22 @@ $(function(){
 		</ul>
 	</div>
 	
+=======
+<h1 style="font-family:meow;font-size:85px;">米沃貓窩</h1>
+	<div id="adBlock">
+		<ul class="list">
+			<li><img src="images/ad/01.png"></li>
+			<li><img src="images/ad/02.png"></li>
+			<li><img src="images/ad/03.png"></li>
+			<li><img src="images/ad/04.png"></li>
+			<li><img src="images/ad/05.png"></li>
+		</ul>
+		<ul>
+			<li id="skip">skip</li>
+		</ul>
+	</div>
+
+>>>>>>> branch 'master' of https://github.com/EEIT84-PK/PuppyKitten.git
 	<c:import url="/import/footer.jsp"></c:import>
 </body>
 </html>

@@ -19,8 +19,8 @@ public class PetService {
 	}
 	public List<PetBean> selecPettId(Integer PET_OWN_ID) {		
 		return petDAO.selectPetId(PET_OWN_ID);
-	}
-	
+	}	
+
 	public List<PetBean> selectAll(){
 		return petDAO.selectAll();
 	}
@@ -47,6 +47,7 @@ public class PetService {
 		return bean;
 	}
 	
+
 	public int delete(int PET_ID) {
 		petDAO.delete(PET_ID);
 		return PET_ID;

@@ -25,7 +25,54 @@ public class ArticleDAO implements ArticleDAO_interface {
 		}
 		return list;
 	}
-	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ArticleBean> selectAllHot() {
+		List<ArticleBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from ArticleBean order by ART_HOT");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ArticleBean> selectAllTime() {
+		List<ArticleBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from ArticleBean order by ART_TIME");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ArticleBean> selectAllKind() {
+		List<ArticleBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from ArticleBean order by ART_KIND");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}	
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ArticleBean> selectSort() {

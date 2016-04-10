@@ -107,6 +107,7 @@ public class PetAction extends ActionSupport {
 		}
 		if (PET_IMAGE == null) {
 			request.put("PET_IMAGE", "請上傳一張寵物照片");
+
 		}		
 		if (petBean.getPET_BODY().trim().length() == 0 || petBean.getPET_BODY().trim().length() <= 50) {
 			request.put("PET_BODY", "請至少輸入50字介紹");
