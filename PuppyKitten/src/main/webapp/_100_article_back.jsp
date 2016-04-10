@@ -10,8 +10,24 @@
 #formtr td{
 text-align: center;
 }
-
+#id,#kind,#time,#hot{
+cursor: pointer;
+}
 </style>
+<script src="<%=request.getContextPath()%>/javascript/article_back.js"></script>
+<script>
+$(function(){
+	$('thead th').mouseover(function(){
+		$(this).css("background","rgba(255, 240, 200, 1)").mouseout(function(){
+			$(this).css("background","rgba(255, 255, 215, 0.4)");
+		});
+	});
+
+	
+	
+});
+
+</script>
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/article/articleBackAction.action" method="get">
@@ -20,14 +36,15 @@ text-align: center;
 <!-- ArticleBean -->
 <c:choose>
 <c:when test="${not empty select}">
+<b style="font-size:25px;">討論大廳資訊</b><b id="success" style="font-size:20px;color:red"></b>
 <table id="datatable" border="1" style="border-collapse: collapse;width:850px;">
 	<thead>
 	<tr style="background:rgba(255, 255, 215, 0.4);">
-		<th>編號</th>
-		<th>類別</th>
+		<th id="id"><a href='<c:url value="/article/articleBackAction.action" ></c:url>'>編號</a></th>
+		<th id="kind"><a href='<c:url value="/article/articleBackAction.action" ><c:param name="use">kind</c:param></c:url>'>類別</a></th>
 		<th>標題</th>
-		<th>時間</th>
-		<th>點擊率</th>
+		<th id="time"><a href='<c:url value="/article/articleBackAction.action" ><c:param name="use">time</c:param></c:url>'>時間</a></th>
+		<th id="hot"><a href='<c:url value="/article/articleBackAction.action" ><c:param name="use">hot</c:param></c:url>'>點擊率</a></th>
 		<th>編輯</th>
 	</tr>
 	</thead>

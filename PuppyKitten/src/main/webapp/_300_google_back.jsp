@@ -3,12 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<head>
 <c:import url="/import/head_back.jsp"></c:import>
 <title>後台系統 - Google Map</title>
+<script src="<%=request.getContextPath()%>/javascript/googlemap_back.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/google_back.css">
-<script src="<%=request.getContextPath()%>/javascript/googlemap_back.js"></script>
 
+<script>
+
+
+</script>
+</head>
 <body>
 <form action="<%=request.getContextPath()%>/map/mapBackAction.action" method="get">
 	<input id="inputforhide" type="text" name="mapBean.MAP_ID"  />

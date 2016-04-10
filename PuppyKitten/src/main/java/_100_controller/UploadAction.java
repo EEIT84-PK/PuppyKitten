@@ -44,12 +44,6 @@ public class UploadAction extends ActionSupport implements ServletRequestAware{
 	public void setImgFileName(String imgFileName) {
 		this.imgFileName = imgFileName;
 	}
-	public HttpServletRequest getReq() {
-		return req;
-	}
-	public void setReq(HttpServletRequest req) {
-		this.req = req;
-	}
 	public ArticleBean getBean() {
 		return bean;
 	}
