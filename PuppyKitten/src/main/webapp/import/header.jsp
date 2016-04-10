@@ -33,32 +33,7 @@
 			<div class="item">
 				<div class="main">寵物聯誼</div>
 				<div class="sub">
-					<ul>					
-<<<<<<< HEAD
-						<li><a href='<c:url value="/petInterceptor/petIndex.action" ></c:url>'>寵物大廳</a></li>
-						<li><a href="">交友中心</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="item">
-				<div class="main">寵物旅遊</div>
-				<div class="sub">
 					<ul>
-						<li><a href="">旅遊介紹</a></li>
-						<li><a href="<%=request.getContextPath()%>/_300_google.jsp">店家位置</a></li>
-						<li><a
-							href='<c:url value="/map/mapActionBack.action" ><c:param name="mapBean.MAP_ID"></c:param></c:url>'>後台系統</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="item">
-				<div class="main">討論區</div>
-				<div class="sub">
-					<ul>
-						<li><a
-							href='<c:url value="/article/articleAction.action" ></c:url>'>討論大廳</a></li>
-						<li><a href="">留言板</a></li>
-=======
 						<li><a href='<c:url value="/petInterceptor/petIndex.action" ></c:url>'>配對系統</a></li>
 						<li><a href="">交友中心</a></li>
 					</ul>
@@ -84,7 +59,6 @@
 						<li><a href="">留言板</a></li>
 						<li><a
 							href='<c:url value="/article/articleBackAction.action" ></c:url>'>後台系統</a></li>
->>>>>>> branch 'master' of https://github.com/EEIT84-PK/PuppyKitten.git
 					</ul>
 				</div>
 			</div>
