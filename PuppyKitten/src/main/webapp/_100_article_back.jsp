@@ -7,6 +7,7 @@
 <c:import url="/import/head_back.jsp"></c:import>
 <title>後台系統 - 討論大廳系統</title>
 <style>
+    @IMPORT url("<%=request.getContextPath()%>/css/index_back.css");
 #formtr td{
 text-align: center;
 }

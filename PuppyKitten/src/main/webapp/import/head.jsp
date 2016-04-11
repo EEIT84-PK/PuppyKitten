@@ -4,23 +4,14 @@
 <script type="text/javascript">
 
 var _jf = _jf || [];
-
 _jf.push(['_eventPreload',function(){
-
    //載入前觸發事件
-
 }]);
-
 _jf.push(['_eventActived',function(){
-
    //成功觸發事件
-
 }]);
-
 _jf.push(['_eventInactived',function(){
-
    //失敗觸發事件
-
 }])
 
 </script>
