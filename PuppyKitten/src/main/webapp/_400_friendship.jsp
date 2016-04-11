@@ -7,6 +7,7 @@
 <style type="text/css">
 	td{
 		width: 100px;
+		word-break:break-all;
 	}	
 </style>
 <c:import url="/import/head.jsp"></c:import>
@@ -55,7 +56,11 @@
 				</tr>
 				<tr>
 					<td>寵物照片：</td>
-					<td><img src="${petImg}"></td>
+					<td><img src="${petImg}" width="300" height="300"></td>
+				</tr>
+				<tr>
+					<td>寵物介紹：</td>
+					<td>${bean.PET_BODY}</td>
 				</tr>
 			</table>			
 		</article>

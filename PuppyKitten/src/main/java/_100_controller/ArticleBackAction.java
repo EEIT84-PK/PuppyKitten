@@ -44,7 +44,6 @@ public class ArticleBackAction extends ActionSupport implements ServletRequestAw
 		}
 		
 		req.setAttribute("select", list);
-		
 		return SUCCESS;
 	}
 	@Override

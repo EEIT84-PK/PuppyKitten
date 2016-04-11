@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
 #adBlock {
-	top:89px;
-	left:200px;
-	width:1720px;
-	height:815px;
+	bottom:50px;
+	left:400px;
+	width:1520px;
+	height:750px;
 	position:absolute;
 	overflow: hidden;
 	z-index:100;
-	border-top-left-radius:400px ;
+	border-top-left-radius:250px ;
 
 }
 #adBlock ul.list {
@@ -21,7 +21,7 @@
 }
 #adBlock ul.list li {
 	float: left;
-	width: 1720px;
+	width: 1520px;
 	height: 100%;
 }
 #adBlock .list img{
@@ -58,7 +58,7 @@
 	position:relative;
 	font-size:x-large;
 	text-align:center;
-	margin-top: 766px;
+	margin-top:700px;
 	cursor: pointer;
 	color:#AAAAAA;
 	background:rgba(139, 115, 85, 0.6) ;

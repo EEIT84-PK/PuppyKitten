@@ -51,6 +51,12 @@ public class UploadAction extends ActionSupport implements ServletRequestAware{
 	public void setBean(ArticleBean bean) {
 		this.bean = bean;
 	}
+	public HttpServletRequest getReq() {
+		return req;
+	}
+	public void setReq(HttpServletRequest req) {
+		this.req = req;
+	}
 	@Override
 	public String execute()throws Exception{
 		ArticleService service = new ArticleService();

@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	$('#skiphide').hide().fadeIn(600);
 	 var oldtext=['寵物新知','精品購物','寵物聯誼','寵物旅遊','討論區']
      var newtext=['News','Select','Dating','Tourism','WeChat']
      $(".sub").slideUp(0)

@@ -8,16 +8,20 @@
 <title>後台系統 - 討論大廳系統</title>
 <style>
     @IMPORT url("<%=request.getContextPath()%>/css/index_back.css");
-#formtr td{
+    
+.formtr{
 text-align: center;
 }
-#id,#kind,#time,#hot{
+
+.bodyhide,#id,#kind,#time,#hot{
 cursor: pointer;
+color:#400000;
 }
 </style>
 <script src="<%=request.getContextPath()%>/javascript/article_back.js"></script>
 <script>
 $(function(){
+	$('.formtrhide').hide();
 	$('thead th').mouseover(function(){
 		$(this).css("background","rgba(255, 240, 200, 1)").mouseout(function(){
 			$(this).css("background","rgba(255, 255, 215, 0.4)");
@@ -41,9 +45,11 @@ $(function(){
 <table id="datatable" border="1" style="border-collapse: collapse;width:850px;">
 	<thead>
 	<tr style="background:rgba(255, 255, 215, 0.4);">
+		<td style="text-align: center;"><b>內容</b></td>
 		<th id="id"><a href='<c:url value="/article/articleBackAction.action" ></c:url>'>編號</a></th>
 		<th id="kind"><a href='<c:url value="/article/articleBackAction.action" ><c:param name="use">kind</c:param></c:url>'>類別</a></th>
 		<th>標題</th>
+		<th id="user"><a href='<c:url value="/article/articleBackAction.action" ><c:param name="use">user</c:param></c:url>'>發言人</a></th>
 		<th id="time"><a href='<c:url value="/article/articleBackAction.action" ><c:param name="use">time</c:param></c:url>'>時間</a></th>
 		<th id="hot"><a href='<c:url value="/article/articleBackAction.action" ><c:param name="use">hot</c:param></c:url>'>點擊率</a></th>
 		<th>編輯</th>
@@ -51,15 +57,17 @@ $(function(){
 	</thead>
 	<tbody>	
 	<c:forEach var="article" items="${select}">
-	<tr id="formtr">		
+	<tr class="formtr">
+		<td class="bodyhide"><img src="<%=request.getContextPath()%>/images/body.png" width="15px;"></td>		
 		<td>${article.ART_ID}</td>
 		<td>${article.ART_KIND}</td>
 		<td style="width:250px;">${article.ART_TITLE}</td>
+		<td style="width:100px;">${article.ART_MEM_ID}</td>
 		<td style="width:250px;">${article.ART_TIME}</td>
 		<td style="width:70px;">${article.ART_HOT}</td>
 		<td style="width:30px;"><input type="button" class="delete" value="移除" /></td>		
 	</tr>
-	
+	<tr class="formtrhide" style="text-align: center;"><td colspan="8" style="text-align: left;padding-left: 20px;"><p>${article.ART_BODY}</p></td></tr>	
 	</c:forEach>
 	</tbody>
 </table>
