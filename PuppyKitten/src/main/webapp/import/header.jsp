@@ -35,7 +35,7 @@
 				<div class="sub">
 					<ul>
 						<li><a href='<c:url value="/petInterceptor/petIndex.action" ></c:url>'>配對系統</a></li>
-						<li><a href="">交友中心</a></li>
+						<li><a href='<c:url value="/petRelation/petRelationaAction.action" ></c:url>'>交友中心</a></li>
 					</ul>
 				</div>
 			</div>

@@ -33,8 +33,7 @@ public class PetNotLikeAction extends ActionSupport implements ServletRequestAwa
 
 	public String execute() {
 		PetService petService = new PetService();
-		String numberStr = (String) req.getSession().getAttribute("PetNumber");// 第一次到此number有可能是0或1
-																				// 如果一開始是自己傳過來就是1
+		String numberStr = (String) req.getSession().getAttribute("PetNumber");															// 如果一開始是自己傳過來就是1
 		req.getSession().removeAttribute("PetNumber");// 為了避免之後要再傳值有衝突
 														// 所以把原本的number從session移除
 		int number = Integer.parseInt(numberStr); // 將String轉成Integer(此number為正在感興趣的對象編號)
@@ -50,30 +49,35 @@ public class PetNotLikeAction extends ActionSupport implements ServletRequestAwa
 		if(number==0){
 			int checkSelf=number+1;//先確認下一筆是不是自己
 			if(petBean.get(checkSelf).getPET_OWN_ID().equals(req.getSession().getAttribute("memberID"))){
-				int checkNumber=number+2;
+				int checkNumber=checkSelf+1;
 				if(checkNumber==petBean.size()){
 					req.getSession().removeAttribute("end");
 					req.getSession().setAttribute("end", "已經沒有可感興趣的對象");
 					return "end";
 				}
 			}			
-		}		
+		}			
 		
-		int number2=number+1;//這邊+1是因為下一個不是自己 但是有可能超出範圍
-		if(number2==petBean.size()){
+		int check2=number+1;
+		if(check2==petBean.size()){
 			req.getSession().removeAttribute("end");
 			req.getSession().setAttribute("end", "已經沒有可感興趣的對象");
 			return "end";
 		}
 		
-		if(petBean.get(number2).getPET_OWN_ID().equals(req.getSession().getAttribute("memberID"))){
+		number++;// 下一個要讓使用者感興趣的對象編號
+		
+		int check=number;
+		if(check==petBean.size()){
 			req.getSession().removeAttribute("end");
 			req.getSession().setAttribute("end", "已經沒有可感興趣的對象");
-			return "end";//如果最後一筆是自己直接轉到END頁面
+			return "end";
 		}
 		
-		number++;// 下一個要讓使用者感興趣的對象編號
-
+		if(petBean.get(number).getPET_OWN_ID().equals(req.getSession().getAttribute("memberID"))){
+			number++;
+		}
+		
 		if (petBean.get(number).getPET_SORT_ID().startsWith("41")) {
 			PetSortCatBean Catbean = petService.selectSortCat(petBean.get(number).getPET_SORT_ID());
 			req.getSession().removeAttribute("Sortbean");
