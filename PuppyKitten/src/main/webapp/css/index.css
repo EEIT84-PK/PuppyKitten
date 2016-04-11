@@ -10,9 +10,15 @@ body{
 	-moz-background-size: cover;
 	overflow: hidden;	
 }
-.jf-active body { /*如果處理成功，直接顯示*/
-      opacity: 1;
-      visibility: visible;
+.jf-loading body { /*載入中不顯示*/
+      opacity: 0;
+      visibility: hidden;
+}
+.jf-active *, .jf-inactive * { /*處理成功或失敗，都以漸變顯示*/
+      -webkit-transition: opacity 1s ease-out; 
+      -moz-transition: opacity 1s ease-out; 
+      -o-transition: opacity 1s ease-out; 
+      transition: opacity 1s ease-out; 
 }
 body a{
 	color:#400000;
@@ -136,6 +142,7 @@ aside {
 /* footer */
 footer {
 	width:100%;
+	max-height:50px;
 	background:-webkit-radial-gradient(circle,#5e4200,#310000);
 	opacity:0.6;
 	position:fixed;
