@@ -1,28 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
+<c:import url="/import/head.jsp"></c:import>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>米沃貓窩(交友中心)</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
 <style type="text/css">
 	td{
 		width: 100px;
 		word-break:break-all;
 	}	
 </style>
-<c:import url="/import/head.jsp"></c:import>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>米沃貓窩-個人寵物資訊</title>
-</head>
 <body style="font-family: 微軟正黑體; font-size: large">
-	<c:import url="/import/header.jsp"></c:import>
-	<section>
-		<article>
-			<h1>寵物聯誼(個人寵物資訊)</h1>
-			<a href="<%=request.getContextPath()%>/_400_index.jsp">回寵物大廳</a>
-			<table border="1" style="border-collapse: collapse;" >
+<c:import url="/import/header.jsp"></c:import>
+<section>
+	<article>
+		<h1>寵物聯誼(交友中心)</h1>
+		<font color="red"><b>喜歡我的人是</b></font>
+		<table border="1" style="border-collapse: collapse;" >
 				<tr>
 					<td>寵物編號：</td>
 					<td>${bean.PET_ID }</td>
@@ -64,13 +63,14 @@
 					<td>${bean.PET_BODY}</td>
 				</tr>
 			</table>
-					
-		</article>		
-		<aside>			
-		</aside>
 
-	</section>
+	
+	</article>
+	<aside>
 
-	<c:import url="/import/footer.jsp"></c:import>
+	</aside>
+</section>
+	
+<c:import url="/import/footer.jsp"></c:import>
 </body>
 </html>

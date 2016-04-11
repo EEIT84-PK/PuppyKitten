@@ -25,6 +25,10 @@ public class PetService {
 		return petDAO.selectAll();
 	}
 	
+	public List<PetRelationBean>selectRelationAll(){
+		return petDAO.selectRelationAll();
+	}
+	
 	public PetSortCatBean selectSortCat(String PET_SORT_ID){
 		return petDAO.selectSortCat(PET_SORT_ID);
 	}

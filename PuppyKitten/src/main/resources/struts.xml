@@ -106,6 +106,12 @@
 		</action>
 	</package>
 	
+	<package name="petRelationPackage" namespace="/petRelation" extends="struts-default">
+		<action name="petRelationaAction" class="_400_controller.PetRelationAction">
+			<result name="success">/_400_relation.jsp</result>
+		</action>
+	</package>
+	
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>
