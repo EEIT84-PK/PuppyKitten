@@ -1,18 +1,19 @@
 $(document).ready(function(){
-	
+
 	$('#inputforhide').hide();
 
 	var $update =$('input[class=update]');
 	var $delete =$('input[class=delete]');
 	var path = "/PuppyKitten";
- 	var url = path+"/map/mapActionBack.controller";
+ 	var url = path+"/map/mapBackAction.controller";
 	$update.click(function(){
-		var $text =$(this).parent().siblings().eq(0).text();
+		
+		var $id =$(this).parent().siblings().eq(0).text();
 		var $kind =$(this).parent().siblings().eq(1).text();
 		var $name =$(this).parent().siblings().children().eq(0).val();
 		var $address = $(this).parent().siblings().children().eq(1).val();
 		var $phone = $(this).parent().siblings().children().eq(2).val();
-	 	var queryString = "&id="+$text+"&kind="+$kind+"&name="+$name
+	 	var queryString = "&id="+$id+"&kind="+$kind+"&name="+$name
 	 	+"&address="+$address+"&phone="+$phone+"&use=update&dummy="+new Date().getTime();
 	 	request = new XMLHttpRequest();
 		request.onreadystatechange = doReadyStateChange;

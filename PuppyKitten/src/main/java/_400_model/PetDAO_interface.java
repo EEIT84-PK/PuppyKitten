@@ -14,4 +14,8 @@ public interface PetDAO_interface {
 	public void delete(int PET_ID);
 	public void update(PetBean bean);
 	public void insert(PetImgBean bean);
+	public void insertRelation(PetRelationBean bean);
+	public List<PetBean> selectAll();	
+
+
 }

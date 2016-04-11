@@ -78,7 +78,6 @@ $(function(){
 			<li id="skip">skip</li>
 		</ul>
 	</div>
-
 	<c:import url="/import/footer.jsp"></c:import>
 </body>
 </html>

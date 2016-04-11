@@ -2,9 +2,9 @@ package _100_controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.util.Iterator;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,6 +61,7 @@ public class ArticleBodyServlet extends HttpServlet {
 			    return;
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

@@ -8,6 +8,7 @@ import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -44,12 +45,6 @@ public class UploadAction extends ActionSupport implements ServletRequestAware{
 	public void setImgFileName(String imgFileName) {
 		this.imgFileName = imgFileName;
 	}
-	public HttpServletRequest getReq() {
-		return req;
-	}
-	public void setReq(HttpServletRequest req) {
-		this.req = req;
-	}
 	public ArticleBean getBean() {
 		return bean;
 	}
@@ -61,6 +56,7 @@ public class UploadAction extends ActionSupport implements ServletRequestAware{
 		ArticleService service = new ArticleService();
 		HttpSession session = req.getSession();
 		bean.setART_MEM_ID(session.getAttribute("loginOK").toString());
+
 		String path=null;
 		if(img!=null){
 			ServletContext context = ServletActionContext.getServletContext();

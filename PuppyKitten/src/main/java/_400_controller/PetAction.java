@@ -107,14 +107,8 @@ public class PetAction extends ActionSupport {
 		}
 		if (PET_IMAGE == null) {
 			request.put("PET_IMAGE", "請上傳一張寵物照片");
-		}
-//		else{
-//			if(PET_IMAGEContentType.equals("image/png")||PET_IMAGEContentType.equals("image/gif")||PET_IMAGEContentType.equals("image/jpeg")||PET_IMAGEContentType.equals("image/pjpeg")){
-//								
-//			}else{
-//				request.put("PET_IMAGE", "只能上傳png,gif,jpeg,pjpeg等副檔的照片");
-//			}
-		
+
+		}		
 		if (petBean.getPET_BODY().trim().length() == 0 || petBean.getPET_BODY().trim().length() <= 50) {
 			request.put("PET_BODY", "請至少輸入50字介紹");
 		}else if (petBean.getPET_BODY().trim().length()>=150){

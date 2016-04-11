@@ -32,7 +32,7 @@ public class ArticleDAO implements ArticleDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from ArticleBean order by ART_HOT");
+			Query query = session.createQuery("from ArticleBean order by ART_HOT desc");
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -48,7 +48,7 @@ public class ArticleDAO implements ArticleDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from ArticleBean order by ART_TIME");
+			Query query = session.createQuery("from ArticleBean order by ART_TIME desc");
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -72,8 +72,7 @@ public class ArticleDAO implements ArticleDAO_interface {
 			throw ex;
 		}
 		return list;
-	}
-	
+	}	
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ArticleBean> selectSort() {

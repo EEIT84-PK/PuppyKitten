@@ -46,10 +46,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		if (password == null || password.trim().length() == 0) {
 			this.addFieldError("password", "密碼不可以空白");
 		}
-	}
-	
-
-	
+	}	
 
 	public String execute() throws Exception {
 		MemberBean bean = service.login(account, password);

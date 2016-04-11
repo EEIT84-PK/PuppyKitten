@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import _300_model.MapBean;
 import _300_model.MapService;
 
-@WebServlet("/map/mapActionBack.controller")
+@WebServlet("/map/mapBackAction.controller")
 public class MapServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

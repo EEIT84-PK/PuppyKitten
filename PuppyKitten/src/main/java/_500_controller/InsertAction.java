@@ -1,5 +1,4 @@
 package _500_controller;
-
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -181,6 +180,5 @@ public class InsertAction extends ActionSupport implements ServletRequestAware{
 	@Override
 	public void setServletRequest(HttpServletRequest req) {
 		this.req=req;
-		
 	}
 }

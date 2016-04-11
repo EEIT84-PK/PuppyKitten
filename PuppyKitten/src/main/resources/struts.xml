@@ -23,6 +23,7 @@
 		<action name="articleAction" class="_100_controller.ArticleAction">
 			<result name="success">/_100_article.jsp</result>
 		</action>
+
 		<action name="articleBackAction" class="_100_controller.ArticleBackAction">
 			<result name="success">/_100_article_back.jsp</result>
 		</action>
@@ -103,7 +104,27 @@
 			<result>{1}.jsp</result>
 		</action>
 	</package>
-
+	
+	<package name="petFriendshipPackage" namespace="/petFriendship" extends="struts-default">
+		<action name="petFriendshipAction" class="_400_controller.PetFriendshipAction">
+			<result name="success">/_400_friendship.jsp</result>
+			<result name="end">/_400_friendship_end.jsp</result>
+		</action>
+	</package>
+	
+	<package name="petLikePackage" namespace="/petLike" extends="struts-default">
+		<action name="PetLikeAction" class="_400_controller.PetLikeAction">
+			<result name="success">/_400_friendship.jsp</result>
+			<result name="end">/_400_friendship_end.jsp</result>
+		</action>
+	</package>
+	
+	<package name="petNotLikePackage" namespace="/petNotLike" extends="struts-default">
+		<action name="PetNotLikeAction" class="_400_controller.PetNotLikeAction">
+			<result name="success">/_400_friendship.jsp</result>
+			<result name="end">/_400_friendship_end.jsp</result>
+		</action>
+	</package>
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>
