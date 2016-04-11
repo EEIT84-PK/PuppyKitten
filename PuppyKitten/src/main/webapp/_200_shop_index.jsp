@@ -76,17 +76,7 @@
 	cursor: pointer;
 }
 </style>
-<script type="text/javascript">
-	$win.bind('scroll resize', function() {
-		var $this = $(this);
 
-		// 控制 #abgne_float_ad 的移動
-		$ad.stop().animate({
-			top : $this.scrollTop() + $this.height() - _height - _diffY,
-			left : $this.scrollLeft() + $this.width() - _width - _diffX
-		}, _moveSpeed);
-	}).scroll();
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>米沃貓窩 -購物商城</title>
 </head>

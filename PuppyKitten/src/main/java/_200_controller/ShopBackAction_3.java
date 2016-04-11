@@ -29,13 +29,7 @@ public class ShopBackAction_3 extends ActionSupport implements ServletRequestAwa
 	public String execute() {
 		ShopService service = new ShopService();
 		List<ShopBean> select_list = service.select(shopbean);
-		// if(select_list!=null){
-		System.out.println("123");
-		request.setAttribute("selectOK", "Select OK");
 		request.setAttribute("select_list", select_list);
 		return "success";
-		// }else{
-		// return "input";
-		// }
 	}
 }

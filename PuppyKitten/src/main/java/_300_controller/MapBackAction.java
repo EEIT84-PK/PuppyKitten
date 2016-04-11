@@ -28,7 +28,6 @@ public class MapBackAction extends ActionSupport implements ServletRequestAware 
 	}
 
 	public String execute() {
-		System.out.println(mapBean.getClass());
 		MapService service = new MapService();
 		List<MapBean> list = service.select(mapBean);
 		req.setAttribute("select", list);

@@ -4,8 +4,11 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
+<script src="<%=request.getContextPath()%>/jquery/jquery-2.2.2.min.js"></script>
+<script src="<%=request.getContextPath()%>/jquery/jquery-ui.min.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
-<c:import url="/import/head.jsp"></c:import>
+<%-- <c:import url="/import/head.jsp"></c:import> --%>
+
 <style type="text/css">
 .errorUpdate{
 color: red;
@@ -25,6 +28,8 @@ color: red;
 </style>
 <script type="text/javascript">
 $(function(){
+	$('#sel_1 :selected').text('汪星人');
+	
 	$('#price_5').hide();
 	$('#price_6').hide();
 	
@@ -48,7 +53,7 @@ $(function(){
 			}else{
 			if($('#val_3').val()=="買X送X"){
 			$('#price_6').show();
-			$('#price_5').hide();
+			$('#price_5').show();
 			}
 		}
 		
@@ -77,9 +82,8 @@ $(function(){
 <title>米沃貓窩 -後台系統</title>
 </head>
 <body>
-	<c:import url="/import/header.jsp"></c:import>
+<%-- 	<c:import url="/import/header.jsp"></c:import> --%>
 	<section>
-
 		<article style="width: 1500px; background-color: white;">
 		<h2>商品維護</h2><h2 style="color: red">${updateOK}</h2>
 			<form action="<%=request.getContextPath()%>/shop/shopBackAction_2" method="get" id="shop_form">
@@ -100,15 +104,15 @@ $(function(){
 					<option>生活用品</option>
 					<option>衣著打扮</option>
 					</select><span class="errorUpdate">${errors.errorUpdateKind[0]}</span><br><br><input id="val_2" type="text" name="shopbean.PRO_KIND"> 
-				商品名稱：<input type="text" name="shopbean.PRO_NAME"><span class="errorUpdate">${errors.errorUpdateName[0]}</span><br><br> 
-				優惠方案：<select id="sel_3">
+				商品名稱：<input type="text" name="shopbean.PRO_NAME" value="${param.Product_NAME}"><span class="errorUpdate">${errors.errorUpdateName[0]}</span><br><br> 
+				優惠方案：<select id="sel_3" >
 					<option>請選擇</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
 					</select><span class="errorUpdate">${errors.errorUpdateProject[0]}</span><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJCET"> 
 				<span id="price_5">
-				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
-				</span>		
+				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
+				<br><br></span>	
 				<span id="price_6">
 				買：<input type="text" name="shopbean.PRO_PRICE" id="price_2"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
 				送：<input type="text" name="shopbean.PRO_PRICE" id="price_3"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
@@ -117,7 +121,7 @@ $(function(){
 				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorUpdate">${errors.errorUpdateStock[0]}</span><br><br> 
 				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><span class="errorUpdate">${errors.errorUpdateImage[0]}</span><br><br> 
 				商品介紹：<br>
-				<textarea name="shopbean.PRO_BODY" id="content" rows="10" cols="80"></textarea>
+				<textarea name="shopbean.PRO_BODY" id="content" rows="10" cols="80" ></textarea>
 				<script>
 					CKEDITOR.replace('shopbean.PRO_BODY', {});
 				</script>
@@ -132,6 +136,6 @@ $(function(){
 		</article>
 
 	</section>
-	<c:import url="/import/footer.jsp"></c:import>
+<%-- 	<c:import url="/import/footer.jsp"></c:import> --%>
 </body>
 </html>

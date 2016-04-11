@@ -4,8 +4,10 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
+<script src="<%=request.getContextPath()%>/jquery/jquery-2.2.2.min.js"></script>
+<script src="<%=request.getContextPath()%>/jquery/jquery-ui.min.js"></script>
+<%-- <c:import url="/import/head.jsp"></c:import> --%>
 <script src="ckeditor/ckeditor.js"></script>
-<c:import url="/import/head.jsp"></c:import>
 <style type="text/css">
 
 .errorInsert{
@@ -34,7 +36,7 @@ color: red;
 							$('#val_1').hide();
 							$('#sel_1').change(function(){
 								$('#val_1').val($(this).val());
-							});
+							}); 
 							
 							
 							$('#val_2').hide();
@@ -75,7 +77,7 @@ color: red;
 <title>米沃貓窩 -後台系統</title>
 </head>
 <body>
-	<c:import url="/import/header.jsp"></c:import>
+<%-- 	<c:import url="/import/header.jsp"></c:import> --%>
 	<section>
 		<article style="width: 1500px; background-color: white;">
 			<h2>新品上市</h2><h2 style="color: red">${insertOK}</h2>
@@ -128,10 +130,9 @@ color: red;
 		</article>
 
 	</section>
-
-	<c:import url="/import/footer.jsp"></c:import>
+		<%-- 	<c:import url="/import/footer.jsp"></c:import> --%>
 </body>
-	<script>
+	<script>	
 		CKEDITOR.replace('shopbean.PRO_BODY', {});
 	</script>
 </html>
