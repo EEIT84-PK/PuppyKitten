@@ -7,9 +7,12 @@
 <html>
 <head>
 <c:import url="/import/head.jsp"></c:import>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>米沃貓窩 - 討論區</title>
 <script src="<%=request.getContextPath()%>/javascript/article.js"></script>
+<script type="text/javascript">
+
+</script>
 <style>
 #thead{
 width:1056px;
@@ -94,31 +97,31 @@ list-style: none;
 					</table>
 
 
-<div id="msghide">
-<input type="button" value="留言" style="float: right;">
-</div>
-<div id="msgdiv">
+
+<div id="msgdiv" style="width:400px;">
 <hr>
-<s:form action="/article/uploadAction" method="Post" enctype="multipart/form-data" theme="simple">
+
+<div id="msg"></div>
+
 <c:choose>
 <c:when test="${session.loginOK!=null}">
 </c:when>
 <c:otherwise>
-姓名:<s:textfield name="bean.MSG_MEM_ID" value="匿名"></s:textfield><br>
+姓名:<br><s:textfield id="msgname" value="匿名"></s:textfield><br>
 </c:otherwise>
 </c:choose>
-留言內容:<br><s:textarea name="bean.MSG_BODY" cols="50" rows="5" value=""></s:textarea><br>
+留言內容:<br><s:textarea id="msgarea" cols="55" rows="5" value=""></s:textarea><br>
 
-<s:submit value="送出" />
-<s:fielderror cssStyle="color:red;list-style:none"></s:fielderror>
-</s:form>
+<input id="msgsubmit" type="button" style="float:right" value="送出" />
+
+
 
 </div>
 </div>
 </article>
 <aside>
-<h1 style="font-size: 30px;text-align: center;background:rgba(255, 255, 215, 0.4);">熱門文章</h1>
-<table><c:forEach var="sort" items="${sort}" end="5"><tr class="trcolor">
+<h1 style="font-size: 20px;text-align: center;background:rgba(255, 255, 215, 0.4);">熱門文章</h1>
+<table style="font-size: 20px;"><c:forEach var="sort" items="${sort}" end="5"><tr class="trcolor">
 									<td style="width: 70px;">${sort.ART_KIND}</td>
 									<td style="width: 300px;">${sort.ART_TITLE}</td>
 									<td style="width: 30px;text-align: right;">${sort.ART_HOT}</td>

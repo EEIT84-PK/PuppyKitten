@@ -16,12 +16,15 @@
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		
-		
+
+
 		<default-interceptor-ref name="atguigustack"></default-interceptor-ref>
 
 		<action name="articleAction" class="_100_controller.ArticleAction">
 			<result name="success">/_100_article.jsp</result>
+		</action>
+		<action name="articleBackAction" class="_100_controller.ArticleBackAction">
+			<result name="success">/_100_article_back.jsp</result>
 		</action>
 		<action name="uploadAction" class="_100_controller.UploadAction">
 			<result name="success">/_100_insert.jsp</result>
@@ -30,29 +33,36 @@
 	</package>
 
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
+	
 		<action name="shopBackAction_1" class="_200_controller.ShopBackAction_1">
 			<result name="success">/_200_shop_back_insert.jsp</result>
 			<result name="input">/_200_shop_back_insert.jsp</result>
-			
 		</action>
+		
 		<action name="shopBackAction_2" class="_200_controller.ShopBackAction_2">
 			<result name="success">/_200_shop_back_update_2.jsp</result>
 			<result name="input">/_200_shop_back_update_2.jsp</result>
 		</action>
+
+		<action name="shopBackAction_3" class="_200_controller.ShopBackAction_3">
+			<result name="success">/_200_shop_back_update_1.jsp</result>
+			<result name="input">/_200_shop_back_update_1.jsp</result>
+		</action>
+
 	</package>
 
 
 	<package name="mapPackage" namespace="/map" extends="struts-default">
 		<action name="mapAction" class="_300_controller.MapAction">
 			<result name="success">/_300_google.jsp</result>
-			
+
 		</action>
-		<action name="mapActionBack" class="_300_controller.MapActionBack">
+		<action name="mapBackAction" class="_300_controller.MapBackAction">
 			<result name="success">/_300_google_back.jsp</result>
 		</action>
 	</package>
-	
-	
+
+
 	<package name="petPackage" namespace="/pet" extends="struts-default">
 		<action name="petAction" class="_400_controller.PetAction">
 			<interceptor-ref name="fileUpload">
@@ -72,8 +82,9 @@
 			<result name="success">/_400_select.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petInterceptorPackage" namespace="/petInterceptor" extends="struts-default">
+
+	<package name="petInterceptorPackage" namespace="/petInterceptor"
+		extends="struts-default">
 		<interceptors>
 			<interceptor name="CheckInsert" class="_400_interceptor.PetInterceptor" />
 			<interceptor-stack name="myInsertDefault">
@@ -92,7 +103,7 @@
 			<result>{1}.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>

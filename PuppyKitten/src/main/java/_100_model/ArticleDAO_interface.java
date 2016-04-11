@@ -14,5 +14,8 @@ public interface ArticleDAO_interface {
 	public void update(ArticleBean bean);
 	public void delete(int ART_ID);
 	public List<ArticleBean> selectSort();
+	public List<ArticleBean> selectAllHot();
+	public List<ArticleBean> selectAllTime();
+	public List<ArticleBean> selectAllKind();
 
 }

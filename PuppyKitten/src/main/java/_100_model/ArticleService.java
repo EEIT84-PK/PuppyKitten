@@ -13,6 +13,18 @@ public class ArticleService {
 		List<ArticleBean> list = dao.selectAll();
 		return list;
 	}
+	public List<ArticleBean> selectAllTime() {
+		List<ArticleBean> list = dao.selectAllTime();
+		return list;
+	}
+	public List<ArticleBean> selectAllHot() {
+		List<ArticleBean> list = dao.selectAllHot();
+		return list;
+	}
+	public List<ArticleBean> selectAllKind() {
+		List<ArticleBean> list = dao.selectAllKind();
+		return list;
+	}
 	public List<ArticleBean> selectSort() {
 		List<ArticleBean> list = dao.selectSort();
 		return list;

@@ -11,7 +11,7 @@
 <script src="<%=request.getContextPath()%>/javascript/googlemap.js"></script>
 
 <style>
-#map {height: 40%;width: 40%;position: absolute; float: right; display:inline;bottom: 200px;left:900px}
+#map {height: 40%;width: 40%;position: absolute; float: right; display:inline;bottom: 200px;left:1000px}
 .trcolor {background: white;}
 </style>
 </head>
@@ -53,11 +53,11 @@
 								<th>地址</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody style="font-size: 20px;">
 							<c:forEach var="map" items="${select}">
 								<tr class="trcolor">
 									<td>${map.MAP_ID}</td>
-									<td style="width: 80px;">${map.MAP_KIND}</td>
+									<td style="width: 100px;">${map.MAP_KIND}</td>
 									<td style="width: 200px;">${map.MAP_NAME}</td>
 									<td>${map.MAP_ADD}</td>
 								</tr>
