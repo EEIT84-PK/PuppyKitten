@@ -55,6 +55,21 @@ public class PetDAO implements PetDAO_interface{
 		return list;
 	}
 	
+	@Override
+	public List<PetRelationBean> selectRelationAll() {
+		List<PetRelationBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from PetRelationBean");			
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
 	
 	public PetImgBean selectId2(int PET_ID){
 		PetImgBean bean = null;
@@ -98,6 +113,8 @@ public class PetDAO implements PetDAO_interface{
 		}
 		return bean;			
 	}
+	
+	
 	
 	@Override
 	public void insert(PetBean bean) {
