@@ -13,9 +13,6 @@ $(document).ready(function(){
 		request.send();
 		
 	});
-	
-
-	
 	function doReadyStateChange() {
 		if(request.readyState==4) {
 			if(request.status==200) {
@@ -26,4 +23,8 @@ $(document).ready(function(){
 		}
 	}
 
+	
+	$('.bodyhide').click(function(){
+		$(this).parent().next().stop().fadeToggle();
+	});
 });
