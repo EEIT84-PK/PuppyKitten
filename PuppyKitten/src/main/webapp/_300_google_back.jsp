@@ -17,7 +17,6 @@
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/map/mapBackAction.action" method="get">
-	<input id="inputforhide" type="text" name="mapBean.MAP_ID"  />
 	<input type="submit" value="查詢" style="float:left;height:25px;">
 </form>
 

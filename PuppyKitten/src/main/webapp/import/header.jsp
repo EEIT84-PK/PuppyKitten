@@ -46,7 +46,7 @@
 						<li><a href="">旅遊介紹</a></li>
 						<li><a href="<%=request.getContextPath()%>/_300_google.jsp">店家位置</a></li>
 						<li><a
-							href='<c:url value="/map/mapBackAction.action" ><c:param name="mapBean.MAP_ID"></c:param></c:url>'>後台系統</a></li>
+							href='<c:url value="/map/mapBackAction.action" ></c:url>'>後台系統</a></li>
 					</ul>
 				</div>
 			</div>
