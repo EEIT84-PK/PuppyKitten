@@ -33,12 +33,12 @@ public class PetNotLikeAction extends ActionSupport implements ServletRequestAwa
 
 	public String execute() {
 		PetService petService = new PetService();
-		String numberStr = (String) req.getSession().getAttribute("PetNumber");															// 如果一開始是自己傳過來就是1
+		String numberStr = (String) req.getSession().getAttribute("PetNumber");		
 		req.getSession().removeAttribute("PetNumber");// 為了避免之後要再傳值有衝突
 														// 所以把原本的number從session移除
 		int number = Integer.parseInt(numberStr); // 將String轉成Integer(此number為正在感興趣的對象編號)
-		List<PetBean> petBean = petService.selectAll();
-		
+		List<PetBean> petBean = petService.selectAll();		
+				
 		PetRelationBean Rbean = new PetRelationBean();
 		Rbean.setINT_MENID_MYSELF(req.getSession().getAttribute("memberID").toString());// 登入者的會員編號
 		Rbean.setINT_MENID_LIKE(petBean.get(number).getPET_OWN_ID().toString());// 正在感興趣對象的主人編號
@@ -56,7 +56,7 @@ public class PetNotLikeAction extends ActionSupport implements ServletRequestAwa
 					return "end";
 				}
 			}			
-		}			
+		}				
 		
 		int check2=number+1;
 		if(check2==petBean.size()){
@@ -75,7 +75,12 @@ public class PetNotLikeAction extends ActionSupport implements ServletRequestAwa
 		}
 		
 		if(petBean.get(number).getPET_OWN_ID().equals(req.getSession().getAttribute("memberID"))){
-			number++;
+			number++;			
+			if(number==petBean.size()){
+				req.getSession().removeAttribute("end");
+				req.getSession().setAttribute("end", "已經沒有可感興趣的對象");
+				return "end";
+			}
 		}
 		
 		if (petBean.get(number).getPET_SORT_ID().startsWith("41")) {
