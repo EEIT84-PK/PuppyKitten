@@ -28,7 +28,10 @@ color: red;
 </style>
 <script type="text/javascript">
 $(function(){
-	$('#sel_1 :selected').text('汪星人');
+	$('#sel_1 :selected').text('${param.Product_ANIMAL}');
+	$('#sel_2 :selected').text('${param.Product_KIND}');
+	$('#sel_3 :selected').text('${param.Product_PROJECT}');
+
 	
 	$('#price_5').hide();
 	$('#price_6').hide();
@@ -109,7 +112,7 @@ $(function(){
 					<option>請選擇</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
-					</select><span class="errorUpdate">${errors.errorUpdateProject[0]}</span><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJCET"> 
+					</select><span class="errorUpdate">${errors.errorUpdateProject[0]}</span><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJECT"> 
 				<span id="price_5">
 				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1" value="${param.Product_PRICE}"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
 				<br><br></span>	

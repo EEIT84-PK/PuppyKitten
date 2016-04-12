@@ -62,10 +62,10 @@
 									
 									<td><a href='<c:url value="/_200_shop_back_update_2.jsp">
 									<c:param name="Product_ID">${sel.PRO_ID}</c:param>
-<%-- 									<c:param name="Product_ANIMAL">${sel.PRO_ANIMAL}</c:param> --%>
-<%-- 									<c:param name="Product_KIND">${sel.PRO_KIND}</c:param> --%>
+									<c:param name="Product_ANIMAL">${sel.PRO_ANIMAL}</c:param>
+									<c:param name="Product_KIND">${sel.PRO_KIND}</c:param>
 									<c:param name="Product_NAME">${sel.PRO_NAME}</c:param>
-<%-- 									<c:param name="Product_PROJECT">${sel.PRO_PROJECT}</c:param> --%>
+									<c:param name="Product_PROJECT">${sel.PRO_PROJECT}</c:param>
 									<c:param name="Product_PRICE">${sel.PRO_PRICE}</c:param>
 									<c:param name="Product_BUY1">${sel.PRO_BUY1}</c:param>
 									<c:param name="Product_BUY2">${sel.PRO_BUY2}</c:param>

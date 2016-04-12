@@ -5,7 +5,7 @@ public class ShopBean {
 	private String PRO_ANIMAL;
 	private String PRO_KIND;
 	private String PRO_NAME;
-	private String PRO_PROJCET;
+	private String PRO_PROJECT;
 	private String PRO_WEIGHT;
 	private Integer PRO_PRICE;
 	private Integer PRO_BUY1;
@@ -62,12 +62,12 @@ public class ShopBean {
 		PRO_NAME = pRO_NAME;
 	}
 
-	public String getPRO_PROJCET() {
-		return PRO_PROJCET;
+	public String getPRO_PROJECT() {
+		return PRO_PROJECT;
 	}
 
-	public void setPRO_PROJCET(String pRO_PROJCET) {
-		PRO_PROJCET = pRO_PROJCET;
+	public void setPRO_PROJECT(String pRO_PROJECT) {
+		PRO_PROJECT = pRO_PROJECT;
 	}
 
 	public String getPRO_WEIGHT() {

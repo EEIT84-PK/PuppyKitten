@@ -111,7 +111,7 @@ color: red;
 					<option>請選擇</option>
 					<option>指定價格</option>
 					<option>買X送X</option>
-				</select><span class="errorInsert">${errors.errorInsertProject[0]}</span><br> <br><input type="text" id="val_3" name="shopbean.PRO_PROJCET">
+				</select><span class="errorInsert">${errors.errorInsertProject[0]}</span><br> <br><input type="text" id="val_3" name="shopbean.PRO_PROJECT">
 				<span id="price_5">
 				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
 				</span>		

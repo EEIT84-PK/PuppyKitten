@@ -89,7 +89,7 @@ public class ShopBackAction_2 extends ActionSupport implements ServletRequestAwa
 		if(shopbean.getPRO_NAME()==null || shopbean.getPRO_NAME().trim().length()==0){
 			this.addFieldError("errorUpdateName", "請輸入商品名稱");
 		}
-		if(shopbean.getPRO_PROJCET()==null || shopbean.getPRO_PROJCET().trim().length()==0){
+		if(shopbean.getPRO_PROJECT()==null || shopbean.getPRO_PROJECT().trim().length()==0){
 			addFieldError("errorUpdateProject", "請選擇優惠方案");
 		}
 		if(shopbean.getPRO_PRICE()==null ){
