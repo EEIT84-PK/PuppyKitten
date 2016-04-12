@@ -48,11 +48,16 @@ public class MemberDAO implements MemberDAO_interface {
 		session.beginTransaction();
 		Query query = session.createQuery("from MemberBean where MEM_ACCOUNT=:account");
 
-		if (account != null && !account.isEmpty()) {
-			query.setParameter("account", account);
-			List<MemberBean> list = query.list();
-			memberBean = list.get(0);
+		try {
+			if (account != null && !account.isEmpty()) {
+				query.setParameter("account", account);
+				List<MemberBean> list = query.list();
+				memberBean = list.get(0);
 
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return memberBean;
