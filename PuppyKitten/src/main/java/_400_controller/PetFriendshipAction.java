@@ -36,7 +36,6 @@ public class PetFriendshipAction extends ActionSupport implements ServletRequest
 		List<PetBean> petBean = petService.selectAll();// 先將所有寵物資訊抓出來放到petBean內	
 		List<PetRelationBean>petRBean=petService.selectRelationAll();		
 		HttpSession session=req.getSession();
-		
 		int number = 0;// 設定初始值為抓第一筆資料
 		int number2=number+1;//用來跟lise的size做比對
 		int check=0;
@@ -80,9 +79,10 @@ public class PetFriendshipAction extends ActionSupport implements ServletRequest
 						}					
 					}
 				}				
-			}						
-		}
-		
+			}
+				
+		}		
+
 		if(number==petBean.size()){
 			session.setAttribute("end", "已經沒有可感興趣的對象");
 			return "end";
@@ -117,8 +117,7 @@ public class PetFriendshipAction extends ActionSupport implements ServletRequest
 		session.setAttribute("petBean", petBean.get(number));
 		PetImgBean Imgbean = petService.selectId2(petBean.get(number).getPET_ID());				
 		session.setAttribute("petImg", Imgbean.getPET_IMAGE());				
-		session.setAttribute("PetNumber", ((Integer)number).toString());
-		
+		session.setAttribute("PetNumber", ((Integer)number).toString());		
 		return "success";
 		
 	}

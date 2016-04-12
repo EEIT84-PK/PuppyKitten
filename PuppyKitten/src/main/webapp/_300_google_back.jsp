@@ -17,7 +17,6 @@
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/map/mapBackAction.action" method="get">
-	<input id="inputforhide" type="text" name="mapBean.MAP_ID"  />
 	<input type="submit" value="查詢" style="float:left;height:25px;">
 </form>
 
@@ -48,7 +47,7 @@
 		<td style="width:150px;"><input type="text" value="${map.MAP_NAME}" style="border-style: none;"></td>
 		<td style="width:250px;"><input type="text" value="${map.MAP_ADD}" style="border-style:none;width:250px;"></td>
 		<td style="width:100px;"><input type="text" value="${map.MAP_PHONE}" style="border-style:none;width:100px;"></td>
-		<td style="width:75px;"><input style="display:inline" type="button" class="update" value="修改" /><input style="display:inline" type="button" class="delete" value="移除" /></td>		
+		<td style="width:78px;"><input style="display:inline" type="button" class="update" value="修改" /><input style="display:inline" type="button" class="delete" value="移除" /></td>		
 	</tr>
 	
 	</c:forEach>

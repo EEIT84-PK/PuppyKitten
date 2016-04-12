@@ -11,19 +11,10 @@ public class MapService {
 		dao = new MapDAO();
 	}
 
-	public List<MapBean> select(MapBean bean){
+	public List<MapBean> selectAll(){
 		
-		List<MapBean> result = null;
-		if(bean.getMAP_ID()==null) {
-			result = dao.selectAll(); 
-			
-		} else {
-			MapBean temp = dao.selectId(bean.getMAP_ID());
-			if(temp!=null) {
-				result = new ArrayList<MapBean>();
-				result.add(temp);
-				}
-		}
+		List<MapBean> result = dao.selectAll(); 	
+	
 		return result;
 	}
 	
