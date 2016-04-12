@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UpdateAction extends ActionSupport implements SessionAware {
 	private MemberBean member;
 	private String password;
+	
 
 	public String getPassword() {
 		return password;
@@ -110,6 +111,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 	public String execute() throws Exception {
 		MemberService service = new MemberService();
 		service.insert(member);
+		
 		return password;
 
 	}

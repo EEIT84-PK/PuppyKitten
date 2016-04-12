@@ -64,8 +64,9 @@
 			<result name="success">/_400_select.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petInterceptorPackage" namespace="/petInterceptor" extends="struts-default">
+
+	<package name="petInterceptorPackage" namespace="/petInterceptor"
+		extends="struts-default">
 		<interceptors>
 			<interceptor name="CheckInsert" class="_400_interceptor.PetInterceptor" />
 			<interceptor-stack name="myInsertDefault">
@@ -84,34 +85,37 @@
 			<result>{1}.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petFriendshipPackage" namespace="/petFriendship" extends="struts-default">
+
+	<package name="petFriendshipPackage" namespace="/petFriendship"
+		extends="struts-default">
 		<action name="petFriendshipAction" class="_400_controller.PetFriendshipAction">
 			<result name="success">/_400_friendship.jsp</result>
 			<result name="end">/_400_friendship_end.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="petLikePackage" namespace="/petLike" extends="struts-default">
 		<action name="PetLikeAction" class="_400_controller.PetLikeAction">
 			<result name="success">/_400_friendship.jsp</result>
 			<result name="end">/_400_friendship_end.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petNotLikePackage" namespace="/petNotLike" extends="struts-default">
+
+	<package name="petNotLikePackage" namespace="/petNotLike"
+		extends="struts-default">
 		<action name="PetNotLikeAction" class="_400_controller.PetNotLikeAction">
 			<result name="success">/_400_friendship.jsp</result>
 			<result name="end">/_400_friendship_end.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petRelationPackage" namespace="/petRelation" extends="struts-default">
+
+	<package name="petRelationPackage" namespace="/petRelation"
+		extends="struts-default">
 		<action name="petRelationaAction" class="_400_controller.PetRelationAction">
 			<result name="success">/_400_relation.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>
@@ -124,6 +128,22 @@
 			<result name="success">/index.jsp</result>
 			<result name="input">/_500_insert.jsp</result>
 		</action>
-
 	</package>
+	
+	<package name="memberPackage" namespace="/member" extends="/struts-default">
+		<interceptors>
+			<interceptor class="_500_interceptor.AuthenticationInterceptor" name="memberaction" />
+		</interceptors>
+		<global-results>
+			<result name="login">/_500_login.jsp</result>
+		</global-results>
+		<action name="selectmember" class="_500_controller.SelectAction">
+		    <interceptor-ref name="memberaction"></interceptor-ref>
+			<result>/member/_500_select.jsp</result>
+		</action>
+		<action name="*">
+		<result>/member/{1}.jsp</result>
+		</action>
+	</package>
+
 </struts>

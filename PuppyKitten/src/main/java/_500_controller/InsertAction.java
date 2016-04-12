@@ -1,6 +1,8 @@
 package _500_controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,7 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 	private String checkcode;
 	private String use;
 	private HttpServletRequest req;
+	private String date;
 
 	public String getAccount() {
 		return account;
@@ -72,8 +75,17 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 		this.use = use;
 	}
 
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	// 驗證
 	public void validate() {
+		
 		// 帳號驗證
 		// 帳號不能重複
 		MemberService service=new MemberService();
@@ -123,35 +135,7 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 		if (bean.getMEM_IDCARD() == null || bean.getMEM_IDCARD().trim().length() == 0) {
 			this.addFieldError("MEM_IDCARD", "請輸入身分證字號");
 		}
-//		
-//		String newId = bean.getMEM_IDCARD().toUpperCase();
-//
-//		// 身分證第一碼代表數值
-//
-//		int[] headNum = new int[] { 1, 10, 19, 28, 37, 46, 55, 64, 39, 73, 82, 2, 11, 20, 48, 29, 38, 47, 56, 65, 74,
-//				83, 21, 3, 12, 30 };
-//
-//		char[] headCharUpper = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-//				'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-//		int index = Arrays.binarySearch(headCharUpper, newId.charAt(0));
-//		int base = 8;
-//		int total = 0;
-//		for (int i = 1; i < 10; i++) {
-//			int tmp = Integer.parseInt(Character.toString(newId.charAt(i))) * base;
-//			total += tmp;
-//			base--;
-//		}
-//
-//		total += headNum[index];
-//		int remain = total % 10;
-//		int checkNum = (10 - remain) % 10;
-//		if (Integer.parseInt(Character.toString(newId.charAt(9))) != checkNum) {
-//		this.addFieldError("MEM_IDCARD()", "身分證格是錯誤");
-//		}else{
-//
-//		this.addFieldError("MEM_IDCARD()", "身分證可以使用");
-//
-//	}
+
 
 	// e-mail驗證
 	if(bean.getMEM_EMAIL()==null||bean.getMEM_EMAIL().trim().length()==0)
@@ -165,6 +149,10 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 	{
 		this.addFieldError("MEM_BIRTHDAY", "請輸入生日");
 	}
+	else{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		setDate(sdf.format(bean.getMEM_BIRTHDAY()));
+	}
 	// 地址驗證
 	if(bean.getMEM_ADD()==null||bean.getMEM_ADD().trim().length()==0)
 
@@ -176,10 +164,10 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 
 	{
 		char charadd = bean.getMEM_ADD().charAt(k);
-		if ((int) charadd >= 19968 && (int) charadd <= 40623) {
+		if ((int) charadd >= 19968 && (int) charadd <= 40623||charadd >= 48 && charadd <= 57) {
 
 		} else {
-			this.addFieldError("MEM_ADD", "請輸入中文");
+			this.addFieldError("MEM_ADD", "請輸入中文,數字");
 
 		}
 	}
