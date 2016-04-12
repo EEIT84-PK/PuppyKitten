@@ -21,9 +21,7 @@
 			<h1>寵物聯誼(配對系統)</h1>
 			<font color="red"><b>${end}<br></b></font>								
 			<a href='<c:url value="/petRelation/petRelationaAction.action" ></c:url>'>交友中心</a>						
-		</article>
-		<aside>			
-		</aside>
+		</article>		
 	</section>
 
 	<c:import url="/import/footer.jsp"></c:import>

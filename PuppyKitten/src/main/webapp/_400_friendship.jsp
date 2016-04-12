@@ -63,9 +63,7 @@
 					<td>${bean.PET_BODY}</td>
 				</tr>
 			</table>			
-		</article>
-		<aside>			
-		</aside>
+		</article>		
 	</section>
 
 	<c:import url="/import/footer.jsp"></c:import>
