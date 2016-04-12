@@ -87,7 +87,7 @@ $(function(){
 		<article style="width: 1500px; background-color: white;">
 		<h2>商品維護</h2><h2 style="color: red">${updateOK}</h2>
 			<form action="<%=request.getContextPath()%>/shop/shopBackAction_2" method="get" id="shop_form">
-				商品編號：<input type="text" name="shopbean.PRO_ID" id="update_number"><br><br> 
+				商品編號：<input type="text" name="shopbean.PRO_ID" id="update_number" value="${param.Product_ID }"><br><br> 
 				商品類型：<select id="sel_1">
 					<option>請選擇</option>
 					<option>汪星人</option>
@@ -111,14 +111,14 @@ $(function(){
 					<option>買X送X</option>
 					</select><span class="errorUpdate">${errors.errorUpdateProject[0]}</span><br><br><input id="val_3" type="text" name="shopbean.PRO_PROJCET"> 
 				<span id="price_5">
-				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
+				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1" value="${param.Product_PRICE}"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
 				<br><br></span>	
 				<span id="price_6">
-				買：<input type="text" name="shopbean.PRO_PRICE" id="price_2"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
-				送：<input type="text" name="shopbean.PRO_PRICE" id="price_3"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
+				買：<input type="text" name="shopbean.PRO_BUY1" id="price_2" value="${param.Product_BUY1}"><span class="errorInsert">${errors.errorInsert_Buy1[0]}</span>
+				送：<input type="text" name="shopbean.PRO_BUY2" id="price_3" value="${param.Product_BUY2}"><span class="errorInsert">${errors.errorInsert_Buy2[0]}</span><br><br>
 				</span>	
-				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 	
-				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorUpdate">${errors.errorUpdateStock[0]}</span><br><br> 
+				商品重量：<input type="text" name="shopbean.PRO_WEIGHT" value="${param.Product_WEIGHT }"><br><br> 	
+				庫存數量：<input type="text" name="shopbean.PRO_STOCK" value="${param.Product_STOCK }"><span class="errorUpdate">${errors.errorUpdateStock[0]}</span><br><br> 
 				商品照片：<input type="file" name="shopbean.PRO_IMAGE"><span class="errorUpdate">${errors.errorUpdateImage[0]}</span><br><br> 
 				商品介紹：<br>
 				<textarea name="shopbean.PRO_BODY" id="content" rows="10" cols="80" ></textarea>

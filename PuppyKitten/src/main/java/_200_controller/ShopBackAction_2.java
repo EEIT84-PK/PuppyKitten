@@ -3,6 +3,7 @@ package _200_controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 
@@ -105,8 +106,12 @@ public class ShopBackAction_2 extends ActionSupport implements ServletRequestAwa
 	public String execute() {
 		ShopService service = new ShopService();
 		ShopBean bean =service.update(shopbean);
+		HttpSession session = request.getSession();
+//		if(session!=null){
+//			request.getSession().removeAttribute("updateOK");
+//		}
 		if(bean!=null){
-			request.setAttribute("updateOK", "Update OK");
+			request.getSession().setAttribute("updateOK", "Update OK");
 			return "success";
 		}else{
 			return "input";

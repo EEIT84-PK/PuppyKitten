@@ -3,6 +3,7 @@ package _200_controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 
@@ -17,8 +18,6 @@ public class ShopBackAction_1 extends ActionSupport implements ServletRequestAwa
 	private HttpServletRequest request;
 	private ShopBean shopbean;
 	private Map<String ,Object> session;
-	private String account;
-	private String password;
 
 	public Map<String, Object> getSession() {
 		return session;
@@ -26,22 +25,6 @@ public class ShopBackAction_1 extends ActionSupport implements ServletRequestAwa
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public HttpServletRequest getRequest() {
@@ -84,7 +67,13 @@ public class ShopBackAction_1 extends ActionSupport implements ServletRequestAwa
 			addFieldError("errorInsertProject", "請選擇優惠方案");
 		}
 		if(shopbean.getPRO_PRICE()==null ){
-			this.addFieldError("errorInsertPrice", "請輸入販售價格");
+			this.addFieldError("errorInsertPrice", "請輸入指定價格");
+		}
+		if(shopbean.getPRO_BUY1()==null ){
+			this.addFieldError("errorInsert_Buy1", "請輸入指定數量");
+		}
+		if(shopbean.getPRO_BUY2()==null ){
+			this.addFieldError("errorInsert_Buy2", "請輸入贈送數量");
 		}
 		if(shopbean.getPRO_STOCK()==null ){
 			this.addFieldError("errorInsertStock", "請輸入庫存數量");			
@@ -95,12 +84,14 @@ public class ShopBackAction_1 extends ActionSupport implements ServletRequestAwa
 	}
 
 	public String execute() {
-		System.out.println(shopbean.getPRO_KIND());
 		ShopService service = new ShopService();
 		ShopBean bean =service.inesrt(shopbean);
-		System.out.println("123");
+		HttpSession session=request.getSession();
+//		if(session!=null){
+//			request.getSession().removeAttribute("insertOK");
+//		}
 		if(bean!=null){
-			request.setAttribute("insertOK", "Insert OK");
+			request.getSession().setAttribute("insertOK", "Insert OK");
 			return "success";	
 		}else{
 			return "input";

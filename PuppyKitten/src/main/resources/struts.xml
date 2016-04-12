@@ -42,7 +42,7 @@
 		
 		<action name="shopBackAction_2" class="_200_controller.ShopBackAction_2">
 			<result name="success">/_200_shop_back_update_2.jsp</result>
-			<result name="input">/_200_shop_back_update_2.jsp</result>
+			<result name="input">/_200_shop_back_update_1.jsp</result>
 		</action>
 
 		<action name="shopBackAction_3" class="_200_controller.ShopBackAction_3">

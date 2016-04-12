@@ -8,9 +8,27 @@ public class ShopBean {
 	private String PRO_PROJCET;
 	private String PRO_WEIGHT;
 	private Integer PRO_PRICE;
+	private Integer PRO_BUY1;
+	private Integer PRO_BUY2;
 	private Integer PRO_STOCK;
 	private String PRO_IMAGE;
 	private String PRO_BODY;
+
+	public Integer getPRO_BUY1() {
+		return PRO_BUY1;
+	}
+
+	public void setPRO_BUY1(Integer pRO_BUY1) {
+		PRO_BUY1 = pRO_BUY1;
+	}
+
+	public Integer getPRO_BUY2() {
+		return PRO_BUY2;
+	}
+
+	public void setPRO_BUY2(Integer pRO_BUY2) {
+		PRO_BUY2 = pRO_BUY2;
+	}
 
 	public Integer getPRO_ID() {
 		return PRO_ID;

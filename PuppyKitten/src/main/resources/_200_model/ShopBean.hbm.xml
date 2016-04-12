@@ -13,6 +13,8 @@
 		<property name="PRO_PROJCET" column="PRO_PROJCET"></property>
 		<property name="PRO_WEIGHT" column="PRO_WEIGHT"></property>
 		<property name="PRO_PRICE" column="PRO_PRICE"></property>
+		<property name="PRO_BUY1" column="PRO_BUY1"></property>
+		<property name="PRO_BUY2" column="PRO_BUY2"></property>
 		<property name="PRO_STOCK" column="PRO_STOCK"></property>
 		<property name="PRO_IMAGE" column="PRO_IMAGE"></property>
 		<property name="PRO_BODY" column="PRO_BODY"></property>

@@ -30,6 +30,7 @@ color: red;
 					<script>
 					//1.找到位置     2.先取值     3.放入指定位置     4.不必要顯示區域隱藏
 						$(function(){
+// 							$('#insert_1').hide();
 							$('#price_5').hide();
 							$('#price_6').hide();
 							
@@ -54,7 +55,7 @@ color: red;
 								}else{
 								if($('#val_3').val()=="買X送X"){
 								$('#price_6').show();
-								$('#price_5').hide();
+								$('#price_5').show();
 								}
 							}
 							})
@@ -80,7 +81,7 @@ color: red;
 <%-- 	<c:import url="/import/header.jsp"></c:import> --%>
 	<section>
 		<article style="width: 1500px; background-color: white;">
-			<h2>新品上市</h2><h2 style="color: red">${insertOK}</h2>
+			<h2>新品上市</h2><h2 style="color: red" id="insert_1">${insertOK}</h2>
 			<form action="<%=request.getContextPath()%>/shop/shopBackAction_1.action" method="get">
 				商品類型：<select id="sel_1">
 					<option>請選擇</option>
@@ -115,8 +116,8 @@ color: red;
 				指定價格：<input type="text" name="shopbean.PRO_PRICE" id="price_1"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
 				</span>		
 				<span id="price_6">
-				買：<input type="text" name="shopbean.PRO_PRICE" id="price_2"><span class="errorInsert">${errors.errorInsertPrice[0]}</span>
-				送：<input type="text" name="shopbean.PRO_PRICE" id="price_3"><span class="errorInsert">${errors.errorInsertPrice[0]}</span><br><br>
+				買：<input type="number" name="shopbean.PRO_BUY1" id="price_2" ><span class="errorInsert">${errors.errorInsert_Buy1[0]}</span>
+				送：<input type="number" name="shopbean.PRO_BUY2" id="price_3"><span class="errorInsert">${errors.errorInsert_Buy2[0]}</span><br><br>
 				</span>	
 				商品重量：<input type="text" name="shopbean.PRO_WEIGHT"><br><br> 
 				庫存數量：<input type="text" name="shopbean.PRO_STOCK"><span class="errorInsert">${errors.errorInsertStock[0]}</span><br><br> 					   
