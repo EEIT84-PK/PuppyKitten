@@ -18,10 +18,7 @@
 	<a href='<c:url value="/petSelect/PetSelectAction.action" ></c:url>'>查詢寵物資訊</a>
 
 	
-	</article>
-	<aside>
-
-	</aside>
+	</article>	
 </section>
 	
 <c:import url="/import/footer.jsp"></c:import>

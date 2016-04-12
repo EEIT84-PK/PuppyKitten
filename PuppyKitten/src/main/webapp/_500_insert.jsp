@@ -67,7 +67,7 @@
 					<tr>
 						<td>生日:</td>
 						<td><input type="text" name="bean.MEM_BIRTHDAY" id="age"
-							value="${bean.MEM_BIRTHDAY}"></td>
+							value="${date}"></td>
 							<td style="color: red">${errors.MEM_BIRTHDAY[0]}</td>
 					</tr>
 					<tr>

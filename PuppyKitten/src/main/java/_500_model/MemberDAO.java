@@ -56,7 +56,6 @@ public class MemberDAO implements MemberDAO_interface {
 
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
