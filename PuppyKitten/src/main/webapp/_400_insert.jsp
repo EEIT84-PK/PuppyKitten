@@ -89,7 +89,7 @@ function clearForm() {
 		會員編號：<input type="text" name="petBean.PET_OWN_ID" size="20" value="${session.memberID}" readonly="readonly"><BR>		
 		寵物名字： <input type="text" name="petBean.PET_NAME" size="10" value="${petBean.PET_NAME}"> 
 		<span class="error">${request.PET_NAME}</span><BR>
-		出生年月日： <input type="text" name="petBean.PET_AGE" size="10" id="age" value="${petBean.PET_AGE}">
+		出生年月日： <input type="text" name="petBean.PET_AGE" size="10" id="age" value="${date}">
 		<span class="error">${request.PET_AGE}</span><BR>
 		寵物體重： <input type="number" name="petBean.PET_WEIGHT" size="10" value="${petBean.PET_WEIGHT}" >
 		<span class="error">${request.PET_WEIGHT}</span><BR>		
@@ -116,9 +116,6 @@ function clearForm() {
 			<input type="submit" value="送出"><input type="button" value="清除" onclick="clearForm()"><BR>
 	</form>	
 </article>
-<aside>
-
-</aside>
 </section>
 	
 <c:import url="/import/footer.jsp"></c:import>

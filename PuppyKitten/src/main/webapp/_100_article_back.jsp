@@ -26,10 +26,7 @@ $(function(){
 		$(this).css("background","rgba(255, 240, 200, 1)").mouseout(function(){
 			$(this).css("background","rgba(255, 255, 215, 0.4)");
 		});
-	});
-
-	
-	
+	});	
 });
 
 </script>
