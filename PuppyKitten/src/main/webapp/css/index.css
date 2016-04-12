@@ -10,11 +10,11 @@ body{
 	-moz-background-size: cover;
 	overflow: hidden;	
 }
-.jf-loading body { /*載入中不顯示*/
+.jf-loading footer,.jf-loading header { /*載入中不顯示*/
       opacity: 0;
       visibility: hidden;
 }
-.jf-active *, .jf-inactive * { /*處理成功或失敗，都以漸變顯示*/
+.jf-active header,.jf-active footer, .jf-inactive header, .jf-inactive footer { /*處理成功或失敗，都以漸變顯示*/
       -webkit-transition: opacity 1s ease-out; 
       -moz-transition: opacity 1s ease-out; 
       -o-transition: opacity 1s ease-out; 
