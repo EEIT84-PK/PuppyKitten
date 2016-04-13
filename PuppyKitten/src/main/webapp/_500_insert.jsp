@@ -47,7 +47,7 @@
 							<td  style="color: red">${errors.password[0]}</td>
 					</tr>
 					<tr>
-						<td>確 認密碼:</td>
+						<td>確認密碼:</td>
 						<td><input type="password" name="checkpassword"
 							value="${checkpassword}"></td>
 							<td style="color: red">${errors.checkpassword[0]}</td>

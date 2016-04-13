@@ -38,14 +38,21 @@
 			<form action="login/updateAction.action" method="post"
 				enctype="multipart/form-data">
 				<table>
+				
 					<tr>
-						<td>帳號:<br></td>
-						<td><input type="text" name="bean.MEM_ACCOUNT"
-							value="${member.MEM_ACCOUNT}"></td>
-						<td style="color: red">${errors.MEM_ACCOUNT[0]}</td>
+						<td>舊密碼:</td>
+						<td><input type="password" name="password"
+							value="${password}"></td>
+						<td style="color: red">${errors.password[0]}</td>
 					</tr>
 					<tr>
-						<td>密碼:</td>
+						<td>新密碼:</td>
+						<td><input type="password" name="password"
+							value="${password}"></td>
+						<td style="color: red">${errors.password[0]}</td>
+					</tr>
+					<tr>
+						<td>確認新密碼:</td>
 						<td><input type="password" name="password"
 							value="${password}"></td>
 						<td style="color: red">${errors.password[0]}</td>

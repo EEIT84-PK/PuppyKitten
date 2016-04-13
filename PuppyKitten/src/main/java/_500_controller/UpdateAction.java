@@ -31,10 +31,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 	}
 
 	public void validate() {
-		// 帳號驗證
-		if (member.getMEM_ACCOUNT() == null || member.getMEM_ACCOUNT().trim().length() == 0) {
-			this.addFieldError("MEM_ACCOUNT", "請輸入帳號");
-		}
+	
 		for (int n = 0; n < member.getMEM_ACCOUNT().length(); n++) {
 			char checkaccount = member.getMEM_ACCOUNT().charAt(n);
 			if (checkaccount >= 65 && checkaccount <= 90 || checkaccount >= 97 && checkaccount <= 122
@@ -110,9 +107,9 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 
 	public String execute() throws Exception {
 		MemberService service = new MemberService();
-		service.insert(member);
+	
 		
-		return password;
+		return INPUT;
 
 	}
 

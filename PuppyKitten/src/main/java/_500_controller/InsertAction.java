@@ -85,14 +85,14 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 
 	// 驗證
 	public void validate() {
-		
+
 		// 帳號驗證
 		// 帳號不能重複
-		MemberService service=new MemberService();
-				boolean isAccount = service.checkAccount(bean.getMEM_ACCOUNT());
-				if (isAccount) {
-					this.addFieldError("MEM_ACCOUNT", "帳號不能重複");
-				}
+		MemberService service = new MemberService();
+		boolean isAccount = service.checkAccount(bean.getMEM_ACCOUNT());
+		if (isAccount) {
+			this.addFieldError("MEM_ACCOUNT", "帳號不能重複");
+		}
 		if (bean.getMEM_ACCOUNT() == null || bean.getMEM_ACCOUNT().trim().length() == 0) {
 			this.addFieldError("MEM_ACCOUNT", "請輸入帳號");
 		}
@@ -131,67 +131,68 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 		}
 
 		// 身分證驗證
-		
+
 		if (bean.getMEM_IDCARD() == null || bean.getMEM_IDCARD().trim().length() == 0) {
 			this.addFieldError("MEM_IDCARD", "請輸入身分證字號");
 		}
 
+		// e-mail驗證
+		if (bean.getMEM_EMAIL() == null || bean.getMEM_EMAIL().trim().length() == 0)
 
-	// e-mail驗證
-	if(bean.getMEM_EMAIL()==null||bean.getMEM_EMAIL().trim().length()==0)
-
-	{
-		this.addFieldError("MEM_EMAIL", "請輸入E-MAIL");
-	}
-	// 生日驗證
-	if(bean.getMEM_BIRTHDAY()==null)
-
-	{
-		this.addFieldError("MEM_BIRTHDAY", "請輸入生日");
-	}
-	else{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		setDate(sdf.format(bean.getMEM_BIRTHDAY()));
-	}
-	// 地址驗證
-	if(bean.getMEM_ADD()==null||bean.getMEM_ADD().trim().length()==0)
-
-	{
-		this.addFieldError("MEM_ADD", "請輸入地址");
-	} for(
-
-	int k = 0;k<bean.getMEM_ADD().length();k++)
-
-	{
-		char charadd = bean.getMEM_ADD().charAt(k);
-		if ((int) charadd >= 19968 && (int) charadd <= 40623||charadd >= 48 && charadd <= 57) {
-
-		} else {
-			this.addFieldError("MEM_ADD", "請輸入中文,數字");
-
+		{
+			this.addFieldError("MEM_EMAIL", "請輸入E-MAIL");
 		}
-	}
-	// 電話驗證
-	if(bean.getMEM_PHONE()==null||bean.getMEM_PHONE().trim().length()==0)
+		// 生日驗證
+		if (bean.getMEM_BIRTHDAY() == null)
 
-	{
-		this.addFieldError("MEM_PHONE", "請輸入電話");
-	} if(bean.getMEM_PHONE().length()<=9)
-
-	{
-		this.addFieldError("MEM_PHONE", "電話至少輸入10碼");
-	} for(
-
-	int a = 0;a<bean.getMEM_PHONE().length();a++)
-
-	{
-		char checkphone = bean.getMEM_PHONE().charAt(a);
-		if (checkphone >= 48 && checkphone <= 57) {
-
+		{
+			this.addFieldError("MEM_BIRTHDAY", "請輸入生日");
 		} else {
-			this.addFieldError("MEM_PHONE", "不能輸入中文,亂碼,英文");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			setDate(sdf.format(bean.getMEM_BIRTHDAY()));
 		}
-	}
+		// 地址驗證
+		if (bean.getMEM_ADD() == null || bean.getMEM_ADD().trim().length() == 0)
+
+		{
+			this.addFieldError("MEM_ADD", "請輸入地址");
+		}
+		for (
+
+		int k = 0; k < bean.getMEM_ADD().length(); k++)
+
+		{
+			char charadd = bean.getMEM_ADD().charAt(k);
+			if ((int) charadd >= 19968 && (int) charadd <= 40623 || charadd >= 48 && charadd <= 57) {
+
+			} else {
+				this.addFieldError("MEM_ADD", "請輸入中文,數字");
+
+			}
+		}
+		// 電話驗證
+		if (bean.getMEM_PHONE() == null || bean.getMEM_PHONE().trim().length() == 0)
+
+		{
+			this.addFieldError("MEM_PHONE", "請輸入電話");
+		}
+		if (bean.getMEM_PHONE().length() <= 9)
+
+		{
+			this.addFieldError("MEM_PHONE", "電話至少輸入10碼");
+		}
+		for (
+
+		int a = 0; a < bean.getMEM_PHONE().length(); a++)
+
+		{
+			char checkphone = bean.getMEM_PHONE().charAt(a);
+			if (checkphone >= 48 && checkphone <= 57) {
+
+			} else {
+				this.addFieldError("MEM_PHONE", "不能輸入中文,亂碼,英文");
+			}
+		}
 
 	}
 
@@ -200,9 +201,9 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 
 		HttpSession session = req.getSession();
 		MemberService service = new MemberService();
-		
-		//eamil認證
 		bean.setMEM_PASSWORD(password.getBytes());
+		// eamil認證
+		
 		String sum = "";
 		if (use.equals("寄送驗證碼")) {
 			for (int i = 0; i < 4; i++) {
@@ -210,7 +211,7 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 				String x = a.toString();
 				sum += x;
 			}
-
+            
 			service.sendemail(bean.getMEM_EMAIL(), bean.getMEM_NAME(), sum);
 			session.setAttribute("code", sum);
 			this.addFieldError("checkcode", "驗證碼已寄送成功!");
@@ -229,7 +230,7 @@ public class InsertAction extends ActionSupport implements ServletRequestAware {
 			}
 
 		}
-	
+
 	}
 
 	@Override

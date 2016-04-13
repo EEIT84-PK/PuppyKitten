@@ -8,5 +8,6 @@ public interface MemberDAO_interface {
 	public List<MemberBean> select(String MEM_ACCOUNT);
 	public MemberBean selectMemberByAccount(String account);
 	public void update(MemberBean bean);
-	public MemberBean selectMemberByMemId(final Integer memberId);
+	public List<MemberBean> selectMemberByMemId(Integer memberId);
+	public List<MemberBean> selectmember();
 }
