@@ -75,6 +75,7 @@
 				</li>
 				<li><a href="">聯絡我們<img
 						src="<%=request.getContextPath()%>/images/phone.png" width="15px"></a></li>
+						
 				<li><a href="">購物車<img
 						src="<%=request.getContextPath()%>/images/cart.png" width="15px"></a></li>
 				<li><a href="<s:url action="member/selectmember"/>">會員中心</a></li>

@@ -15,6 +15,19 @@
 	</properties>
 
 	<dependencies>
+		<!-- WebSocket -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId> org.glassfish </groupId>
+			<artifactId> javax.json </artifactId>
+			<version> 1.0.4 </version>
+		</dependency>
+
+		<!-- E-mail API -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
@@ -25,6 +38,8 @@
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.5.5</version>
 		</dependency>
+
+		<!-- JSTL標準標籤庫 -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
@@ -45,11 +60,14 @@
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Struts2 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
 			<version>2.3.4</version>
 		</dependency>
+		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -66,6 +84,7 @@
 			<version>5.1.0.Final</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<plugins>
