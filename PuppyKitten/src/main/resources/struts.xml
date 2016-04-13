@@ -128,6 +128,7 @@
 			<result name="success">/index.jsp</result>
 			<result name="input">/_500_insert.jsp</result>
 		</action>
+
 	</package>
 	<!-- 攔截器 -->
 	<package name="memberPackage" namespace="/member" extends="struts-default">
@@ -141,12 +142,17 @@
 		<action name="updatemember" class="_500_controller.SelectAction">
 			<result name="success">/_500_update.jsp</result>
 		</action>
+
 		<action name="member" class="_500_controller.SelectAction">
-<!-- 			<interceptor-ref name="authentication"/> -->
-			<result>/member/_500_select.jsp</result>
+			<!-- <interceptor-ref name="authentication"/> -->
+			<result>/_500_select.jsp</result>
+		</action>
+		<action name="updateAction" class="_500_controller.UpdateAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/_500_update.jsp</result>
 		</action>
 		<action name="*">
-<!-- 			<interceptor-ref name="authentication"/> -->
+			<!-- <interceptor-ref name="authentication"/> -->
 			<result>/member/{1}.jsp</result>
 		</action>
 	</package>

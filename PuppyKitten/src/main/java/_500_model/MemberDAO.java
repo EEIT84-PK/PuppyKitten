@@ -76,7 +76,7 @@ public class MemberDAO implements MemberDAO_interface {
 		}
 
 	}
-
+    
 	@Override
 	public List<MemberBean> selectMemberByMemId(Integer memberId) {
 		List<MemberBean> memberBean = null;

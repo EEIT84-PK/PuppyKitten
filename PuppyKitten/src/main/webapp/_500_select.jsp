@@ -53,6 +53,7 @@ td {
 				action="<%=request.getContextPath()%>/member/updatemember.action">
 				<input type="submit" value="修改帳戶">
 			</form>
+			
 		</article>
 	</section>
 

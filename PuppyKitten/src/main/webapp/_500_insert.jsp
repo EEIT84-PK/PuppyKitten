@@ -60,7 +60,7 @@
 					</tr>
 					<tr>
 						<td>身分證字號:</td>
-						<td><input type="text" name="bean.MEM_IDCARD"  onchange="checkname(this)"
+						<td><input type="text" name="bean.MEM_IDCARD" 
 							value="${bean.MEM_IDCARD}"></td>
 							<td style="color: red">${errors.MEM_IDCARD[0]}</td>
 					</tr>

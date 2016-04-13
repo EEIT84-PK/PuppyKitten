@@ -10,4 +10,5 @@ public interface MemberDAO_interface {
 	public void update(MemberBean bean);
 	public List<MemberBean> selectMemberByMemId(Integer memberId);
 	public List<MemberBean> selectmember();
+
 }

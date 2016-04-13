@@ -35,62 +35,43 @@
 		<article>
 			<h1 style="font-size: 50px;">修改會員</h1>
 
-			<form action="login/updateAction.action" method="post"
+			<form action="/member/updateAction.action" method="post"
 				enctype="multipart/form-data">
 				<table>
-				
-					<tr>
-						<td>舊密碼:</td>
-						<td><input type="password" name="password"
-							value="${password}"></td>
-						<td style="color: red">${errors.password[0]}</td>
-					</tr>
-					<tr>
-						<td>新密碼:</td>
-						<td><input type="password" name="password"
-							value="${password}"></td>
-						<td style="color: red">${errors.password[0]}</td>
-					</tr>
-					<tr>
-						<td>確認新密碼:</td>
-						<td><input type="password" name="password"
-							value="${password}"></td>
-						<td style="color: red">${errors.password[0]}</td>
-					</tr>
 					<tr>
 						<td>姓名:</td>
 						<td><input type="text" name="bean.MEM_NAME"
-							value="${member.MEM_NAME}"></td>
+							value="${bean.MEM_NAME}"></td>
 						<td style="color: red">${errors.MEM_NAME[0]}</td>
 					</tr>
 					<tr>
 						<td>身分證字號:</td>
 						<td><input type="text" name="bean.MEM_IDCARD"
-							onchange="checkname(this)" value="${member.MEM_IDCARD}"></td>
+							 value="${bean.MEM_IDCARD}"></td>
 						<td style="color: red">${errors.MEM_IDCARD[0]}</td>
 					</tr>
 					<tr>
 						<td>生日:</td>
 						<td><input type="text" name="bean.MEM_BIRTHDAY" id="age"
-							value="${member.MEM_BIRTHDAY}"></td>
+							value="${bean.MEM_BIRTHDAY}"></td>
 						<td style="color: red">${errors.MEM_BIRTHDAY[0]}</td>
 					</tr>
 					<tr>
 						<td>地址:</td>
 						<td><input type="text" name="bean.MEM_ADD"
-							value="${member.MEM_ADD}"></td>
+							value="${bean.MEM_ADD}"></td>
 						<td style="color: red">${errors.MEM_ADD[0]}</td>
 					</tr>
 					<tr>
 						<td>手機:</td>
 						<td><input type="text" name="bean.MEM_PHONE"
-							value="${member.MEM_PHONE}"></td>
+							value="${bean.MEM_PHONE}"></td>
 						<td style="color: red">${errors.MEM_PHONE[0]}</td>
 					</tr>
 					<tr>
 						<td>信箱:</td>
 						<td><input type="email" name="bean.MEM_EMAIL"
-							value="${member.MEM_EMAIL}"></td>
+							value="${bean.MEM_EMAIL}"></td>
 						<td style="color: red">${errors.MEM_EMAIL[0]}</td>
 					</tr>
 				</table>
