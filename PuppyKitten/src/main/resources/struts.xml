@@ -7,7 +7,6 @@
 	<constant name="struts.devMode" value="true"></constant> <!-- 開發模式的設定 預設為false 更改為true -->
 
 	<package name="articlePackage" namespace="/article" extends="struts-default">
-
 		<interceptors>
 			<interceptor-stack name="atguigustack">
 				<interceptor-ref name="defaultStack">
@@ -16,8 +15,6 @@
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-
-
 		<default-interceptor-ref name="atguigustack"></default-interceptor-ref>
 
 		<action name="articleAction" class="_100_controller.ArticleAction">
@@ -34,20 +31,27 @@
 	</package>
 
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
-	
+
 		<action name="shopBackAction_1" class="_200_controller.ShopBackAction_1">
+			
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg,image/x-png</param>
+				<param name="maximumSize">104857600</param>
+			</interceptor-ref>
+			
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success">/_200_shop_back_insert.jsp</result>
 			<result name="input">/_200_shop_back_insert.jsp</result>
 		</action>
-		
+
 		<action name="shopBackAction_2" class="_200_controller.ShopBackAction_2">
 			<result name="success">/_200_shop_back_update_2.jsp</result>
-			<result name="input">/_200_shop_back_update_1.jsp</result>
+			<result name="input">/_200_shop_back_update_2.jsp</result>
 		</action>
 
 		<action name="shopBackAction_3" class="_200_controller.ShopBackAction_3">
 			<result name="success">/_200_shop_back_update_1.jsp</result>
-			<result name="input">/_200_shop_back_update_1.jsp</result>
+			<result name="update">/_200_shop_back_update_2.jsp</result>
 		</action>
 
 	</package>
@@ -104,28 +108,30 @@
 			<result>{1}.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petFriendshipPackage" namespace="/petFriendship" extends="struts-default">
+	<package name="petFriendshipPackage" namespace="/petFriendship"
+		extends="struts-default">
 		<action name="petFriendshipAction" class="_400_controller.PetFriendshipAction">
 			<result name="success">/_400_friendship.jsp</result>
 			<result name="end">/_400_friendship_end.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="petLikePackage" namespace="/petLike" extends="struts-default">
 		<action name="PetLikeAction" class="_400_controller.PetLikeAction">
 			<result name="success">/_400_friendship.jsp</result>
 			<result name="end">/_400_friendship_end.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petNotLikePackage" namespace="/petNotLike" extends="struts-default">
+
+	<package name="petNotLikePackage" namespace="/petNotLike"
+		extends="struts-default">
 		<action name="PetNotLikeAction" class="_400_controller.PetNotLikeAction">
 			<result name="success">/_400_friendship.jsp</result>
 			<result name="end">/_400_friendship_end.jsp</result>
 		</action>
 	</package>
-	<package name="petRelationPackage" namespace="/petRelation" extends="struts-default">
+	<package name="petRelationPackage" namespace="/petRelation"
+		extends="struts-default">
 		<action name="petRelationaAction" class="_400_controller.PetRelationAction">
 			<result name="success">/_400_relation.jsp</result>
 		</action>

@@ -12,6 +12,7 @@ public class ShopBackAction_3 extends ActionSupport implements ServletRequestAwa
 
 	private HttpServletRequest request;
 	private ShopBean shopbean;
+	private String use="";
 
 	public ShopBean getShopbean() {
 		return shopbean;
@@ -21,15 +22,29 @@ public class ShopBackAction_3 extends ActionSupport implements ServletRequestAwa
 		this.shopbean = shopbean;
 	}
 
+	public String getUse() {
+		return use;
+	}
+
+	public void setUse(String use) {
+		this.use = use;
+	}
+
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
 
 	public String execute() {
-		ShopService service = new ShopService();
-		List<ShopBean> select_list = service.select(shopbean);
-		request.setAttribute("select_list", select_list);
-		return "success";
+		if(use.equals("update")){
+			return "update";
+		}else{
+			ShopService service = new ShopService();
+			List<ShopBean> select_list = service.select(shopbean);
+			request.setAttribute("select_list", select_list);
+			return "success";
+		}
+		
+		
 	}
 }

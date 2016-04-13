@@ -29,7 +29,7 @@
 <%-- 	<c:import url="/import/header.jsp"></c:import> --%>
 	<section>
 		<article>
-		<form action="<%=request.getContextPath()%>/shop/shopBackAction_3.action" method="get">
+		<form action="<%=request.getContextPath()%>/shop/shopBackAction_3.action" method="post">
 			<input class="btn_1" type="submit" value="查詢">
 		</form>
 			<input
@@ -60,20 +60,23 @@
 									<td>${sel.PRO_NAME}</td>
 									<td>${sel.PRO_PRICE}</td>
 									
-									<td><a href='<c:url value="/_200_shop_back_update_2.jsp">
-									<c:param name="Product_ID">${sel.PRO_ID}</c:param>
-									<c:param name="Product_ANIMAL">${sel.PRO_ANIMAL}</c:param>
-									<c:param name="Product_KIND">${sel.PRO_KIND}</c:param>
-									<c:param name="Product_NAME">${sel.PRO_NAME}</c:param>
-									<c:param name="Product_PROJECT">${sel.PRO_PROJECT}</c:param>
-									<c:param name="Product_PRICE">${sel.PRO_PRICE}</c:param>
-									<c:param name="Product_BUY1">${sel.PRO_BUY1}</c:param>
-									<c:param name="Product_BUY2">${sel.PRO_BUY2}</c:param>
-									<c:param name="Product_WEIGHT">${sel.PRO_WEIGHT}</c:param>
-									<c:param name="Product_STOCK">${sel.PRO_STOCK}</c:param>
-<%-- 									<c:param name="Product_IMAGE">${sel.PRO_IMAGE}</c:param> --%>
-									<c:param name="Product_BODY">${sel.PRO_BODY}</c:param>
+									
+									<td><a href='<c:url value="/shop/shopBackAction_3">
+									<c:param name="shopbean.PRO_ID">${sel.PRO_ID}</c:param>
+									<c:param name="shopbean.PRO_ANIMAL">${sel.PRO_ANIMAL}</c:param>
+									<c:param name="shopbean.PRO_KIND">${sel.PRO_KIND}</c:param>
+									<c:param name="shopbean.PRO_NAME">${sel.PRO_NAME}</c:param>
+									<c:param name="shopbean.PRO_PROJECT">${sel.PRO_PROJECT}</c:param>
+									<c:param name="shopbean.PRO_PRICE">${sel.PRO_PRICE}</c:param>
+									<c:param name="shopbean.PRO_BUY1">${sel.PRO_BUY1}</c:param>
+									<c:param name="shopbean.PRO_BUY2">${sel.PRO_BUY2}</c:param>
+									<c:param name="shopbean.PRO_WEIGHT">${sel.PRO_WEIGHT}</c:param>
+									<c:param name="shopbean.PRO_STOCK">${sel.PRO_STOCK}</c:param>
+									<c:param name="shopbean.PRO_IMAGE">${sel.PRO_IMAGE}</c:param>
+									<c:param name="shopbean.PRO_BODY">${sel.PRO_BODY}</c:param>
+									<c:param name="use">update</c:param>
 									</c:url>'>編輯</a></td>
+									
 									<th><input
 										type="submit" value="移除" style="cursor: pointer; margin: 5px;"></th>
 								</tr>

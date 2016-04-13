@@ -40,7 +40,7 @@ public class ShopService {
 		return result;
 	}
 
-	public ShopBean inesrt(ShopBean bean) {
+	public ShopBean insert(ShopBean bean) {
 		dao.insert(bean);
 		return bean;
 	}

@@ -44,7 +44,7 @@ fieldset {
 		<article
 			style="width: 1500px; background-color: white; line-height: 40px;">
 			<fieldset>
-				<form action="/shop/shopbackAction" method="get" id="shop_form">
+				<form action="/shop/shopbackAction" method="get">
 					訂購人姓名：<input type="text" name="" size="10"> <input
 						type="radio">先生 <input type="radio">小姐<br>
 					身分證字號：<input type="text" name=""> 生日 西元 &nbsp&nbsp <input
@@ -95,7 +95,7 @@ fieldset {
 					</table>
 				</form>
 				<span>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-				<form action="/shop/shopbackAction" method="get" id="shop_form">
+				<form action="/shop/shopbackAction" method="get">
 					收貨人姓名：<input type="text" name="pro_id" size="10"> <input
 						type="radio">先生 <input type="radio">小姐<br>
 					手機號碼：<input type="text" name=""><br> 收貨地址：<input

@@ -64,7 +64,7 @@
 	<section>
 
 		<article style="width: 1500px; background-color: white;">
-			<form action="/shop/shopAction" method="get" id="shop_form">
+			<form action="/shop/shopAction" method="get">
 
 				<div class="choose_1">
 					<div class="choose_pro1">自動抓取商品路徑(尚未設定-ex: 喵星人->主食乾糧->XXX商品)</div>
