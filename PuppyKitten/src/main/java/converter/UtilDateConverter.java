@@ -5,11 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 import org.apache.struts2.util.StrutsTypeConverter;
+import com.opensymphony.xwork2.conversion.TypeConversionException;
 
 public class UtilDateConverter extends StrutsTypeConverter {
 
 	public Object convertFromString(Map context, String[] values, Class toClass) {
-		System.out.println("UtilDate");
 		DateFormat[] UtilDateFormat = { 
 				new SimpleDateFormat("yy-MM-dd"), new SimpleDateFormat("yyyy-MM-dd"),
 				new SimpleDateFormat("yy/MM/dd"), new SimpleDateFormat("yyyy/MM/dd")

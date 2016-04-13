@@ -51,27 +51,21 @@ public class MemberService {
 
 	}
 	
-
+public List<MemberBean> selectmember(){
+	return dao.selectmember();
+}
 			
-	public MemberBean selectMemberById(final Integer memId) {
-		return null;
+	public List<MemberBean> selectMemberById(final Integer memId) {
+		
+		return 	dao.selectMemberByMemId(memId);
 	}
 
-	// 修改密碼
-	public void updateMember(MemberBean viewMember) {
-		MemberBean dbMember = selectMemberById(viewMember.getMEM_ID());
-		dbMember = selectMemberById(viewMember.getMEM_ACCOUNT().length());
-		dbMember = selectMemberById(viewMember.getMEM_PASSWORD().length);
-		dbMember = selectMemberById(viewMember.getMEM_NAME().length());
-		dbMember = selectMemberById(viewMember.getMEM_BIRTHDAY().hashCode());
-		dbMember = selectMemberById(viewMember.getMEM_IDCARD().length());
-		dbMember = selectMemberById(viewMember.getMEM_EMAIL().length());
-		dbMember = selectMemberById(viewMember.getMEM_PHONE().length());
-		dbMember = selectMemberById(viewMember.getMEM_ADD().length());
-		dao.update(dbMember);
-
+	public MemberBean update(MemberBean bean) {
+		dao.update(bean);
+		
+		return  bean;
 	}
-
+     //email寄信
 	public static boolean sendemail(String email, String user, String checkcode) {
 		String to = email;
 		String from = "PuppyKitten84@gmail.com";
