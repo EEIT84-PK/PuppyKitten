@@ -11,6 +11,10 @@ public class PetService {
 		petDAO = new PetDAO();
 	}
 	
+	public List<PetRelationBean> selectId(String MYSELF,String LIKE ,String STATUS){
+		return petDAO.selectId(MYSELF, LIKE,STATUS);
+	}
+	
 	public PetBean selectId(Integer PET_ID) {		
 		return petDAO.selectId(PET_ID);
 	}	
@@ -56,8 +60,18 @@ public class PetService {
 		petDAO.delete(PET_ID);
 		return PET_ID;
 	}
-
+	
+	public PetRelationBean delete(PetRelationBean bean){
+		petDAO.delete(bean);
+		return bean;
+	} 
+	
 	public PetBean update(PetBean bean) {
+		petDAO.update(bean);
+		return bean;
+	}
+	
+	public PetRelationBean update(PetRelationBean bean){
 		petDAO.update(bean);
 		return bean;
 	}

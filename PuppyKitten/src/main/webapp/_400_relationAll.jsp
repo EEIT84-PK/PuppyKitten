@@ -19,7 +19,7 @@ td {
 	<section>
 		<article style="width: 1500px;">
 			<h1>寵物聯誼(交友中心)</h1>
-			<font color="red"><b>喜歡我的人是</b><br>
+			<font color="red"><b>互相感興趣的對象</b><br>
 			</font><font color="red"><b>${noOne}</b></font>
 			<table border="1" style="border-collapse: collapse; width: 700px;"
 				id="listTable">
@@ -49,29 +49,18 @@ td {
 					<tr>
 						<td  align='center' colspan="2"	valign="middle" style="width: 200px;">照片</td>
 						<td  align='center' valign="middle" colspan="5">介紹</td>
-						<td align='center' valign="middle">感覺</td>
+						<td align='center' valign="middle">操作</td>
 					</tr>
 					<tr>
 						<td id="img" align='center' valign="middle" colspan="2">
 						<img src="${sort.PET_IMAGE}" width="200" height="200"></td>
 						<td id="body" align='center' valign="middle" colspan="5">${sort.PET_BODY}</td>
-						
-							<c:choose>
-							<c:when test="${sort.PET_CHECK==1}">
-								<td align='center' valign="middle">
-									<a href='<c:url value="/petRelationLike/petRelationLikeAction.action?PET_OWN_ID=${sort.PET_OWN_ID}" ></c:url>'>喜歡</a><BR><br>
-										<font color="red"><b>不喜歡</b></font>					
-								</td>
-							</c:when>
-							<c:otherwise>
-								<td align='center' valign="middle">
-									<a href='<c:url value="/petRelationLike/petRelationLikeAction.action?PET_OWN_ID=${sort.PET_OWN_ID}" ></c:url>'>喜歡</a><BR><br>
-									<a href='<c:url value="/petRelationNotLike/petRelationNotLikeAction.action?PET_OWN_ID=${sort.PET_OWN_ID}" ></c:url>'>不喜歡</a>						
-								</td>
-							</c:otherwise>							
-							</c:choose>
-						
-					</tr>					
+						<td align='center' valign="middle">
+							<a href='<c:url value="/petRelationDelete/petRelationaDeleteAction.action?PET_OWN_ID=${sort.PET_OWN_ID}" ></c:url>'>刪除</a><BR><br>
+							<a href='<c:url value="/petRelationNotLike/petRelationNotLikeAction.action?PET_OWN_ID=${sort.PET_OWN_ID}" ></c:url>'>即時聊天</a>						
+						</td>
+					</tr>
+					
 				</c:forEach>
 			</table>
 		</article>
