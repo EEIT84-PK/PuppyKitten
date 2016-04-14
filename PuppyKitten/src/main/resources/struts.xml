@@ -128,6 +128,9 @@
 			<result name="success">/index.jsp</result>
 			<result name="input">/_500_insert.jsp</result>
 		</action>
+		<action name="loginBackAction" class="_500_controller.LoginBackAction">
+			<result name="success">/index_back.jsp</result>
+		</action>
 
 	</package>
 	<!-- 攔截器 -->
