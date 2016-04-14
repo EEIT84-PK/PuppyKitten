@@ -47,7 +47,7 @@
 							<td  style="color: red">${errors.password[0]}</td>
 					</tr>
 					<tr>
-						<td>確 認密碼:</td>
+						<td>確認密碼:</td>
 						<td><input type="password" name="checkpassword"
 							value="${checkpassword}"></td>
 							<td style="color: red">${errors.checkpassword[0]}</td>
@@ -60,14 +60,14 @@
 					</tr>
 					<tr>
 						<td>身分證字號:</td>
-						<td><input type="text" name="bean.MEM_IDCARD"  onchange="checkname(this)"
+						<td><input type="text" name="bean.MEM_IDCARD" 
 							value="${bean.MEM_IDCARD}"></td>
 							<td style="color: red">${errors.MEM_IDCARD[0]}</td>
 					</tr>
 					<tr>
 						<td>生日:</td>
 						<td><input type="text" name="bean.MEM_BIRTHDAY" id="age"
-							value="${bean.MEM_BIRTHDAY}"></td>
+							value="${date}"></td>
 							<td style="color: red">${errors.MEM_BIRTHDAY[0]}</td>
 					</tr>
 					<tr>

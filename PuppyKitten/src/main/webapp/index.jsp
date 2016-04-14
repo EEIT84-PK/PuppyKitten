@@ -14,6 +14,7 @@
 
 <article>
 </article>
+
 <c:import url="/import/footer.jsp"></c:import>
 
 </body>

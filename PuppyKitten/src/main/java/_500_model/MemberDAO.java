@@ -48,10 +48,14 @@ public class MemberDAO implements MemberDAO_interface {
 		session.beginTransaction();
 		Query query = session.createQuery("from MemberBean where MEM_ACCOUNT=:account");
 
-		if (account != null && !account.isEmpty()) {
-			query.setParameter("account", account);
-			List<MemberBean> list = query.list();
-			memberBean = list.get(0);
+		try {
+			if (account != null && !account.isEmpty()) {
+				query.setParameter("account", account);
+				List<MemberBean> list = query.list();
+				memberBean = list.get(0);
+
+			}
+		} catch (Exception e) {
 
 		}
 
@@ -72,18 +76,34 @@ public class MemberDAO implements MemberDAO_interface {
 		}
 
 	}
-
+    
 	@Override
-	public MemberBean selectMemberByMemId(final Integer memberId) {
-		MemberBean memberBean = null;
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-		Query query = session.createQuery("from MemberBean where MEM_ID:memberId");
-		List<MemberBean> list = query.list();
-		if (memberId != null) {
-			memberBean = list.get(0);
+	public List<MemberBean> selectMemberByMemId(Integer memberId) {
+		List<MemberBean> memberBean = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();	
+		try {
+			session.beginTransaction();
+			Query query=session.createQuery("from MemberBean where MEM_ID=?");
+			query.setParameter(0, memberId);
+			memberBean=query.list();
+		} catch (RuntimeException e) {
+           throw e;
 		}
 		return memberBean;
+	}
+
+	@Override
+	public List<MemberBean> selectmember() {
+		List<MemberBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from MemberBean");
+			list=query.list();
+		} catch (RuntimeException e) {
+			throw e;
+		}
+		return list;
 	}
 
 }

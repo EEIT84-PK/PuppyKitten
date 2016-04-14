@@ -5,11 +5,30 @@ public class ShopBean {
 	private String PRO_ANIMAL;
 	private String PRO_KIND;
 	private String PRO_NAME;
-	private String PRO_PROJCET;
+	private String PRO_PROJECT;
 	private String PRO_WEIGHT;
 	private Integer PRO_PRICE;
+	private Integer PRO_BUY1;
+	private Integer PRO_BUY2;
 	private Integer PRO_STOCK;
+	private String PRO_IMAGE;
 	private String PRO_BODY;
+
+	public Integer getPRO_BUY1() {
+		return PRO_BUY1;
+	}
+
+	public void setPRO_BUY1(Integer pRO_BUY1) {
+		PRO_BUY1 = pRO_BUY1;
+	}
+
+	public Integer getPRO_BUY2() {
+		return PRO_BUY2;
+	}
+
+	public void setPRO_BUY2(Integer pRO_BUY2) {
+		PRO_BUY2 = pRO_BUY2;
+	}
 
 	public Integer getPRO_ID() {
 		return PRO_ID;
@@ -43,12 +62,12 @@ public class ShopBean {
 		PRO_NAME = pRO_NAME;
 	}
 
-	public String getPRO_PROJCET() {
-		return PRO_PROJCET;
+	public String getPRO_PROJECT() {
+		return PRO_PROJECT;
 	}
 
-	public void setPRO_PROJCET(String pRO_PROJCET) {
-		PRO_PROJCET = pRO_PROJCET;
+	public void setPRO_PROJECT(String pRO_PROJECT) {
+		PRO_PROJECT = pRO_PROJECT;
 	}
 
 	public String getPRO_WEIGHT() {
@@ -73,6 +92,14 @@ public class ShopBean {
 
 	public void setPRO_STOCK(Integer pRO_STOCK) {
 		PRO_STOCK = pRO_STOCK;
+	}
+	
+	public String getPRO_IMAGE() {
+		return PRO_IMAGE;
+	}
+
+	public void setPRO_IMAGE(String pRO_IMAGE) {
+		PRO_IMAGE = pRO_IMAGE;
 	}
 
 	public String getPRO_BODY() {

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#websocketdiv').hide();
 	 var oldtext=['寵物新知','精品購物','寵物聯誼','寵物旅遊','討論區']
      var newtext=['News','Select','Dating','Tourism','WeChat']
      $(".sub").slideUp(0)
@@ -20,5 +21,16 @@ $(document).ready(function(){
            });
              
      }
-	
+	 $('#sendmsg').click(function(){
+			websocket.send(text.value);
+			text.value="";
+		});
+	 $('#footermsg').mouseover(function(){
+		 $(this).css("color","white").mouseout(function(){
+			 $(this).css("color","#f2daa8");
+		 });
+	 });
+	 $('#footermsg').click(function(){
+		 $('#websocketdiv').stop().slideToggle();
+	 });
 });
