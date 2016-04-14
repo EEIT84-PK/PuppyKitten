@@ -3,16 +3,18 @@ package _200_model;
 import java.util.ArrayList;
 import java.util.List;
 
+import _300_model.MapBean;
+
 public class ShopService {
 	private ShopDAO_interface dao;
-	private List<ShopBean> result;
-
 	public ShopService() {
 		dao = new ShopDAO();
 	}
 
 	public List<ShopBean> select(ShopBean bean) {
-		if (bean.getPRO_ID() == null) {
+		
+		List<ShopBean> result = null;
+		if (bean==null) {
 			result = dao.select_All();
 		} else {
 			ShopBean temp = dao.selectId(bean.getPRO_ID());
@@ -38,7 +40,7 @@ public class ShopService {
 		return result;
 	}
 
-	public ShopBean inesrt(ShopBean bean) {
+	public ShopBean insert(ShopBean bean) {
 		dao.insert(bean);
 		return bean;
 	}

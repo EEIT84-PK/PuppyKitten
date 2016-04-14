@@ -20,6 +20,10 @@ body{
       -o-transition: opacity 1s ease-out; 
       transition: opacity 1s ease-out; 
 }
+.jf-inactive body {/*如果處理失敗，直接顯示*/
+      opacity: 1;
+      visibility: visible;
+}
 body a{
 	color:#400000;
 }
@@ -139,6 +143,18 @@ aside {
 	background:rgba(250, 235, 215, 0.8);
 	border-radius:15px ;
 }
+
+#websocketdiv{
+	padding:15px 30px 40px 30px;
+	width:475px;
+	right:50px;
+	position:absolute;
+	bottom:50px;
+	background:-webkit-radial-gradient(circle,white,#310000);
+	opacity:0.8;
+	border-top-left-radius:15px ;
+	border-top-right-radius:15px ;
+}
 /* footer */
 footer {
 	width:100%;
@@ -151,10 +167,24 @@ footer {
     font-family:'meow';
     font-size:18px;
 }
-	#footer_left li {
+	#footer_left{
+		width:50%;
+		float:left;
 		list-style-type:none;
 		font-size:16px;
 		color:#f2daa8;
 	}
+	#footer_right{
+		width:10%;
+		float:right;
+		list-style-type:none;
+		font-size:20px;
+		color:#f2daa8;
+		
+	}
+	#footer_right span{
+		cursor: pointer;
+	}
+	
 
 

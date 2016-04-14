@@ -14,6 +14,7 @@ x<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 <article>
 </article>
+
 <c:import url="/import/footer.jsp"></c:import>
 
 </body>

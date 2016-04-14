@@ -32,6 +32,4 @@ public class MapBackAction extends ActionSupport implements ServletRequestAware{
 
 			return "success";
 		}
-
-		
 }

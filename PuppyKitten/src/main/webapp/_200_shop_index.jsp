@@ -44,19 +44,21 @@
 }
 
 .index_pro2 {
-	width: 100px;
+	float:left;
+	width: 200px;
 	margin: 10px;
-	height: 90px;
-	border: 1px solid #ddd;
-    border-radius: 4px;
+	height: 150px;
+	border: 1px solid blue;
     padding: 5px;
 }
 
 .index_pro3 {
-	width: 140px;
+	float:right;
+	width: 180px;
 	border: 1px solid red;
 	margin: 10px;
-	height: 90px;
+	height: 150px;
+	padding: 5px;
 }
 
 .pro_1 {
@@ -74,17 +76,7 @@
 	cursor: pointer;
 }
 </style>
-<script type="text/javascript">
-	$win.bind('scroll resize', function() {
-		var $this = $(this);
 
-		// 控制 #abgne_float_ad 的移動
-		$ad.stop().animate({
-			top : $this.scrollTop() + $this.height() - _height - _diffY,
-			left : $this.scrollLeft() + $this.width() - _width - _diffX
-		}, _moveSpeed);
-	}).scroll();
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>米沃貓窩 -購物商城</title>
 </head>
@@ -94,8 +86,8 @@
 
 		<article style="width: 1500px; background-color: white;">
 			<form action="/shop/shopAction" method="get" id="shop_form">
-				<input class="btn_1" type="submit" name="dog" value="汪星人"> <input
-					class="btn_1" type="submit" name="cat" value="喵星人"> 
+				<input class="btn_1" type="submit" name="dog" value="汪星人"> 
+				<input class="btn_1" type="submit" name="cat" value="喵星人"> 
 					<select class="btn_1">
 					<option>主食乾糧</option>
 					<option>外出專用</option>
@@ -110,93 +102,93 @@
 				<div class="pro_1">
 				
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
 						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+					</div>
 				</div>
 				<div class="pro_1">
 					<div class="index_pro1">自動抓取商品名稱(尚未設定)</div>
-					<article class="index_pro2">
+					<div class="index_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
-					<aside class="index_pro3">
+					</div>
+					<div class="index_pro3">
 						<span>建議售價：999元</span><br>
-						<br> <input class="button1" type="button" value="加入購物車">
-					</aside>
+						<br> <input class="button1" type="button" value="加入購物車" onclick="www.yahoo.com.tw">
+					</div>
 				</div>
 
 

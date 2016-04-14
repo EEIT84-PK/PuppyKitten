@@ -24,9 +24,10 @@
 				<div class="main">精品購物</div>
 				<div class="sub">
 					<ul>
-						<li><a href="">產品介紹</a></li>
-						<li><a href="">熱門商品</a></li>
-						<li><a href="">購物車清單</a></li>
+					
+						<li><a href='<c:url value="/_200_shop_index.jsp"/>'>購物中心</a></li>
+						<li><a href='<c:url value="/_200_shop_car.jsp"/>'>購物車</a></li>
+						<li><a href='<c:url value="/_200_shop_back_update_1.jsp"/>'>後台系統</a></li>
 					</ul>
 				</div>
 			</div>
@@ -75,6 +76,7 @@
 				</li>
 				<li><a href="">聯絡我們<img
 						src="<%=request.getContextPath()%>/images/phone.png" width="15px"></a></li>
+						
 				<li><a href="">購物車<img
 						src="<%=request.getContextPath()%>/images/cart.png" width="15px"></a></li>
 				<li><a href='<c:url value="/login/selectmember.action" ></c:url>'>會員中心</a></li>
@@ -88,6 +90,5 @@
 				<li>${session.loginOK},你好!</li>
 			</c:otherwise>
 		</c:choose>
-
 	</ul>
 </header>
