@@ -56,14 +56,6 @@ public class ShopBackAction_2 extends ActionSupport implements ServletRequestAwa
 		this.session = session;
 	}
 
-	public HttpServletRequest getRequest() {
-		return request;
-	}
-
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
-
 	public ShopBean getShopbean() {
 		return shopbean;
 	}
@@ -79,7 +71,6 @@ public class ShopBackAction_2 extends ActionSupport implements ServletRequestAwa
 
 	@Override
 	public void validate() {
-		System.out.println("hahaha");
 		if (shopbean.getPRO_ANIMAL() == null || shopbean.getPRO_ANIMAL().trim().length() == 0) {
 			this.addFieldError("errorUpdateAnimal", "請選擇商品類型");
 		}
@@ -107,13 +98,10 @@ public class ShopBackAction_2 extends ActionSupport implements ServletRequestAwa
 		if (PRO_IMAGE == null || PRO_IMAGE.length() == 0) {
 			this.addFieldError("errorUpdateImage", "請上傳商品照片");
 		}
-		System.out.println("hahaha");
 	}
 
 	public String execute() {
-		System.out.println("wowowowo");
 		ShopService service = new ShopService();
-
 		File saved = new File(ServletActionContext.getServletContext().getRealPath("/_200_images" + PRO_IMAGEFileName));
 		InputStream inStream = null;
 		OutputStream outStream = null;
@@ -142,7 +130,7 @@ public class ShopBackAction_2 extends ActionSupport implements ServletRequestAwa
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			try {
+			try {	
 				inStream.close();
 			} catch (IOException e) {
 				e.printStackTrace();

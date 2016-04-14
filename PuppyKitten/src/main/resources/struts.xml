@@ -33,12 +33,12 @@
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
 
 		<action name="shopBackAction_1" class="_200_controller.ShopBackAction_1">
-			
+
 			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg,image/x-png</param>
 				<param name="maximumSize">104857600</param>
 			</interceptor-ref>
-			
+
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success">/_200_shop_back_insert.jsp</result>
 			<result name="input">/_200_shop_back_insert.jsp</result>
@@ -54,6 +54,10 @@
 			<result name="update">/_200_shop_back_update_2.jsp</result>
 		</action>
 
+		<action name="shopBackAction_4" class="_200_controller.ShopBackAction_4">
+			<result name="success">/_200_shop_back_update_1.jsp</result>
+			<result name="input">/_200_shop_back_update_1.jsp</result>
+		</action>
 	</package>
 
 

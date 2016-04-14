@@ -1,4 +1,4 @@
-package _200_controller;
+	package _200_controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,12 +16,12 @@ import _200_model.ShopService;
 
 public class ShopBackAction_1 extends ActionSupport implements ServletRequestAware {
 
-	private HttpServletRequest request;
 	private ShopBean shopbean;
 	private Map<String, Object> session;
 	private File PRO_IMAGE;
 	private String PRO_IMAGEFileName;
 	private String PRO_IMAGEContentType;
+	private HttpServletRequest request;
 
 
 
@@ -55,14 +55,6 @@ public class ShopBackAction_1 extends ActionSupport implements ServletRequestAwa
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-	}
-
-	public HttpServletRequest getRequest() {
-		return request;
-	}
-
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
 	}
 
 	public ShopBean getShopbean() {
