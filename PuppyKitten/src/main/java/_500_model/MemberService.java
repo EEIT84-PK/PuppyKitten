@@ -38,7 +38,6 @@ public class MemberService {
 		return null;
 
 	}
- 
 
 	// 確認帳號是否存在
 	public Boolean checkAccount(String account) {
@@ -50,22 +49,23 @@ public class MemberService {
 		}
 
 	}
-	
-public List<MemberBean> selectmember(){
-	return dao.selectmember();
-}
-			
+
+	public List<MemberBean> selectmember() {
+		return dao.selectmember();
+	}
+
 	public List<MemberBean> selectMemberById(final Integer memId) {
-		
-		return 	dao.selectMemberByMemId(memId);
+
+		return dao.selectMemberByMemId(memId);
 	}
 
 	public MemberBean update(MemberBean bean) {
 		dao.update(bean);
-		
-		return  bean;
+
+		return bean;
 	}
-     //email寄信
+
+	// email寄信
 	public static boolean sendemail(String email, String user, String checkcode) {
 		String to = email;
 		String from = "PuppyKitten84@gmail.com";

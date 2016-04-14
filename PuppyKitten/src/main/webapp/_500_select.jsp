@@ -50,7 +50,7 @@ td {
 				</tr>
 			</table>
 			<form
-				action="<%=request.getContextPath()%>/member/updatemember.action">
+				action="<%=request.getContextPath()%>/login/updateAction.action">
 				<input type="submit" value="修改帳戶">
 			</form>
 			

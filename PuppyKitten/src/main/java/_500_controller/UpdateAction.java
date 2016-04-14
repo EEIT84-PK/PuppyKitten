@@ -34,7 +34,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 	public void validate() {
 	
 	
-		// 姓名驗證
+	
 		if (bean.getMEM_NAME() == null || bean.getMEM_NAME().trim().length() == 0) {
 			this.addFieldError("MEM_NAME", "請輸入姓名");
 		}
@@ -46,20 +46,20 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 			}
 		}
 
-		// 身分證驗證
+		
 		if (bean.getMEM_IDCARD() == null || bean.getMEM_IDCARD().trim().length() == 0) {
 			this.addFieldError("MEM_IDCARD", "請輸入身分證字號");
 		}
 
-		// e-mail驗證
+	
 		if (bean.getMEM_EMAIL() == null || bean.getMEM_EMAIL().trim().length() == 0) {
 			this.addFieldError("MEM_EMAIL", "請輸入E-MAIL");
 		}
-		// 生日驗證
+		
 		if (bean.getMEM_BIRTHDAY() == null) {
 			this.addFieldError("MEM_BIRTHDAY", "請輸入生日");
 		}
-		// 地址驗證
+		
 		if (bean.getMEM_ADD() == null || bean.getMEM_ADD().trim().length() == 0) {
 			this.addFieldError("MEM_ADD", "請輸入地址");
 		}
@@ -72,7 +72,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 
 			}
 		}
-		// 電話驗證
+		
 		if (bean.getMEM_PHONE() == null || bean.getMEM_PHONE().trim().length() == 0) {
 			this.addFieldError("MEM_PHONE", "請輸入電話");
 		}

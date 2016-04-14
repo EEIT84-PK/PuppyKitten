@@ -35,7 +35,7 @@
 		<article>
 			<h1 style="font-size: 50px;">修改會員</h1>
 
-			<form action="/member/updateAction.action" method="post"
+			<form action="/login/updateAction.action" method="post"
 				enctype="multipart/form-data">
 				<table>
 					<tr>
