@@ -7,13 +7,12 @@ import org.hibernate.Session;
 
 import hibernate.util.HibernateUtil;
 
-
 public class MapDAO implements MapDAO_interface {
 	private static final String GET_ALL = "from MapBean order by MAP_ID";
 	private static final String GET_THREE_STMT = "from MapBean where MAP_KIND=? and MAP_CITY=? and MAP_AREA=? order by MAP_ID";
 	private static final String GET_TWO_STMT = "from MapBean where MAP_KIND=? and MAP_CITY=? order by MAP_ID";
 	private static final String GET_ONE_STMT = "from MapBean where MAP_KIND=?order by MAP_ID";
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MapBean> selectAll() {
@@ -31,10 +30,9 @@ public class MapDAO implements MapDAO_interface {
 		return list;
 	}
 
-	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MapBean> selectMap(String kind,String city,String area) {
+	public List<MapBean> selectMap(String kind, String city, String area) {
 		List<MapBean> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -51,6 +49,7 @@ public class MapDAO implements MapDAO_interface {
 		}
 		return list;
 	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MapBean> selectMap(String kind, String city) {
@@ -69,6 +68,7 @@ public class MapDAO implements MapDAO_interface {
 		}
 		return list;
 	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MapBean> selectMap(String kind) {
@@ -86,8 +86,7 @@ public class MapDAO implements MapDAO_interface {
 		}
 		return list;
 	}
-	
-	
+
 	@Override
 	public MapBean selectId(int MAP_ID) {
 		MapBean mapbean = null;
@@ -102,6 +101,7 @@ public class MapDAO implements MapDAO_interface {
 		}
 		return mapbean;
 	}
+
 	@Override
 	public void insert(MapBean bean) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -114,23 +114,25 @@ public class MapDAO implements MapDAO_interface {
 			throw ex;
 		}
 	}
+
 	@Override
 	public void delete(int MAP_ID) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			MapBean bean = null;
-			bean=(MapBean) session.get(MapBean.class, MAP_ID);
-			if(bean!=null){
-			session.delete(bean);
+			bean = (MapBean) session.get(MapBean.class, MAP_ID);
+			if (bean != null) {
+				session.delete(bean);
 			}
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		
+
 	}
+
 	@Override
 	public void update(MapBean bean) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -142,7 +144,7 @@ public class MapDAO implements MapDAO_interface {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		
+
 	}
 
 }

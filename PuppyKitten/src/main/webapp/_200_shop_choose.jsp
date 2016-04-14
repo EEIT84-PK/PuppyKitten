@@ -14,20 +14,21 @@
 }
 
 .choose_pro2 {
-	width: 350px;
-	border: 1px solid #ddd;
-	margin: 20px;
-	height: 380px;
-	border-radius: 4px;
-	padding: 5px;
+	float:left;
+	width: 450px;
+	margin: 10px;
+	height: 390px;
+	border: 1px solid blue;
+    padding: 5px;
 }
 
 .choose_pro3 {
-	width: 350px;
+	float:right;
+	width: 400px;
 	border: 1px solid red;
-	margin: 20px;
-	height: 310px;
-	
+	margin: 10px;
+	height: 390px;
+	padding: 5px;
 }
 
 .choose_1 {
@@ -63,23 +64,23 @@
 	<section>
 
 		<article style="width: 1500px; background-color: white;">
-			<form action="/shop/shopAction" method="get" id="shop_form">
+			<form action="/shop/shopAction" method="get">
 
 				<div class="choose_1">
 					<div class="choose_pro1">自動抓取商品路徑(尚未設定-ex: 喵星人->主食乾糧->XXX商品)</div>
-					<article class="choose_pro2">
+					<div class="choose_pro2">
 						<img alt="" src="images/smalllogo.png" height="90" width="100">
-					</article>
+					</div>
 
-					<aside class="choose_pro3">
+					<div class="choose_pro3">
 						<span>建議售價：999元</span><br> <br> <input type="button"
 							value="加入購物車" style="cursor: pointer;">
-					</aside>
+					</div>
 
-					<aside class="choose_pro3">
+					<div class="choose_pro3">
 						<span>商品介紹</span><br> <br>
 
-					</aside>
+					</div>
 
 				</div>
 			</form>

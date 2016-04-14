@@ -15,6 +15,7 @@
 	</properties>
 
 	<dependencies>
+
 		<!-- WebSocket -->
 		<dependency>
 			<groupId>javax.websocket</groupId>
@@ -114,6 +115,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>

@@ -135,6 +135,7 @@ public class PetAction extends ActionSupport {
 			PetBean bean = petService.insert(petBean);// 將寵物資訊新增到pet_friendship
 							// Table
 			File saved = new File(context.getRealPath("/_400_images/"+PET_IMAGEFileName));// 將檔案儲存到/_400_images下			
+			System.out.println(context.getRealPath("/_400_images/"+PET_IMAGEFileName));
 			InputStream is = null;
 			OutputStream os = null;
 			try {

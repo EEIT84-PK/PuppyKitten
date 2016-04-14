@@ -7,7 +7,6 @@
 	<constant name="struts.devMode" value="true"></constant> <!-- 開發模式的設定 預設為false 更改為true -->
 
 	<package name="articlePackage" namespace="/article" extends="struts-default">
-
 		<interceptors>
 			<interceptor-stack name="atguigustack">
 				<interceptor-ref name="defaultStack">
@@ -32,19 +31,47 @@
 	</package>
 
 	<package name="shopPackage" namespace="/shop" extends="struts-default">
-		<action name="shopBackAction" class="_200_controller.ShopBackAction">
-			<result name="success">/index.jsp</result>
+
+		<action name="shopBackAction_1" class="_200_controller.ShopBackAction_1">
+
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg,image/x-png</param>
+				<param name="maximumSize">104857600</param>
+			</interceptor-ref>
+
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/_200_shop_back_insert.jsp</result>
+			<result name="input">/_200_shop_back_insert.jsp</result>
+		</action>
+
+		<action name="shopBackAction_2" class="_200_controller.ShopBackAction_2">
+			<result name="success">/_200_shop_back_update_2.jsp</result>
+			<result name="input">/_200_shop_back_update_2.jsp</result>
+		</action>
+
+		<action name="shopBackAction_3" class="_200_controller.ShopBackAction_3">
+			<result name="success">/_200_shop_back_update_1.jsp</result>
+			<result name="update">/_200_shop_back_update_2.jsp</result>
+		</action>
+
+		<action name="shopBackAction_4" class="_200_controller.ShopBackAction_4">
+			<result name="success">/_200_shop_back_update_1.jsp</result>
+			<result name="input">/_200_shop_back_update_1.jsp</result>
 		</action>
 	</package>
+
 
 	<package name="mapPackage" namespace="/map" extends="struts-default">
 		<action name="mapAction" class="_300_controller.MapAction">
 			<result name="success">/_300_google.jsp</result>
+
 		</action>
 		<action name="mapBackAction" class="_300_controller.MapBackAction">
 			<result name="success">/_300_google_back.jsp</result>
 		</action>
 	</package>
+
+
 	<package name="petPackage" namespace="/pet" extends="struts-default">
 		<action name="petAction" class="_400_controller.PetAction">
 			<interceptor-ref name="fileUpload">
@@ -108,7 +135,6 @@
 			<result name="end">/_400_friendship_end.jsp</result>
 		</action>
 	</package>
-
 	<package name="petRelationPackage" namespace="/petRelation"
 		extends="struts-default">
 		<action name="petRelationaAction" class="_400_controller.PetRelationAction">
@@ -131,7 +157,6 @@
 		<action name="loginBackAction" class="_500_controller.LoginBackAction">
 			<result name="success">/index_back.jsp</result>
 		</action>
-
 	</package>
 	<!-- 攔截器 -->
 	<package name="memberPackage" namespace="/member" extends="struts-default">

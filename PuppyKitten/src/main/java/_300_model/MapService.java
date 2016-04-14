@@ -14,7 +14,6 @@ public class MapService {
 	public List<MapBean> selectAll(){
 		
 		List<MapBean> result = dao.selectAll(); 	
-	
 		return result;
 	}
 	

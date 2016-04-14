@@ -36,8 +36,6 @@
 <body>
 	<c:import url="/import/header.jsp"></c:import>
 	<section>
-
-		<!-- 		<table border="1" style="border-collapse: collapse;"> -->
 		<table border="1">
 			<thead>
 				<tr>
@@ -74,13 +72,12 @@
 			<tfoot>
 			<tr>
 					<th>總計：</th>
-
 				</tr>
 			</tfoot>
 		</table>
 
-		<input type="submit" value="返回購物" style="cursor: pointer;"> <input type="submit"
-			value="下一步" style="cursor: pointer;">
+		<input type="submit" value="返回購物" style="cursor: pointer;"> 
+		<input type="submit" value="下一步" style="cursor: pointer;">
 
 	</section>
 	<c:import url="/import/footer.jsp"></c:import>

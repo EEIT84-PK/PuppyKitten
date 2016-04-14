@@ -20,6 +20,10 @@ body{
       -o-transition: opacity 1s ease-out; 
       transition: opacity 1s ease-out; 
 }
+.jf-inactive body {/*如果處理失敗，直接顯示*/
+      opacity: 1;
+      visibility: visible;
+}
 body a{
 	color:#400000;
 }
