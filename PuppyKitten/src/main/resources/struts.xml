@@ -112,6 +112,30 @@
 		</action>
 	</package>
 	
+	<package name="petRelationLikePackage" namespace="/petRelationLike" extends="struts-default">
+		<action name="petRelationLikeAction" class="_400_controller.PetRelationLikeAction">
+			<result name="success">/_400_relation.jsp</result>
+		</action>
+	</package>
+	
+	<package name="petRelationNotLikePackage" namespace="/petRelationNotLike" extends="struts-default">
+		<action name="petRelationNotLikeAction" class="_400_controller.PetRelationNotLikeAction">
+			<result name="success">/_400_relation.jsp</result>
+		</action>
+	</package>
+	
+	<package name="petRelationAllLikePackage" namespace="/petRelationAll" extends="struts-default">
+		<action name="petRelationaAllLikeAction" class="_400_controller.PetRelationAllLikeAction">
+			<result name="success">/_400_relationAll.jsp</result>
+		</action>
+	</package>
+	
+	<package name="petRelationDeletePackage" namespace="/petRelationDelete" extends="struts-default">
+		<action name="petRelationaDeleteAction" class="_400_controller.PetRelationDeleteAction">
+			<result name="success">/_400_relationAll.jsp</result>
+		</action>
+	</package>
+	
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>

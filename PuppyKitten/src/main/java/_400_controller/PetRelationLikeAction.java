@@ -19,9 +19,9 @@ import _400_model.PetService;
 import _400_model.PetSortCatBean;
 import _400_model.PetSortDogBean;
 
-public class PetRelationAction extends ActionSupport implements ServletRequestAware {
-	private HttpServletRequest req;
-
+public class PetRelationLikeAction extends ActionSupport implements ServletRequestAware{
+private HttpServletRequest req;
+	
 	public HttpServletRequest getReq() {
 		return req;
 	}
@@ -33,26 +33,37 @@ public class PetRelationAction extends ActionSupport implements ServletRequestAw
 	public void setServletRequest(HttpServletRequest req) {
 		this.req = req;
 	}
-
-	public String execute() {
-		PetService petService = new PetService();
+	public String execute(){
+		PetService petService = new PetService();		
 		List<PetRelationBean> petRBean = petService.selectRelationAll();
+		HttpSession session=req.getSession();
+		PetRelationBean Rbean = new PetRelationBean();
+		Rbean.setINT_MENID_MYSELF(session.getAttribute("memberID").toString());// 登入者的會員編號
+		Rbean.setINT_MENID_LIKE(req.getParameter("PET_OWN_ID").toString());// 正在感興趣對象的主人編號
+		Rbean.setINT_STATUS("like");
+		
+		List<PetRelationBean>RSelect=petService.selectId(session.getAttribute("memberID").toString(), 
+				req.getParameter("PET_OWN_ID").toString(),"Notlike");		
+		
+		if(!RSelect.isEmpty()){
+			System.out.println("執行了update");
+			PetRelationBean Rupdate=petService.update(Rbean);
+		}else{
+			PetRelationBean Rinsert=petService.insert(Rbean);
+		}				
+		
 		List<PetBean> petBean = petService.selectAll();
-		HttpSession session = req.getSession();	
 		
 		List<PetAllBean> list = new ArrayList<PetAllBean>();		
 		for (int i = 0; i < petRBean.size(); i++) {
 			if (petRBean.get(i).getINT_MENID_LIKE().equals(session.getAttribute("memberID").toString())
 					&& petRBean.get(i).getINT_STATUS().equals("like")) {
-				List<PetRelationBean>RSelect=petService.selectId(session.getAttribute("memberID").toString(),
-						petRBean.get(i).getINT_MENID_MYSELF(), "like");				
-				if(RSelect.isEmpty()){
+				List<PetRelationBean>RSelect2=petService.selectId(session.getAttribute("memberID").toString(),
+						petRBean.get(i).getINT_MENID_MYSELF(), "like");
+				if(RSelect2.isEmpty()){
 					for (int j = 0; j < petBean.size(); j++) {
 						if (petRBean.get(i).getINT_MENID_MYSELF()
 								.equals(petBean.get(j).getPET_OWN_ID().toString())) {
-							
-							
-							
 							PetAllBean petAllBean = new PetAllBean();
 							petAllBean.setPET_ID(petBean.get(j).getPET_ID().toString());// 將喜歡自己的人的PET_ID放入petAllBean
 							petAllBean.setPET_OWN_ID(petBean.get(j).getPET_OWN_ID().toString());
@@ -81,7 +92,6 @@ public class PetRelationAction extends ActionSupport implements ServletRequestAw
 								PetImgBean Imgbean = petService.selectId2(petBean.get(j).getPET_ID());
 								petAllBean.setPET_IMAGE(Imgbean.getPET_IMAGE());
 								
-								
 								for(int q=0;q<petRBean.size();q++){
 									if(session.getAttribute("memberID").toString().equals(petRBean.get(q).getINT_MENID_MYSELF())
 											&&petRBean.get(q).getINT_MENID_LIKE().equals(petRBean.get(i).getINT_MENID_MYSELF())
@@ -90,22 +100,24 @@ public class PetRelationAction extends ActionSupport implements ServletRequestAw
 										petAllBean.setPET_CHECK(1);
 									}
 								}
-								list.add(petAllBean);
+								
+								list.add(petAllBean);		
+								
 							}
 						}
 					}					
 				}
+
 			}
-		}		
-		
+		}
 		if(!list.isEmpty()){
 			session.setAttribute("list", list);			
 			session.removeAttribute("noOne");
 		}else{
 			session.removeAttribute("list");			
-			session.setAttribute("noOne", "目前沒有單方面喜歡你的人");
-		}
-		System.out.println("lsit="+list);
+			session.setAttribute("noOne", "目前沒人喜歡你");
+		}		
+		
 		return "success";
 	}
 }

@@ -23,6 +23,25 @@ public class PetDAO implements PetDAO_interface{
 	}
 	
 	@Override
+	public List<PetRelationBean> selectId(String MYSELF,String LIKE,String STATUS) {
+		List<PetRelationBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();			
+			Query query = session.createQuery("from PetRelationBean where INT_MENID_MYSELF=? and INT_MENID_LIKE=? and INT_STATUS=?");			
+			query.setParameter(0, MYSELF);
+			query.setParameter(1, LIKE);
+			query.setParameter(2, STATUS);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
+	@Override
 	public List<PetBean> selectAll() {
 		List<PetBean> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -141,7 +160,20 @@ public class PetDAO implements PetDAO_interface{
 			throw ex;
 		}
 	}
-
+	
+	@Override
+	public void delete(PetRelationBean bean) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.delete(bean);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+	}
+	
 	@Override
 	public void update(PetBean bean) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -154,7 +186,20 @@ public class PetDAO implements PetDAO_interface{
 			throw ex;
 		}
 	}
-
+	
+	@Override
+	public void update(PetRelationBean bean) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.update(bean);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+	}
+	
 	@Override
 	public void insert(PetImgBean bean) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();

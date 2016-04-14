@@ -20,7 +20,7 @@
 		<article>
 			<h1>寵物聯誼(配對系統)</h1>
 			<font color="red"><b>${end}<br></b></font>								
-			<a href='<c:url value="/petRelation/petRelationaAction.action" ></c:url>'>交友中心</a>						
+			<a href='<c:url value="/petRelation/petRelationaAction.action" ></c:url>'>看誰對我感興趣</a>						
 		</article>		
 	</section>
 

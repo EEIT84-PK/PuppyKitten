@@ -36,6 +36,8 @@ public class PetFriendshipAction extends ActionSupport implements ServletRequest
 		List<PetBean> petBean = petService.selectAll();// 先將所有寵物資訊抓出來放到petBean內	
 		List<PetRelationBean>petRBean=petService.selectRelationAll();		
 		HttpSession session=req.getSession();
+		List<PetBean>selectKing=petService.selecPettId((Integer)session.getAttribute("memberID"));
+		System.out.println("selectKing="+selectKing.get(0).getPET_KING());
 		int number = 0;// 設定初始值為抓第一筆資料
 		int number2=number+1;//用來跟lise的size做比對
 		int check=0;
@@ -44,7 +46,19 @@ public class PetFriendshipAction extends ActionSupport implements ServletRequest
 				session.setAttribute("end", "已經沒有可感興趣的對象");
 				return "end";
 			} else {				
-				number++;//這邊是指如果這次查的是自己 那要改成秀下一個編號的寵物				
+				number++;//這邊是指如果這次查的是自己 那要改成秀下一個編號的寵物
+				
+				for(int q=number;q<petBean.size();q++){
+					if(!petBean.get(number).getPET_KING().equals(selectKing.get(0).getPET_KING())
+							||petBean.get(number).getPET_KING().equals(selectKing.get(0).getPET_KING())							
+							&&petBean.get(number).getPET_SEX().equals(selectKing.get(0).getPET_SEX())
+							){
+						number++;
+					}else{
+						break;
+					}
+				}
+				
 				for(int i=0;i<petRBean.size();i++){
 					for(int j=number;j<petBean.size();j++){
 						if(petRBean.get(i).getINT_MENID_MYSELF().equals(session.getAttribute("memberID").toString())
@@ -60,46 +74,63 @@ public class PetFriendshipAction extends ActionSupport implements ServletRequest
 					return "end";
 				}				
 			}
-		} else {			
+		} else {
+			
+			for(int q=number;q<petBean.size();q++){
+				if(!petBean.get(number).getPET_KING().equals(selectKing.get(0).getPET_KING())
+						||petBean.get(number).getPET_KING().equals(selectKing.get(0).getPET_KING())							
+						&&petBean.get(number).getPET_SEX().equals(selectKing.get(0).getPET_SEX())
+						){
+					number++;
+				}else{
+					break;
+				}
+			}
+			
 			for(int i=0;i<petRBean.size();i++){
 				if(petRBean.get(i).getINT_MENID_MYSELF().equals(session.getAttribute("memberID").toString())){
 					for(int j=0;j<petBean.size();j++){					
 						if(petRBean.get(i).getINT_MENID_LIKE().equals(petBean.get(j).getPET_OWN_ID().toString())){							
-							number++;
-							System.out.println("加過的number(喜歡的人)="+number);
+							number++;							
 							break;
 						}else {
 							if(session.getAttribute("memberID").toString().equals(petBean.get(j).getPET_OWN_ID().toString())){
 								if(check!=1){									
 									number++;
-									check++;
-									System.out.println("加過的number(自己)="+number);
+									check++;									
 								}							
 							}
 						}					
 					}
 				}				
-			}
-				
+			}				
 		}		
 
 		if(number==petBean.size()){
 			session.setAttribute("end", "已經沒有可感興趣的對象");
 			return "end";
-		}
+		}		
 		
 		//number有可能+2或3 如果喜歡的人連續+2 如果喜歡的人中間卡自己+3
 		if(petBean.get(number).getPET_OWN_ID().equals(session.getAttribute("memberID"))){
-			number++;
-			System.out.println("number1="+number);
+			number++;			
+		}
+		
+		for(int q=number;q<petBean.size();q++){
+			if(!petBean.get(number).getPET_KING().equals(selectKing.get(0).getPET_KING())
+					||petBean.get(number).getPET_KING().equals(selectKing.get(0).getPET_KING())							
+					&&petBean.get(number).getPET_SEX().equals(selectKing.get(0).getPET_SEX())
+					){
+				number++;
+			}else{
+				break;
+			}
 		}
 		
 		if(number==petBean.size()){
 			session.setAttribute("end", "已經沒有可感興趣的對象");
 			return "end";
-		}
-		
-		System.out.println("number2="+number);
+		}		
 		
 		if (petBean.get(number).getPET_SORT_ID().startsWith("41")) {//如果抓出來的PET_SORT_ID是41開頭的話
 			//用此PET_SORT_ID去找對應的PET_SORT_NAME
