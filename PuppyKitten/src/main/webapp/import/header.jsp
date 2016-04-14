@@ -76,9 +76,10 @@
 				</li>
 				<li><a href="">聯絡我們<img
 						src="<%=request.getContextPath()%>/images/phone.png" width="15px"></a></li>
+						
 				<li><a href="">購物車<img
 						src="<%=request.getContextPath()%>/images/cart.png" width="15px"></a></li>
-				<li><a href="">會員中心</a></li>
+				<li><a href="<s:url action="member/member"/>">會員中心</a></li>
 		<c:choose>
 			<c:when test="${session.loginOK==null}">
 				<li><a href="<%=request.getContextPath()%>/_500_insert.jsp">註冊</a></li>

@@ -22,53 +22,50 @@
 		<h1>寵物聯誼(交友中心)</h1>
 		<font color="red"><b>喜歡我的人是</b></font>
 		<table border="1" style="border-collapse: collapse;" >
+		<c:forEach var="sort" items="${list}">
 				<tr>
 					<td>寵物編號：</td>
-					<td>${bean.PET_ID }</td>
+					<td>${sort.PET_ID}</td>
 				</tr>
 				<tr>
 					<td>會員編號：</td>
-					<td>${bean.PET_OWN_ID}</td>
+					<td>${sort.PET_ID}</td>
 				</tr>
 				<tr>
 					<td>寵物名字：</td>
-					<td>${bean.PET_NAME }</td>
+					<td>${sort.PET_NAME }</td>
 				</tr>
 				<tr>
 					<td>寵物年齡：</td>
-					<td>${PET_AGE}</td>
+					<td>${sort.PET_AGE}</td>
 				</tr>
 				<tr>
 					<td>寵物體重：</td>
-					<td>${bean.PET_WEIGHT}kg</td>
+					<td>${sort.PET_WEIGHT}kg</td>
 				</tr>
 				<tr>
 					<td>寵物種類：</td>
-					<td>${bean.PET_KING}</td>
+					<td>${sort.PET_KING}</td>
 				</tr>
 				<tr>
 					<td>寵物品種：</td>
-					<td>${Sortbean.PET_SORT_NAME}</td>
+					<td>${sort.PET_SORT_NAME}</td>
 				</tr>
 				<tr>
 					<td>寵物性別：</td>
-					<td>${bean.PET_SEX}<BR></td>
+					<td>${sort.PET_SEX}<BR></td>
 				</tr>
 				<tr>
 					<td>寵物照片：</td>
-					<td><img src="${petImg}" width="300" height="300"></td>
+					<td><img src="${sort.PET_IMAGE}" width="300" height="300"></td>
 				</tr>				
 				<tr>
 					<td>寵物介紹：</td>
-					<td>${bean.PET_BODY}</td>
+					<td>${sort.PET_BODY}</td>
 				</tr>
-			</table>
-
-	
-	</article>
-	<aside>
-
-	</aside>
+				</c:forEach>
+			</table>	
+	</article>	
 </section>
 	
 <c:import url="/import/footer.jsp"></c:import>

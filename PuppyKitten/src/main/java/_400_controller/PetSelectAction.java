@@ -45,30 +45,23 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 	public String execute() {
 
 		PetService petService = new PetService();			
-		
-		List<PetBean> petBean=petService.selecPettId((Integer)req.getSession().getAttribute("memberID"));
+		HttpSession session=req.getSession();
+		List<PetBean> petBean=petService.selecPettId((Integer)session.getAttribute("memberID"));
 				
 		if (petBean.get(0).getPET_SORT_ID().startsWith("41")) {			
-			PetSortCatBean Catbean = petService.selectSortCat(petBean.get(0).getPET_SORT_ID());		
-			req.getSession().removeAttribute("Sortbean");
-			req.getSession().setAttribute("Sortbean", Catbean);			
+			PetSortCatBean Catbean = petService.selectSortCat(petBean.get(0).getPET_SORT_ID());			
+			session.setAttribute("Sortbean", Catbean);			
 		} else {			
-			PetSortDogBean Dogbean = petService.selectSortDog(petBean.get(0).getPET_SORT_ID());	
-			req.getSession().removeAttribute("Sortbean");
-			req.getSession().setAttribute("Sortbean", Dogbean);			
+			PetSortDogBean Dogbean = petService.selectSortDog(petBean.get(0).getPET_SORT_ID());			
+			session.setAttribute("Sortbean", Dogbean);			
 		}
 		
 		Date now=new Date();
-		long s=(now.getTime()-petBean.get(0).getPET_AGE().getTime())/1000/ (60 * 60 * 24)/365;
-		req.getSession().removeAttribute("PET_AGE");
-		req.getSession().setAttribute("PET_AGE", s);		
-		
-		PetImgBean Imgbean = petService.selectId2(petBean.get(0).getPET_ID());
-		req.getSession().removeAttribute("bean");
-		req.getSession().setAttribute("bean", petBean.get(0));		
-		
-		req.getSession().removeAttribute("petImg");
-		req.getSession().setAttribute("petImg", Imgbean.getPET_IMAGE());
+		long s=(now.getTime()-petBean.get(0).getPET_AGE().getTime())/1000/ (60 * 60 * 24)/365;		
+		session.setAttribute("PET_AGE", s);		
+		PetImgBean Imgbean = petService.selectId2(petBean.get(0).getPET_ID());		
+		session.setAttribute("bean", petBean.get(0));	
+		session.setAttribute("petImg", Imgbean.getPET_IMAGE());
 		
 		return "success";
 	}

@@ -112,6 +112,7 @@
 			<result>{1}.jsp</result>
 		</action>
 	</package>
+
 	<package name="petFriendshipPackage" namespace="/petFriendship"
 		extends="struts-default">
 		<action name="petFriendshipAction" class="_400_controller.PetFriendshipAction">
@@ -140,6 +141,7 @@
 			<result name="success">/_400_relation.jsp</result>
 		</action>
 	</package>
+
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>
@@ -153,4 +155,32 @@
 			<result name="input">/_500_insert.jsp</result>
 		</action>
 	</package>
+	<!-- 攔截器 -->
+	<package name="memberPackage" namespace="/member" extends="struts-default">
+		<interceptors>
+			<interceptor class="_500_interceptor.AuthenticationInterceptor"
+				name="authentication" />
+		</interceptors>
+		<global-results>
+			<result name="input">/_500_login.jsp</result>
+		</global-results>
+		<action name="updatemember" class="_500_controller.SelectAction">
+			<result name="success">/_500_update.jsp</result>
+		</action>
+
+		<action name="member" class="_500_controller.SelectAction">
+			<!-- <interceptor-ref name="authentication"/> -->
+			<result>/_500_select.jsp</result>
+		</action>
+		<action name="updateAction" class="_500_controller.UpdateAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/_500_update.jsp</result>
+		</action>
+		<action name="*">
+			<!-- <interceptor-ref name="authentication"/> -->
+			<result>/member/{1}.jsp</result>
+		</action>
+	</package>
+
 </struts>
+

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +28,17 @@ public class PetAction extends ActionSupport {
 	private File PET_IMAGE;	
 	private String PET_IMAGEContentType;
 	private String PET_IMAGEFileName;	
-	
+	private SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private String date;	
+		
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	public File getPET_IMAGE() {
 		return PET_IMAGE;
 	}
@@ -78,8 +89,9 @@ public class PetAction extends ActionSupport {
 		this.request = request;
 	}
 
-	public void validate() {
-		System.out.println("petBean"+petBean.getPET_AGE());
+	public void validate() {		
+		this.setDate(sFormat.format(petBean.getPET_AGE()));
+		
 		if (petBean.getPET_NAME().trim().length() == 0) {
 			request.put("PET_NAME", "請輸入寵物名字");
 		}else{
@@ -109,8 +121,8 @@ public class PetAction extends ActionSupport {
 			request.put("PET_IMAGE", "請上傳一張寵物照片");
 
 		}		
-		if (petBean.getPET_BODY().trim().length() == 0 || petBean.getPET_BODY().trim().length() <= 50) {
-			request.put("PET_BODY", "請至少輸入50字介紹");
+		if (petBean.getPET_BODY().trim().length() == 0 || petBean.getPET_BODY().trim().length() <= 10) {
+			request.put("PET_BODY", "請至少輸入10字介紹");
 		}else if (petBean.getPET_BODY().trim().length()>=150){
 			request.put("PET_BODY", "最多輸入150個字");
 		}

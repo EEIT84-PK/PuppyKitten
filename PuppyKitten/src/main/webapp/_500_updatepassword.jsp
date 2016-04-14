@@ -1,27 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-	td{
-		width: 100px;
-	}	
-</style>
 <c:import url="/import/head.jsp"></c:import>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>米沃貓窩-配對系統</title>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<title>米沃貓窩 - 會員密碼</title>
 </head>
-<body style="font-family: 微軟正黑體; font-size: large">
+<body>
 	<c:import url="/import/header.jsp"></c:import>
+
 	<section>
 		<article>
-			<h1>寵物聯誼(配對系統)</h1>
-			<font color="red"><b>${end}<br></b></font>								
-			<a href='<c:url value="/petRelation/petRelationaAction.action" ></c:url>'>交友中心</a>						
-		</article>		
+			<h1 style="font-size: 50px;">修改密碼</h1>
+
 	</section>
 
 	<c:import url="/import/footer.jsp"></c:import>

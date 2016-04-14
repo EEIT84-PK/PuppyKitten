@@ -1,4 +1,4 @@
-package datetime.converter;
+package converter;
 
 import java.text.DateFormat;
 import java.text.ParseException;
