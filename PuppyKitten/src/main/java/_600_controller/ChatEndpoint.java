@@ -28,7 +28,7 @@ public class ChatEndpoint{
 		userSession.getUserProperties().put("username",endpointConfig.getUserProperties().get("username"));
 		user=userSession.getUserProperties().get("username").toString();
 		users.add(userSession);
-		userSession.getBasicRemote().sendText(buildJsonData("管理員", user+",您好!請問有什麼需要為您服務嗎?"));
+		userSession.getBasicRemote().sendText(buildJsonData("系統訊息", user+",您好!請問有什麼需要為您服務嗎?"));
 	}
 	
 	@OnMessage
