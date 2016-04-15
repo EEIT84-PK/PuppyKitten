@@ -19,11 +19,34 @@
 </head>
 <body>
 	<c:import url="/import/header.jsp"></c:import>
-
 	<section>
 		<article>
 			<h1 style="font-size: 50px;">修改密碼</h1>
-
+				<form action="login/passwordAction.action" method="post">
+				<table>
+					<tr>
+						<td>舊密碼:</td>
+						<td><input type="text" name="password"
+							value="${password}"></td>
+						<td style="color: red">${errors.password[0]}</td>
+					</tr>
+					<tr>
+						<td>新密碼:</td>
+						<td><input type="text" name="checkpassword"
+							 value="${checkpassword}"></td>
+						<td style="color: red">${errors.checkpassword[0]}</td>
+					</tr>
+					<tr>
+						<td>確認密碼:</td>
+						<td><input type="text" name="check" 
+							value="${check}"></td>
+						<td style="color: red">${errors.check[0]}</td>
+					
+				</table>
+				<input type="submit" value="變更密碼">
+			</form>
+			
+        </article>
 	</section>
 
 	<c:import url="/import/footer.jsp"></c:import>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@ td {
 <c:import url="/import/head.jsp"></c:import>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>米沃貓窩-個人寵物資訊</title>
+<title>米沃貓窩-會員中心</title>
 </head>
 <body style="font-family: 微軟正黑體; font-size: large">
 	<c:import url="/import/header.jsp"></c:import>
@@ -34,7 +35,7 @@ td {
 				</tr>
 				<tr>
 					<td>生日:</td>
-					<td>${bean.MEM_BIRTHDAY}</td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${bean.MEM_BIRTHDAY}"/></td>
 				</tr>
 				<tr>
 					<td>地址:</td>
@@ -50,10 +51,13 @@ td {
 				</tr>
 			</table>
 			<form
-				action="<%=request.getContextPath()%>/login/updateAction.action">
-				<input type="submit" value="修改帳戶">
+				action="<%=request.getContextPath()%>/_500_update.jsp">
+				<input type="submit" value="修改資料">
 			</form>
-			
+			<form
+				action="<%=request.getContextPath()%>/_500_updatepassword.jsp">
+				<input type="submit" value="變更密碼">
+			</form>
 		</article>
 	</section>
 

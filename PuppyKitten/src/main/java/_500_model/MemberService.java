@@ -2,8 +2,8 @@ package _500_model;
 
 import java.util.Arrays;
 import java.util.List;
-
 import java.util.Properties;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -12,8 +12,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.apache.struts2.components.Bean;
-
 public class MemberService {
 	MemberDAO_interface dao;
 
@@ -21,6 +19,18 @@ public class MemberService {
 		dao = new MemberDAO();
 	}
 
+	public MemberBean update(MemberBean bean) {
+		MemberBean dbMemberBean = dao.selectMemberByMemId(bean.getMEM_ID());
+		dbMemberBean.setMEM_ADD(bean.getMEM_ADD());
+		dbMemberBean.setMEM_BIRTHDAY(bean.getMEM_BIRTHDAY());
+		dbMemberBean.setMEM_EMAIL(bean.getMEM_EMAIL());
+		dbMemberBean.setMEM_IDCARD(bean.getMEM_IDCARD());
+		dbMemberBean.setMEM_NAME(bean.getMEM_NAME());
+		dbMemberBean.setMEM_PHONE(bean.getMEM_PHONE());
+		dao.update(dbMemberBean);
+		return bean;
+
+	}
 	public MemberBean insert(MemberBean bean) {
 		dao.insert(bean);
 		return bean;
@@ -38,7 +48,20 @@ public class MemberService {
 		return null;
 
 	}
-
+   
+	
+    //更改密碼
+	public boolean cheangePassword(String newPassword,Integer id){
+		MemberBean memberBean=selectMemberById(id);
+		if(memberBean!=null){
+			memberBean.setMEM_PASSWORD(newPassword.getBytes());
+            dao.update(memberBean);
+            return true;
+		}else{
+			return false;
+		}
+	}
+	
 	// 確認帳號是否存在
 	public Boolean checkAccount(String account) {
 		MemberBean memberBean = dao.selectMemberByAccount(account);
@@ -54,16 +77,12 @@ public class MemberService {
 		return dao.selectmember();
 	}
 
-	public List<MemberBean> selectMemberById(final Integer memId) {
+	public MemberBean selectMemberById(final Integer memId) {
 
 		return dao.selectMemberByMemId(memId);
 	}
 
-	public MemberBean update(MemberBean bean) {
-		dao.update(bean);
-
-		return bean;
-	}
+	
 
 	// email寄信
 	public static boolean sendemail(String email, String user, String checkcode) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import hibernate.util.HibernateUtil;
 
 public class MemberDAO implements MemberDAO_interface {
@@ -77,21 +78,26 @@ public class MemberDAO implements MemberDAO_interface {
 
 	}
     
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<MemberBean> selectMemberByMemId(Integer memberId) {
-		List<MemberBean> memberBean = null;
+	public MemberBean selectMemberByMemId(Integer memberId) {
+		MemberBean memberBean = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();	
 		try {
 			session.beginTransaction();
 			Query query=session.createQuery("from MemberBean where MEM_ID=?");
 			query.setParameter(0, memberId);
-			memberBean=query.list();
+			List<MemberBean> memberBeans = query.list();
+			if(!memberBeans.isEmpty()){
+				memberBean = memberBeans.get(0);
+			}
 		} catch (RuntimeException e) {
            throw e;
 		}
 		return memberBean;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<MemberBean> selectmember() {
 		List<MemberBean> list = null;
