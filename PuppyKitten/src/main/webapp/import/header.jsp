@@ -35,9 +35,7 @@
 				<div class="main">寵物聯誼</div>
 				<div class="sub">
 					<ul>
-						<li><a href='<c:url value="/petInterceptor/petIndex.action" ></c:url>'>配對系統</a></li>
-						<li><a href='<c:url value="/petRelation/petRelationaAction.action" ></c:url>'>對我感興趣</a></li>
-						<li><a href='<c:url value="/petRelationAll/petRelationaAllLikeAction.action" ></c:url>'>互相感興趣</a></li>
+						<li><a href='<c:url value="/petInterceptor/petIndex.action" ></c:url>'>寵物大廳</a></li>						
 					</ul>
 				</div>
 			</div>

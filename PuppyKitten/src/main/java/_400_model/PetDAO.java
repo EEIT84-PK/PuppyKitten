@@ -201,6 +201,19 @@ public class PetDAO implements PetDAO_interface{
 	}
 	
 	@Override
+	public void update(PetImgBean bean) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.update(bean);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+	}
+	
+	@Override
 	public void insert(PetImgBean bean) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

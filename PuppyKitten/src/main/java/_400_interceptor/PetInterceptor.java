@@ -38,9 +38,17 @@ public class PetInterceptor extends AbstractInterceptor implements ServletReques
 		
 		HttpServletRequest request = ServletActionContext.getRequest(); // 取得HttpServletRequest
 		HttpSession session2 = request.getSession(); // 取得HttpSession
-		List<PetBean> petBean=petService.selecPettId((Integer)session2.getAttribute("memberID"));
+		List<PetBean> petBean=null;
+		if(session2.getAttribute("memberID")!=null){
+			petBean=petService.selecPettId((Integer)session2.getAttribute("memberID"));
+		}
 		
-		System.out.println("petBean"+petBean);
+		
+		if(session2.getAttribute("loginOK")==null){			
+			ctx.put("errorMsg", "尚未登入，請先登入");
+			return "login";			
+		}
+		
 		if(petBean.isEmpty()){
 			req=ServletActionContext.getRequest();
 			String location=req.getRequestURI();

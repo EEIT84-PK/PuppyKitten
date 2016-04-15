@@ -22,6 +22,7 @@
 		<article>
 			<h1>寵物聯誼(個人寵物資訊)</h1>
 			<a href="<%=request.getContextPath()%>/_400_index.jsp">回寵物大廳</a>
+			<a href='<c:url value="/petUpdate/petUpdateAction.action" ></c:url>'>修改寵物資訊</a>
 			<table border="1" style="border-collapse: collapse;" >
 				<tr>
 					<td>寵物編號：</td>

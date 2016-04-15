@@ -16,7 +16,8 @@
 		<h1>寵物聯誼(寵物大廳)</h1>
 	<a href='<c:url value="/petFriendship/petFriendshipAction.action" ></c:url>'>寵物配對系統</a>
 	<a href='<c:url value="/petSelect/PetSelectAction.action" ></c:url>'>查詢寵物資訊</a>
-	
+	<a href='<c:url value="/petRelation/petRelationaAction.action" ></c:url>'>對我感興趣</a>
+	<a href='<c:url value="/petRelationAll/petRelationaAllLikeAction.action" ></c:url>'>互相感興趣</a>
 	
 	</article>	
 </section>

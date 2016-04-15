@@ -103,6 +103,7 @@
 		</interceptors>
 		<default-interceptor-ref name="myInsertDefault" />
 		<global-results>
+			<result name="login">/_500_login.jsp</result>
 			<result name="insertPet">/_400_insert.jsp</result>
 		</global-results>
 		<action name="petIndex" class="_400_interceptor.PetIndex">
@@ -140,30 +141,46 @@
 		<action name="petRelationaAction" class="_400_controller.PetRelationAction">
 			<result name="success">/_400_relation.jsp</result>
 		</action>
-	</package>	
-	<package name="petRelationLikePackage" namespace="/petRelationLike" extends="struts-default">
+	</package>
+	<package name="petRelationLikePackage" namespace="/petRelationLike"
+		extends="struts-default">
 		<action name="petRelationLikeAction" class="_400_controller.PetRelationLikeAction">
 			<result name="success">/_400_relation.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petRelationNotLikePackage" namespace="/petRelationNotLike" extends="struts-default">
+
+	<package name="petRelationNotLikePackage" namespace="/petRelationNotLike"
+		extends="struts-default">
 		<action name="petRelationNotLikeAction" class="_400_controller.PetRelationNotLikeAction">
 			<result name="success">/_400_relation.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petRelationAllLikePackage" namespace="/petRelationAll" extends="struts-default">
+
+	<package name="petRelationAllLikePackage" namespace="/petRelationAll"
+		extends="struts-default">
 		<action name="petRelationaAllLikeAction" class="_400_controller.PetRelationAllLikeAction">
 			<result name="success">/_400_relationAll.jsp</result>
 		</action>
 	</package>
-	
-	<package name="petRelationDeletePackage" namespace="/petRelationDelete" extends="struts-default">
+
+	<package name="petRelationDeletePackage" namespace="/petRelationDelete"
+		extends="struts-default">
 		<action name="petRelationaDeleteAction" class="_400_controller.PetRelationDeleteAction">
 			<result name="success">/_400_relationAll.jsp</result>
 		</action>
 	</package>
+
+	<package name="petUpdatePackage" namespace="/petUpdate"
+		extends="struts-default">
+		<action name="petUpdateAction" class="_400_controller.PetUpdateAction">
+			<result name="success">/_400_update.jsp</result>			
+		</action>
+		<action name="petUpdate2Action" class="_400_controller.PetUpdate2Action">
+			<result name="success">/_400_update.jsp</result>
+			<result name="input">/_400_update.jsp</result>
+		</action>
+	</package>
+
 	<package name="loginPackage" namespace="/login" extends="struts-default">
 		<action name="loginAction" class="_500_controller.LoginAction">
 			<result name="success">/index.jsp</result>
