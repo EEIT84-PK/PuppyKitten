@@ -35,48 +35,77 @@ public class PetRelationAction extends ActionSupport implements ServletRequestAw
 	}
 
 	public String execute() {
-		PetService petService = new PetService();	
+		PetService petService = new PetService();
 		List<PetRelationBean> petRBean = petService.selectRelationAll();
 		List<PetBean> petBean = petService.selectAll();
-		HttpSession session = req.getSession();
-		PetAllBean petAllBean=new PetAllBean();		
-		List<PetAllBean>list= new ArrayList<PetAllBean>();	
+		HttpSession session = req.getSession();	
+		
+		List<PetAllBean> list = new ArrayList<PetAllBean>();		
 		for (int i = 0; i < petRBean.size(); i++) {
 			if (petRBean.get(i).getINT_MENID_LIKE().equals(session.getAttribute("memberID").toString())
 					&& petRBean.get(i).getINT_STATUS().equals("like")) {
-				for (int j = 0; j < petBean.size(); j++) {					
-					if (petRBean.get(i).getINT_MENID_MYSELF().equals(petBean.get(j).getPET_OWN_ID().toString())) {						
-						petAllBean.setPET_ID(petBean.get(j).getPET_ID().toString());//將喜歡自己的人的PET_ID放入petAllBean
-						petAllBean.setPET_OWN_ID(petBean.get(j).getPET_OWN_ID().toString());
-						petAllBean.setPET_NAME(petBean.get(j).getPET_NAME().toString());
-						petAllBean.setPET_WEIGHT(petBean.get(j).getPET_WEIGHT().toString());
-						petAllBean.setPET_KING(petBean.get(j).getPET_KING().toString());
-						petAllBean.setPET_SEX(petBean.get(j).getPET_SEX().toString());
-						petAllBean.setPET_BODY(petBean.get(j).getPET_BODY().toString());
-						if (petBean.get(j).getPET_OWN_ID().toString().equals(petRBean.get(i).getINT_MENID_MYSELF())) {
-							if (petBean.get(j).getPET_SORT_ID().startsWith("41")) {
-								PetSortCatBean Catbean = petService.selectSortCat(petBean.get(j).getPET_SORT_ID());						
-								petAllBean.setPET_SORT_NAME(Catbean.getPET_SORT_NAME());
-
-							} else {
-								PetSortDogBean Dogbean = petService.selectSortDog(petBean.get(j).getPET_SORT_ID());								
-								petAllBean.setPET_SORT_NAME(Dogbean.getPET_SORT_NAME());
-							}
-
-							Date now = new Date();
-							long PET_AGE = (now.getTime() - petBean.get(j).getPET_AGE().getTime()) / 1000 / (60 * 60 * 24)
-									/ 365;
-							petAllBean.setPET_AGE(PET_AGE);
-							PetImgBean Imgbean = petService.selectId2(petBean.get(j).getPET_ID());							
-							petAllBean.setPET_IMAGE(Imgbean.getPET_IMAGE());
-							list.add(petAllBean);
+				List<PetRelationBean>RSelect=petService.selectId(session.getAttribute("memberID").toString(),
+						petRBean.get(i).getINT_MENID_MYSELF(), "like");				
+				if(RSelect.isEmpty()){
+					for (int j = 0; j < petBean.size(); j++) {
+						if (petRBean.get(i).getINT_MENID_MYSELF()
+								.equals(petBean.get(j).getPET_OWN_ID().toString())) {
 							
+							
+							
+							PetAllBean petAllBean = new PetAllBean();
+							petAllBean.setPET_ID(petBean.get(j).getPET_ID().toString());// 將喜歡自己的人的PET_ID放入petAllBean
+							petAllBean.setPET_OWN_ID(petBean.get(j).getPET_OWN_ID().toString());
+							petAllBean.setPET_NAME(petBean.get(j).getPET_NAME().toString());
+							petAllBean.setPET_WEIGHT(petBean.get(j).getPET_WEIGHT().toString());
+							petAllBean.setPET_KING(petBean.get(j).getPET_KING().toString());
+							petAllBean.setPET_SEX(petBean.get(j).getPET_SEX().toString());
+							petAllBean.setPET_BODY(petBean.get(j).getPET_BODY().toString());
+							if (petBean.get(j).getPET_OWN_ID().toString()
+									.equals(petRBean.get(i).getINT_MENID_MYSELF())) {
+								if (petBean.get(j).getPET_SORT_ID().startsWith("41")) {
+									PetSortCatBean Catbean = petService
+											.selectSortCat(petBean.get(j).getPET_SORT_ID());
+									petAllBean.setPET_SORT_NAME(Catbean.getPET_SORT_NAME());
+
+								} else {
+									PetSortDogBean Dogbean = petService
+											.selectSortDog(petBean.get(j).getPET_SORT_ID());
+									petAllBean.setPET_SORT_NAME(Dogbean.getPET_SORT_NAME());
+								}
+
+								Date now = new Date();
+								long PET_AGE = (now.getTime() - petBean.get(j).getPET_AGE().getTime()) / 1000
+										/ (60 * 60 * 24) / 365;
+								petAllBean.setPET_AGE(PET_AGE);
+								PetImgBean Imgbean = petService.selectId2(petBean.get(j).getPET_ID());
+								petAllBean.setPET_IMAGE(Imgbean.getPET_IMAGE());
+								
+								
+								for(int q=0;q<petRBean.size();q++){
+									if(session.getAttribute("memberID").toString().equals(petRBean.get(q).getINT_MENID_MYSELF())
+											&&petRBean.get(q).getINT_MENID_LIKE().equals(petRBean.get(i).getINT_MENID_MYSELF())
+											&&petRBean.get(q).getINT_STATUS().equals("Notlike")
+											){
+										petAllBean.setPET_CHECK(1);
+									}
+								}
+								list.add(petAllBean);
+							}
 						}
-					}
+					}					
 				}
 			}
+		}		
+		
+		if(!list.isEmpty()){
+			session.setAttribute("list", list);			
+			session.removeAttribute("noOne");
+		}else{
+			session.removeAttribute("list");			
+			session.setAttribute("noOne", "目前沒有單方面喜歡你的人");
 		}
-		session.setAttribute("list", list);
+		System.out.println("lsit="+list);
 		return "success";
 	}
 }

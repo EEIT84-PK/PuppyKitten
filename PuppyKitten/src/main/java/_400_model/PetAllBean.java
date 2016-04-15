@@ -11,6 +11,7 @@ public class PetAllBean {
 	private String PET_SEX;
 	private String PET_IMAGE;
 	private String PET_BODY;
+	private int PET_CHECK;
 	
 	public String getPET_ID() {
 		return PET_ID;
@@ -72,6 +73,12 @@ public class PetAllBean {
 	}
 	public void setPET_BODY(String pET_BODY) {
 		PET_BODY = pET_BODY;
+	}
+	public int getPET_CHECK() {
+		return PET_CHECK;
+	}
+	public void setPET_CHECK(int pET_CHECK) {
+		PET_CHECK = pET_CHECK;
 	}
 	
 	

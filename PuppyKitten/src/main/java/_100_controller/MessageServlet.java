@@ -42,9 +42,14 @@ public class MessageServlet extends HttpServlet {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String dateString = sdf.format(date);
-		bean.setMSG_TIME(dateString);	
-		service.insert(bean);
-					output.append("<p style='color:#400000'>留言成功</p>");
+		bean.setMSG_TIME(dateString);
+		if(bean.getMSG_BODY()==null||bean.getMSG_BODY().trim().length()==0){
+			output.append("<p style='color:#400000'>留言失敗,請輸入內容</p>");
+		}else{
+			service.insert(bean);
+			output.append("<p style='color:#400000'>留言成功</p>");
+		}
+		
 
 				out = response.getWriter();
 				out.print(output);

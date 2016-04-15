@@ -16,7 +16,11 @@ public interface PetDAO_interface {
 	public void insert(PetImgBean bean);
 	public void insertRelation(PetRelationBean bean);
 	public List<PetBean> selectAll();
-	public List<PetRelationBean> selectRelationAll();	
+	public List<PetRelationBean> selectRelationAll();
+	public List<PetRelationBean> selectId(String MYSELF, String LIKE,String STATUS);
+	public void update(PetRelationBean bean);
+	public void delete(PetRelationBean bean);
+	public void update(PetImgBean bean);	
 
 
 }

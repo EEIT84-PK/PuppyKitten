@@ -89,15 +89,16 @@ public class PetAction extends ActionSupport {
 		this.request = request;
 	}
 
-	public void validate() {		
-		this.setDate(sFormat.format(petBean.getPET_AGE()));
+	public void validate() {
+		if(petBean.getPET_AGE()!=null){
+			this.setDate(sFormat.format(petBean.getPET_AGE()));
+		}		
 		
 		if (petBean.getPET_NAME().trim().length() == 0) {
 			request.put("PET_NAME", "請輸入寵物名字");
 		}else{
 			for(int i=0;i<petBean.getPET_NAME().length();i++){
-				char check=petBean.getPET_NAME().charAt(i);
-				System.out.println("check"+check);
+				char check=petBean.getPET_NAME().charAt(i);				
 				if(check>=65&&check<=90||check>=97&&check<=122||(int)check>=19968 &&(int)check<=40623){					
 				}else{
 					request.put("PET_NAME", "只能輸入中文和英文");
@@ -130,12 +131,11 @@ public class PetAction extends ActionSupport {
 
 	public String execute() {
 		if (request.isEmpty()) {
-			ServletContext context = ServletActionContext.getServletContext();
+			ServletContext context = ServletActionContext.getServletContext();			
 			PetService petService = new PetService();
 			PetBean bean = petService.insert(petBean);// 將寵物資訊新增到pet_friendship
 							// Table
-			File saved = new File(context.getRealPath("/_400_images/"+PET_IMAGEFileName));// 將檔案儲存到/_400_images下			
-			System.out.println(context.getRealPath("/_400_images/"+PET_IMAGEFileName));
+			File saved = new File(context.getRealPath("/_400_images/"+PET_IMAGEFileName));// 將檔案儲存到/_400_images下	
 			InputStream is = null;
 			OutputStream os = null;
 			try {
@@ -149,7 +149,7 @@ public class PetAction extends ActionSupport {
 					os.write(Img);
 				}
 				petImgBean.setPET_ID(bean.getPET_ID());				
-				petImgBean.setPET_IMAGE(context.getContextPath()+"/_400_images/"+PET_IMAGEFileName);				
+				petImgBean.setPET_IMAGE(context.getContextPath()+"/_400_images/"+PET_IMAGEFileName);			
 				PetImgBean Imgbean = petService.insert(petImgBean);
 			} catch (Exception e) {
 				e.printStackTrace();
