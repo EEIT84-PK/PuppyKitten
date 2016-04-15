@@ -154,6 +154,10 @@
 			<result name="success">/index.jsp</result>
 			<result name="input">/_500_insert.jsp</result>
 		</action>
+		<action name="forgetpassword" class="_500_controller.ForgetPasswordAction">
+		   <result name="success"></result>
+           <result name="input"></result>		
+		</action>
 		<action name="selectmember" class="_500_controller.SelectAction">
 			<result name="success">/_500_select.jsp</result>
 		</action>
@@ -165,6 +169,7 @@
 			<result name="success">/index.jsp</result>
 			<result name="input">/_500_updatepassword.jsp</result>
 		</action>
+		
 	</package>
 
 	<!-- 攔截器 -->

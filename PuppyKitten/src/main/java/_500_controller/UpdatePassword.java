@@ -62,37 +62,56 @@ public class UpdatePassword extends ActionSupport implements SessionAware {
 	}
 
 	public void validate() {
+		MemberService memberService=new MemberService();
+		boolean ischek=memberService.checkpassword(password, bean.getMEM_ID());
+		if(ischek){
+			this.addFieldError("password", "輸入正確舊密碼");
+		}else{
+				
+		}
 		
+		 if (password == null || password.trim().length() == 0) {
+		 this.addFieldError("password", "請輸入舊密碼");
+		 }
 		
-		if (password == null || password.trim().length() == 0) {
-			this.addFieldError("password", "請輸入舊密碼");
-		}
-		if (password.length() <= 5) {
-			this.addFieldError("password", "密碼至少要六碼");
-		}
-		if (checkpassword == null || checkpassword.trim().length() == 0) {
-			this.addFieldError("checkpassword", "請輸入新密碼");
-		}
-		if (check.length() != checkpassword.length()) {
-			this.addFieldError("check", "新密碼跟確認碼需一致");
-		}
+		 if (password.length() <= 5) {
+		 this.addFieldError("password", "密碼至少要六碼");
+		 }
+		 
+		 if(checkpassword.length()<=5){
+		 this.addFieldError("checkpassword", "新密碼至少要六碼");
+		 }
+		 if (checkpassword == null || checkpassword.trim().length() == 0) {
+		 this.addFieldError("checkpassword", "請輸入新密碼");
+		 }
+		 if (check.length() != checkpassword.length()) {
+		 this.addFieldError("check", "新密碼跟確認碼需一致");
+		 }
 	}
 
 	public String execute() throws Exception {
 		MemberService memberService = new MemberService();
-		
-	if(bean!=null){
-		HttpSession session = request.getSession();
-		MemberBean bean = memberService
-				.selectMemberById((Integer) session.getAttribute("memberID"));
-		bean.setMEM_PASSWORD(password.getBytes());
-	
-		return SUCCESS;
 
-	}else{
-		return INPUT;
+		if (bean != null) {
+//            HttpSession session = request.getSession();
+//			MemberBean bean = memberService.selectMemberById((Integer) session.getAttribute("memberID"));
+		
+			MemberService service=new MemberService();
+			boolean isPassword=service.cheangePassword(checkpassword, bean.getMEM_ID());
+			if(isPassword){
+				
+			}else{
+				this.addFieldError("checkpassword", "ok");
+			}
+            
+			return SUCCESS;
+		} else {
+
+			return INPUT;
+
+		}
 	}
-	}
+
 	@Override
 	public void setSession(Map<String, Object> arg0) {
 

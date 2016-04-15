@@ -1,10 +1,8 @@
 package _500_controller;
 
-public class ForgetPasswordAction {
+import com.opensymphony.xwork2.ActionSupport;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+public class ForgetPasswordAction extends ActionSupport{
 
-	}
 
 }

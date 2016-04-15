@@ -51,7 +51,7 @@ public class MemberService {
    
 	
     //更改密碼
-	public boolean cheangePassword(String newPassword,Integer id){
+	public Boolean cheangePassword(String newPassword,Integer id){
 		MemberBean memberBean=selectMemberById(id);
 		if(memberBean!=null){
 			memberBean.setMEM_PASSWORD(newPassword.getBytes());
@@ -61,7 +61,19 @@ public class MemberService {
 			return false;
 		}
 	}
+	//確認密碼是否正確
+	public Boolean checkpassword(String password,Integer id){
+		MemberBean memberBean=dao.selectMemberByMemId(id);
+		byte[] temp=memberBean.getMEM_PASSWORD();
+		String pwd=new String(temp);
+		if(memberBean!=null&&password.equals(pwd)){
+			return false;
+		}else{
+		return true;
+		
+	}
 	
+	}
 	// 確認帳號是否存在
 	public Boolean checkAccount(String account) {
 		MemberBean memberBean = dao.selectMemberByAccount(account);

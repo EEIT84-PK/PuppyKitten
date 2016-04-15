@@ -21,7 +21,9 @@
 					style="color: red">${errors.password[0]}</span><br>
 				<br> <input type="submit" value="登入"><span
 					style="color: red">${errors.loginerror[0]}</span>
+					
 			</form>
+			
 		</article>
 	</section>
 
