@@ -32,7 +32,23 @@ public class ArticleDAO implements ArticleDAO_interface {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from ArticleBean order by ART_HOT desc");
+			Query query = session.createQuery(GET_SORT);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ArticleBean> selectAllUser() {
+		List<ArticleBean> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from ArticleBean order by ART_MEM_ID desc");
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {

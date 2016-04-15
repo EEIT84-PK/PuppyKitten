@@ -37,6 +37,8 @@ public class ArticleBackAction extends ActionSupport implements ServletRequestAw
 			list = service.selectAllKind();
 		}else if(use.equals("time")){
 			list = service.selectAllTime();
+		}else if(use.equals("user")){
+			list = service.selectAllUser();
 		}else if(use.equals("hot")){
 			list = service.selectAllHot();
 		}else{

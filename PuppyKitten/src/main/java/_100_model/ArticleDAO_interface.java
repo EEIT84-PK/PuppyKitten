@@ -17,5 +17,6 @@ public interface ArticleDAO_interface {
 	public List<ArticleBean> selectAllHot();
 	public List<ArticleBean> selectAllTime();
 	public List<ArticleBean> selectAllKind();
+	public List<ArticleBean> selectAllUser();
 
 }

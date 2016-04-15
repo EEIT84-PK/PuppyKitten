@@ -21,6 +21,10 @@ public class ArticleService {
 		List<ArticleBean> list = dao.selectAllHot();
 		return list;
 	}
+	public List<ArticleBean> selectAllUser() {
+		List<ArticleBean> list = dao.selectAllUser();
+		return list;
+	}
 	public List<ArticleBean> selectAllKind() {
 		List<ArticleBean> list = dao.selectAllKind();
 		return list;
