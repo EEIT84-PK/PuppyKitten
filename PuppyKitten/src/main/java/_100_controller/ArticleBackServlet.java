@@ -17,7 +17,6 @@ public class ArticleBackServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("IDIDID"+request.getParameter("id"));
 		response.setContentType("text/plain; charset=UTF-8");
 		PrintWriter out;
 		ArticleService service = new ArticleService();

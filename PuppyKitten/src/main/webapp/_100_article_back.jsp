@@ -13,7 +13,7 @@
 text-align: center;
 }
 
-.bodyhide,#id,#kind,#time,#hot{
+.bodyhide,#id,#kind,#time,#hot,#user{
 cursor: pointer;
 color:#400000;
 }
@@ -64,7 +64,7 @@ $(function(){
 		<td style="width:70px;">${article.ART_HOT}</td>
 		<td style="width:30px;"><input type="button" class="delete" value="移除" /></td>		
 	</tr>
-	<tr class="formtrhide" style="text-align: center;"><td colspan="8" style="text-align: left;padding-left: 20px;"><p>${article.ART_BODY}</p></td></tr>	
+	<tr class="formtrhide" style="text-align: center;"><td colspan="8" style="text-align: left;padding-left: 20px;"><img src="${article.ART_IMG}"><p>${article.ART_BODY}</p></td></tr>	
 	</c:forEach>
 	</tbody>
 </table>
