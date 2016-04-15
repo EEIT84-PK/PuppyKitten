@@ -50,13 +50,13 @@ function clearForm() {
 		<input type="text" name="petBean.PET_SORT_ID" size="12" readonly="readonly" value="${Sortbean.PET_SORT_NAME}" id="PET_SORT_ID" > 
 		<BR>
 		性別：
-		<input name="petBean.PET_SEX" type="radio" value="公" id="sex" disabled>公
-		<input name="petBean.PET_SEX" type="radio" value="母" id="sex" disabled>母	<br>
+		<input name="petBean.PET_SEX" type="radio" value="公" id="sex" >公
+		<input name="petBean.PET_SEX" type="radio" value="母" id="sex" >母 <br>
 		寵物照片：<input type="file" name="PET_IMAGE" size="30" />
 		<span class="error">${request.PET_IMAGE}</span><BR>
 		<font color="red"><b><s:fielderror/></b></font>							 
 		介紹：<BR>
-		<textarea name="PET_BODY" cols="50" rows="10" ><s:property value="PET_BODY" /></textarea>
+		<textarea name="petBean.PET_BODY" cols="50" rows="10" ><s:property value="PET_BODY" /></textarea>
 		<span class="error">${request.PET_BODY}</span><BR>
 		<input type="submit" value="送出"><input type="button" value="清除" onclick="clearForm()"><BR>
 	</form>	
