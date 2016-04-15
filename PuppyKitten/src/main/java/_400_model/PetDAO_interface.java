@@ -19,7 +19,8 @@ public interface PetDAO_interface {
 	public List<PetRelationBean> selectRelationAll();
 	public List<PetRelationBean> selectId(String MYSELF, String LIKE,String STATUS);
 	public void update(PetRelationBean bean);
-	public void delete(PetRelationBean bean);	
+	public void delete(PetRelationBean bean);
+	public void update(PetImgBean bean);	
 
 
 }

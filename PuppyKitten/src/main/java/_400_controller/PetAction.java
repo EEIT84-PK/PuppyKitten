@@ -89,8 +89,10 @@ public class PetAction extends ActionSupport {
 		this.request = request;
 	}
 
-	public void validate() {		
-		this.setDate(sFormat.format(petBean.getPET_AGE()));
+	public void validate() {
+		if(petBean.getPET_AGE()!=null){
+			this.setDate(sFormat.format(petBean.getPET_AGE()));
+		}		
 		
 		if (petBean.getPET_NAME().trim().length() == 0) {
 			request.put("PET_NAME", "請輸入寵物名字");

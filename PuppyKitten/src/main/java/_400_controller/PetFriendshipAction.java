@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionSupport;
-
-import _400_model.PetAllBean;
 import _400_model.PetBean;
 import _400_model.PetImgBean;
 import _400_model.PetRelationBean;
@@ -33,7 +31,6 @@ public class PetFriendshipAction extends ActionSupport implements ServletRequest
 	}
 
 	public String execute() {
-
 		PetService petService = new PetService();
 		List<PetBean> petBean = petService.selectAll();// 先將所有寵物資訊抓出來放到petBean內
 		List<PetRelationBean> petRBean = petService.selectRelationAll();

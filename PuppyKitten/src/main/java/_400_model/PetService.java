@@ -75,4 +75,8 @@ public class PetService {
 		petDAO.update(bean);
 		return bean;
 	}
+	public PetImgBean update(PetImgBean bean){
+		petDAO.update(bean);
+		return bean;
+	}
 }

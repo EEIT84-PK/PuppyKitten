@@ -62,7 +62,7 @@ public class PetSelectAction extends ActionSupport implements ServletRequestAwar
 		PetImgBean Imgbean = petService.selectId2(petBean.get(0).getPET_ID());		
 		session.setAttribute("bean", petBean.get(0));	
 		session.setAttribute("petImg", Imgbean.getPET_IMAGE());
-		System.out.println("Imgbean.getPET_IMAGE()="+Imgbean.getPET_IMAGE());
+		
 		return "success";
 	}
 
