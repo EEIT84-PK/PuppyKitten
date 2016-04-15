@@ -14,30 +14,12 @@ import javax.servlet.http.HttpSession;
 public class ChatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter printWriter = response.getWriter();
+		String id=request.getParameter("id");
 		HttpSession session = request.getSession();
-		String username;
-		System.out.println(session);
-		if(session.getAttribute("loginOK")==null){
-			username="訪客";
-		}else{
-			username = session.getAttribute("loginOK").toString();
-		}
-		
+		session.setAttribute("id", id);
 		String contextPath = request.getContextPath();
 		response.sendRedirect(contextPath + "/_600_websocket_back.jsp");
-			
-		printWriter.println("<html>");
-		printWriter.println(	"<head><title>客服中心</title></head>");
-		printWriter.println(	"<body>");
-		printWriter.println(     	"<center>");
-		printWriter.println(			"<textarea id='area' readonly='readonly' rows='10' cols='45'></textarea><br>");
-		printWriter.println(            "<input type='text' id='text' size='50' /><input id='sendmsg' type='button' value='送出' />");
-		printWriter.println(     	"</center>");
-		printWriter.println(	"</body>");
-		printWriter.println("</html>");					
+						
 		
 	}
 }

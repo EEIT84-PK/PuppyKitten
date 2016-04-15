@@ -21,22 +21,30 @@ import javax.websocket.server.ServerEndpoint;
 public class ChatEndpoint{
 	static Set<Session> users = Collections.synchronizedSet(new HashSet<Session>());
 	private String user="";
+	private String id="";
 
 	@OnOpen
 	public void handleOpen(EndpointConfig endpointConfig, Session userSession) throws IOException{
-		
+		userSession.getUserProperties().put("id",endpointConfig.getUserProperties().get("id"));
 		userSession.getUserProperties().put("username",endpointConfig.getUserProperties().get("username"));
-		user=userSession.getUserProperties().get("username").toString();
 		users.add(userSession);
-		userSession.getBasicRemote().sendText(buildJsonData("系統訊息", user+",您好!請問有什麼需要為您服務嗎?"));
+		userSession.getBasicRemote().sendText(buildJsonData("系統訊息", "連線成功!"));
 	}
 	
 	@OnMessage
 	public void handleMessage(String message, Session userSession) throws IOException{
-			Iterator<Session> iterator =users.iterator();
-			while(iterator.hasNext()){
-				iterator.next().getBasicRemote().sendText(buildJsonData(user, message));
+		
+			id=userSession.getUserProperties().get("id").toString();
+			user=userSession.getUserProperties().get("username").toString();
+			System.out.println(user);
+			System.out.println(id);
+			if(id.equals(user)){
+				Iterator<Session> iterator =users.iterator();
+				while(iterator.hasNext()){
+					iterator.next().getBasicRemote().sendText(buildJsonData(user, message));
+				}
 			}
+			
 		}
 	
 	
